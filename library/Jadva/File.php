@@ -24,7 +24,7 @@
  * @subpackage Jadva_File
  * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: File.php 255 2009-08-21 12:02:18Z jaachan $
+ * @version    $Id: File.php 297 2009-09-10 15:36:11Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File_Abstract */
@@ -109,6 +109,16 @@ class Jadva_File extends Jadva_File_Abstract
 	public function hasExtension()
 	{
 		return FALSE !== strpos($this->getBasename(), '.');
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the contents of this file
+	 *
+	 * @return  string|boolean  The contents, or FALSE if it could not be read.
+	 */
+	public function getContents()
+	{
+		return file_get_contents($this->_url);
 	}
 	//------------------------------------------------
 	/** Implements Jadva_File_Abstract::isDir */

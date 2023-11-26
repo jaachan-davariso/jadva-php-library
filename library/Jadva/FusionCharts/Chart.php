@@ -24,7 +24,7 @@
  * @subpackage Jadva_FusionCharts_Chart
  * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Chart.php 292 2009-09-02 16:25:54Z jaachan $
+ * @version    $Id: Chart.php 297 2009-09-10 15:36:11Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -285,17 +285,17 @@ class Jadva_FusionCharts_Chart
 			$this->setDataSetCount(1);
 		}
 
+		$this->setDataSetAttributes($this->getDataSetCount() - 1, $attribs);
+
 		if(
 			$this->_colourSchemeName
 		&&
 			(self::SERIES_TYPE_MULTI_SERIES === $this->getSeriesType())
 		&&
-			!array_key_exists('color', $attribs)
+			!array_key_exists('color', $this->_datasetAttributeList[$this->getDataSetCount() - 1])
 		) {
-			$attribs['color'] = $this->_getColour();
+			$this->_datasetAttributeList[$this->getDataSetCount() - 1]['color'] = $this->_getColour();
 		}
-
-		$this->setDataSetAttributes($this->getDataSetCount() - 1, $attribs);
 
 		return $this;
 	}
@@ -381,26 +381,6 @@ class Jadva_FusionCharts_Chart
 	}
 	//------------------------------------------------
 	/**
-	 * Checks whether the given data set attribute is valid for this graph
-	 *
-	 * @param  string  $name  The name of the data set attribute
-	 *
-	 * @return  boolean  TRUE if the attribute is valid, FALSE otherwise
-	 */
-	public function isValidDataSetAttribute($name)
-	{
-		if( in_array($name, self::$_allowedDataSetAttributes) ) {
-			return TRUE;
-		}
-
-		if( !array_key_exists($this->_graphType, self::$_additionalAllowedDataSetAttributes) ) {
-			return FALSE;
-		}
-
-		return in_array($name, self::$_additionalAllowedDataSetAttributes[$this->_graphType]);
-	}
-	//------------------------------------------------
-	/**
 	 * Sets the attributes for the given data set
 	 *
 	 * @param  integer  $in_dataSetNumber  The number of the data set
@@ -426,11 +406,7 @@ class Jadva_FusionCharts_Chart
 
 		$attributeList = array();
 		foreach($attribs as $key => $value) {
-			$key = strtolower($key);
-
-			if( !$this->isValidDataSetAttribute($key) ) {
-				continue;
-			}
+			$key = strtolower(trim($key));
 
 			$attributeList[$key] = $value;
 		}
@@ -498,26 +474,6 @@ class Jadva_FusionCharts_Chart
 	}
 	//------------------------------------------------
 	/**
-	 * Checks whether the given graph attribute is valid for this graph
-	 *
-	 * @param  string  $name  The name of the graph attribute
-	 *
-	 * @return  boolean  TRUE if the attribute is valid, FALSE otherwise
-	 */
-	public function isValidGraphAttribute($name)
-	{
-		if( in_array($name, self::$_allowedGraphAttributes) ) {
-			return TRUE;
-		}
-
-		if( !array_key_exists($this->_graphType, self::$_additionalAllowedGraphAttributes) ) {
-			return FALSE;
-		}
-
-		return in_array($name, self::$_additionalAllowedGraphAttributes[$this->_graphType]);
-	}
-	//------------------------------------------------
-	/**
 	 * Adds (and overrides) a single graph attribute
 	 * 
 	 * @param  string  $name   The graph attribute to set
@@ -527,11 +483,9 @@ class Jadva_FusionCharts_Chart
 	 */
 	public function addGraphAttribute($name, $value)
 	{
-		$name = strtolower($name);
+		$name = strtolower(trim($name));
 
-		if( $this->isValidGraphAttribute($name) ) {
-			$this->_graphAttributeList[$name] = $value;
-		}
+		$this->_graphAttributeList[$name] = $value;
 
 		return $this;
 	}
@@ -578,11 +532,7 @@ class Jadva_FusionCharts_Chart
 	{
 		$attributeList = array();
 		foreach($attribs as $key => $value) {
-			$key = strtolower($key);
-
-			if( !in_array($key, self::$_allowedCategoriesAttributes) ) {
-				continue;
-			}
+			$key = strtolower(trim($key));
 
 			$attributeList[$key] = $value;
 		}
@@ -609,11 +559,7 @@ class Jadva_FusionCharts_Chart
 
 		$category = array();
 		foreach($attribs as $key => $value) {
-			$key = strtolower($key);
-
-			if( !in_array($key, self::$_allowedCategoryAttributes) ) {
-				continue;
-			}
+			$key = strtolower(trim($key));
 
 			$category[$key] = $value;
 		}
@@ -674,11 +620,7 @@ class Jadva_FusionCharts_Chart
 		);
 
 		foreach($attribs as $key => $attribValue) {
-			$key = strtolower($key);
-
-			if( !$this->isValidSetAttribute($key) ) { 
-				continue;
-			}
+			$key = strtolower(trim($key));
 
 			$set[$key] = $attribValue;
 		}
@@ -698,32 +640,6 @@ class Jadva_FusionCharts_Chart
 		$this->_addedValue($value);
 
 		return $this;
-	}
-	//------------------------------------------------
-	/**
-	 * Checks whether the given set attribute is valid for this graph
-	 *
-	 * @param  string  $name  The name of the set attribute
-	 *
-	 * @return  boolean  TRUE if the attribute is valid, FALSE otherwise
-	 */
-	public function isValidSetAttribute($name)
-	{
-		if( self::SERIES_TYPE_SINGLE_SERIES === $this->getSeriesType() ) {
-			if( in_array($name, self::$_allowedSetAttributesSingleSeries) ) {
-				return TRUE;
-			}
-		} else {
-			if( in_array($name, self::$_allowedSetAttributesOther) ) {
-				return TRUE;
-			}
-		}
-
-		if( !array_key_exists($this->_graphType, self::$_additionalAllowedSetAttributes) ) {
-			return FALSE;
-		}
-
-		return in_array($name, self::$_additionalAllowedSetAttributes[$this->_graphType]);
 	}
 	//------------------------------------------------
 	/**
@@ -748,11 +664,7 @@ class Jadva_FusionCharts_Chart
 
 		$trendLine = array();
 		foreach($attribs as $key => $value) {
-			$key = strtolower($key);
-
-			if( !in_array($key, self::$_allowedTrendLineAttributes) ) {
-				continue;
-			}
+			$key = strtolower(trim($key));
 
 			$trendLine[$key] = $value;
 		}
@@ -876,152 +788,6 @@ class Jadva_FusionCharts_Chart
 	protected static $_seriesTypeToDefaultGraphType = array(
 		1 => 'Line',
 		2 => 'MSLine',
-	);
-	//------------------------------------------------
-	/**
-	 * Contains the attributes allowed to set for graphs
-	 *
-	 * @var  array
-	 */
-	protected static $_allowedGraphAttributes = array(
-		//Background Properties
-		'bgcolor', 'bgalpha', 'bgswf',
-
-		//Canvas Properties
-		'canvasbgcolor', 'canvasbgalpha', 'canvasbordercolor', 'canvasborderthickness',
-
-		//Chart and Axis Titles
-		'caption', 'subcaption', 'xaxisname', 'yaxisname',
-
-		//Chart Numerical Limits
-		'yaxisminvalue', 'yaxismaxvalue',
-
-		//Generic Properties
-		'shownames', 'showvalues', 'showlimits', 'rotatenames', 'animation', 'showcolumnshadow',
-
-		//Font Properties
-		'basefont', 'basefontsize', 'basefontcolor', 'outcnvbasefont ', 'outcnvbasefontsze', 'outcnvbasefontcolor',
-
-		//Number Formatting Options
-		'numberprefix',     'numbersuffix',      'formatnumber',     'formatnumberscale',
-		'decimalseparator', 'thousandseparator', 'decimalprecision', 'divlinedecimalprecision',
-		'limitsdecimalprecision',
-
-		//Zero Plane
-		'zeroplanethickness', 'zeroplanecolor', 'zeroplanealpha',
-
-		//Divisional Lines (Horizontal)
-		'numdivlines',      'divlinecolor',            'divlinethickness',    'divlinealpha', 
-		'showdivlinevalue', 'showalternatehgridcolor', 'alternatehgridcolor', 'alternatehgridalpha',
-
-		//Divisional Lines (Vertical)
-		'numvdivlines',            'vdivlinecolor',       'vdivlinethickness',   'vdivlinealpha',
-		'showalternatevgridcolor', 'alternatevgridcolor', 'alternatevgridalpha',
-
-		//Hover Caption Properties
-		'showhovercap', 'hovercapbgcolor', 'hovercapbordercolor', 'hovercapsepchar',
-
-		//Chart Margins
-		'chartleftmargin', 'chartrightmargin', 'charttopmargin', 'chartbottommargin',
-	);
-	//------------------------------------------------
-	/**
-	 * Aadditional attributes for <graph> elements, per graph type
-	 *
-	 * @var  array
-	 */
-	protected static $_additionalAllowedGraphAttributes = array(
-		'MSArea2D' => array('showareaborder', 'areaborderthickness', 'areabordercolor', 'areaalpha'),
-		'StackedArea2D' => array('showareaborder', 'areaborderthickness', 'areabordercolor', 'areaalpha'),
-		'MSColumn2DLineDY' => array('pyaxisname', 'syaxisname',
-		                  'showanchors', 'anchorsides', 'anchorradius', 'anchorbordercolor', 
-		                  'anchorborderthickness', 'anchorbgcolor', 'anchorbgalpha', 'anchoralpha'),
-		'MSColumn3DLineDY' => array('pyaxisname', 'syaxisname',
-		                  'showanchors', 'anchorsides', 'anchorradius', 'anchorbordercolor', 
-		                  'anchorborderthickness', 'anchorbgcolor', 'anchorbgalpha', 'anchoralpha'),
-		'Funnel' => array('issliced', 'slicingdistance'),
-	);
-	//------------------------------------------------
-	/**
-	 * Contains the attributes allowed to set for set elements, for single series graphs
-	 *
-	 * @var  array
-	 */
-	protected static $_allowedSetAttributesSingleSeries = array(
-		'name', 'color', 'hovertext', 'link', 'alpha', 'showname',
-	);
-	//------------------------------------------------
-	/**
-	 * Attributes allowed to set for set elements, for graphs that aren't single series
-	 *
-	 * @var  array
-	 */
-	protected static $_allowedSetAttributesOther = array(
-		'color', 'link', 'alpha',
-	);
-	//------------------------------------------------
-	/**
-	 * Additional attributes for <set> elements, per graph type
-	 *
-	 * @var  array
-	 */
-	protected static $_additionalAllowedSetAttributes = array(
-		'Pie3D'    => array('issliced'),
-		'Pie2D'    => array('issliced'),
-	);
-	//------------------------------------------------
-	/**
-	 * Attributes allowed in <categories> elements
-	 *
-	 * @var  array
-	 */
-	protected static $_allowedCategoriesAttributes = array(
-		'font', 'fontsize', 'fontcolor',
-	);
-	//------------------------------------------------
-	/**
-	 * Attributes allowed in <category> elements
-	 *
-	 * @var  array
-	 */
-	protected static $_allowedCategoryAttributes = array(
-		'name', 'hovertext', 'showname',
-	);
-	//------------------------------------------------
-	/**
-	 * Attributes allowed in <dataset> elements
-	 *
-	 * @var  array
-	 */
-	protected static $_allowedDataSetAttributes = array(
-		'seriesname', 'color', 'showvalues', 'alpha',
-	);
-	//------------------------------------------------
-	/**
-	 * Additional attributes allowed in <dataset> elements, per graph type
-	 *
-	 * @var  array
-	 */
-	protected static $_additionalAllowedDataSetAttributes = array(
-		'MSArea2D' => array('showareaborder', 'areaborderthickness', 'areabordercolor', 'areaalpha'),
-
-		'MSLine' => array('showanchors', 'anchorsides', 'anchorradius', 'anchorbordercolor', 
-		                  'anchorborderthickness', 'anchorbgcolor', 'anchorbgalpha', 'anchoralpha',
-		                  'linethickness'),
-
-		'StackedArea2D' => array('showareaborder', 'areaborderthickness', 'areabordercolor', 'areaalpha'),
-
-		'MSColumn2DLineDY' => array('parentyaxis'),
-		'MSColumn3DLineDY' => array('parentyaxis'),
-	);
-	//------------------------------------------------
-	/**
-	 * Attributes allowed in <line> elements
-	 *
-	 * @var  array
-	 */
-	protected static $_allowedTrendLineAttributes = array(
-		'startvalue', 'endvalue', 'color', 'displayvalue', 'thickness', 'istrendzone', 'showontop', 'alpha'
 	);
 	//------------------------------------------------
 	/**

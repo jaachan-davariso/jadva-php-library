@@ -1,5 +1,11 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.5
+ Fixes:
+  - Removed the checks on the FusionCharts allowed attributes since keeping 
+    track of them is A) a lot of work, B) very complicated and C) not very
+    useful.
+
 0.2.4
  New features:
   - Added a Zend-style View Helper to render FusionCharts charts.
