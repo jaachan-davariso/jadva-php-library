@@ -177,7 +177,11 @@
 								</div>
 		<div class="info-box-body">
 			<div class="var-summary">
-																																																																																																																								<div class="var-title">
+																																																																																																																																<div class="var-title">
+					<span class="var-type">string|NULL</span>
+					<a href="#$_binDir" title="details" class="var-name">$_binDir</a>
+				</div>
+																<div class="var-title">
 					<span class="var-type">string</span>
 					<a href="#$_credentialsHost" title="details" class="var-name">$_credentialsHost</a>
 				</div>
@@ -246,7 +250,7 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																																																																																																																														
+																																																																																																																																																																																																														
 				<div class="method-definition">
 											<span class="method-result">Jadva_Installer_Database_Abstract</span>
 										<a href="#__construct" title="details" class="method-name">__construct</a>
@@ -263,6 +267,12 @@
 											<span class="method-result">void</span>
 										<a href="#install" title="details" class="method-name">install</a>
 										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database.html">Jadva_Installer_Database</a></span>
+										<a href="#setBinDir" title="details" class="method-name">setBinDir</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$binDir</span>)
 									</div>
 														
 				<div class="method-definition">
@@ -357,6 +367,12 @@
 														
 				<div class="method-definition">
 											<span class="method-result">void</span>
+										<a href="#_preInstallSystemCheck" title="details" class="method-name">_preInstallSystemCheck</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
 										<a href="#_restoreRestorePoint" title="details" class="method-name">_restoreRestorePoint</a>
 										()
 									</div>
@@ -396,14 +412,36 @@
 							
 					</div>
 		<div class="info-box-body">
-			<a name="var$_credentialsHost" id="$_credentialsHost"><!-- --></A>
+			<a name="var$_binDir" id="$_binDir"><!-- --></A>
 <div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string|NULL</span>
+			<span class="var-name">$_binDir</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a393">393</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the binary directory (if needed)</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_credentialsHost" id="$_credentialsHost"><!-- --></A>
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_credentialsHost</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a352">352</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a369">369</a></span>)
 		</span>
 	</div>
 
@@ -419,13 +457,13 @@
 
 </div>
 <a name="var$_credentialsPass" id="$_credentialsPass"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_credentialsPass</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a346">346</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a363">363</a></span>)
 		</span>
 	</div>
 
@@ -441,13 +479,13 @@
 
 </div>
 <a name="var$_credentialsPort" id="$_credentialsPort"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_credentialsPort</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a358">358</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a375">375</a></span>)
 		</span>
 	</div>
 
@@ -463,13 +501,13 @@
 
 </div>
 <a name="var$_credentialsSock" id="$_credentialsSock"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_credentialsSock</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a364">364</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a381">381</a></span>)
 		</span>
 	</div>
 
@@ -485,13 +523,13 @@
 
 </div>
 <a name="var$_credentialsUser" id="$_credentialsUser"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_credentialsUser</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a340">340</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a357">357</a></span>)
 		</span>
 	</div>
 
@@ -507,13 +545,13 @@
 
 </div>
 <a name="var$_databaseName" id="$_databaseName"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_databaseName</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a370">370</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a387">387</a></span>)
 		</span>
 	</div>
 
@@ -529,13 +567,13 @@
 
 </div>
 <a name="var$_dbType" id="$_dbType"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_dbType</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a400">400</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a423">423</a></span>)
 		</span>
 	</div>
 
@@ -551,13 +589,13 @@
 
 </div>
 <a name="var$_directoryList" id="$_directoryList"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_directoryList</span>
-			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a376">376</a></span>)
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a399">399</a></span>)
 		</span>
 	</div>
 
@@ -573,13 +611,13 @@
 
 </div>
 <a name="var$_listTablesBefore" id="$_listTablesBefore"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_listTablesBefore</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a388">388</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a411">411</a></span>)
 		</span>
 	</div>
 
@@ -595,13 +633,13 @@
 
 </div>
 <a name="var$_nodeLists" id="$_nodeLists"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">array</span>
 			<span class="var-name">$_nodeLists</span>
-			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a394">394</a></span>)
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a417">417</a></span>)
 		</span>
 	</div>
 
@@ -617,13 +655,13 @@
 
 </div>
 <a name="var$_outputFormatter" id="$_outputFormatter"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html">Jadva_Installer_Database_Abstract</a></span>
 			<span class="var-name">$_outputFormatter</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a328">328</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a345">345</a></span>)
 		</span>
 	</div>
 
@@ -639,13 +677,13 @@
 
 </div>
 <a name="var$_restoreDirectory" id="$_restoreDirectory"><!-- --></A>
-<div class="evenrow">
+<div class="oddrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_restoreDirectory</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a334">334</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a351">351</a></span>)
 		</span>
 	</div>
 
@@ -661,13 +699,13 @@
 
 </div>
 <a name="var$_restorePointLocation" id="$_restorePointLocation"><!-- --></A>
-<div class="oddrow">
+<div class="evenrow">
 
 	<div class="var-header">
 		<span class="var-title">
 			<span class="var-type">string</span>
 			<span class="var-name">$_restorePointLocation</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a382">382</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a405">405</a></span>)
 		</span>
 	</div>
 
@@ -699,7 +737,7 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="method__construct" id="__construct"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
 		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a101">101</a></span>)
@@ -737,10 +775,10 @@
 				</ul>
 	</div>
 <a name="methodaddDirectory" id="addDirectory"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">addDirectory</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a187">187</a></span>)
+		<span class="method-title">addDirectory</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a201">201</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -767,10 +805,10 @@
 			
 	</div>
 <a name="methodinstall" id="install"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">install</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a206">206</a></span>)
+		<span class="method-title">install</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a220">220</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -798,6 +836,36 @@
 								: Installs the database scripts
 							</li>
 				</ul>
+	</div>
+<a name="methodsetBinDir" id="setBinDir"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setBinDir</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a187">187</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the binary directory (if needed)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database.html">Jadva_Installer_Database</a></span>
+		<span class="method-name">
+			setBinDir
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$binDir</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$binDir</span><span class="var-description">: The directory with binaries</span>			</li>
+				</ul>
+		
+			
 	</div>
 <a name="methodsetCredentials" id="setCredentials"><!-- --></a>
 <div class="oddrow">
@@ -937,7 +1005,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_checkDirectory</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a410">410</a></span>)
+		<span class="method-title">_checkDirectory</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a433">433</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -970,7 +1038,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_checkVersionTable</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a521">521</a></span>)
+		<span class="method-title">_checkVersionTable</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a555">555</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1007,7 +1075,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_connectToDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a486">486</a></span>)
+		<span class="method-title">_connectToDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a520">520</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1045,7 +1113,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_createRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a557">557</a></span>)
+		<span class="method-title">_createRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a591">591</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1083,7 +1151,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_databaseIsLocked</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a500">500</a></span>)
+		<span class="method-title">_databaseIsLocked</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a534">534</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1121,7 +1189,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_disconnectFromDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a514">514</a></span>)
+		<span class="method-title">_disconnectFromDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a548">548</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1158,7 +1226,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_executeDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a537">537</a></span>)
+		<span class="method-title">_executeDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a571">571</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1200,7 +1268,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_getVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a528">528</a></span>)
+		<span class="method-title">_getVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a562">562</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1238,7 +1306,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_loadFilesFromDirectory</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a436">436</a></span>)
+		<span class="method-title">_loadFilesFromDirectory</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a459">459</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1267,7 +1335,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_lockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a493">493</a></span>)
+		<span class="method-title">_lockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a527">527</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1304,7 +1372,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_parseDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a591">591</a></span>)
+		<span class="method-title">_parseDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a625">625</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1356,11 +1424,44 @@
 							</li>
 				</ul>
 	</div>
-<a name="method_restoreRestorePoint" id="_restoreRestorePoint"><!-- --></a>
+<a name="method_preInstallSystemCheck" id="_preInstallSystemCheck"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_restoreRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a564">564</a></span>)
+		<span class="method-title">_preInstallSystemCheck</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a509">509</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Does a system check before installing</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> Jadva_Installer_Database_Exception  When the system doesn't check out</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_preInstallSystemCheck
+		</span>
+				()
+			</div>
+	
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_preInstallSystemCheck">Jadva_Installer_Database_Mysqli::_preInstallSystemCheck()</a>
+								: Implements Jadva_Installer_Database_Abstract::_connectToDatabase
+							</li>
+				</ul>
+	</div>
+<a name="method_restoreRestorePoint" id="_restoreRestorePoint"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_restoreRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a598">598</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1394,10 +1495,10 @@
 				</ul>
 	</div>
 <a name="method_setContent" id="_setContent"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_setContent</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a601">601</a></span>)
+		<span class="method-title">_setContent</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a635">635</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1426,10 +1527,10 @@
 			
 	</div>
 <a name="method_storeVersions" id="_storeVersions"><!-- --></a>
-<div class="evenrow">
+<div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_storeVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a546">546</a></span>)
+		<span class="method-title">_storeVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a580">580</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1468,10 +1569,10 @@
 				</ul>
 	</div>
 <a name="method_unlockDatabase" id="_unlockDatabase"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_unlockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a507">507</a></span>)
+		<span class="method-title">_unlockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_libraryJadvaInstallerDatabaseAbstract.php.html#a541">541</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -1510,7 +1611,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 28 Oct 2009 08:23:50 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+		Documentation generated on Sat, 23 Jan 2010 14:48:54 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
 	</p>
 	</div></body>
 </html>

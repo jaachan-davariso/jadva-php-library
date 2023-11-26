@@ -6,7 +6,7 @@
  * @see        http://framework.zend.com/
  * @package    ThirdParty
  * @subpackage Zend
- * @version    $Id: Zend.php 201 2009-07-03 14:39:16Z jaachan $
+ * @version    $Id: Zend.php 301 2010-01-09 14:50:29Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 die('Not to be included, documentation only.');
@@ -19,6 +19,16 @@ die('Not to be included, documentation only.');
  * @subpackage Zend
  */
 class Zend_Validate_Abstract
+{}
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Zend_View_Helper_Abstract
+ *
+ * @see        http://framework.zend.com/apidoc/core/Zend_View/Helper/Zend_View_Helper_Abstract.html
+ * @package    ThirdParty
+ * @subpackage Zend
+ */
+class Zend_View_Helper_Abstract
 {}
 //----------------------------------------------------------------------------------------------------------------------
 /**

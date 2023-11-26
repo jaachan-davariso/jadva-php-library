@@ -1,3 +1,4 @@
+
 <?php
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -22,9 +23,9 @@
  * @category   JAdVA
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
- * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009-2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 245 2009-08-21 09:02:58Z jaachan $
+ * @version    $Id: Abstract.php 315 2010-01-23 11:29:27Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_TableNode_List */
@@ -178,6 +179,20 @@ abstract class Jadva_Installer_Database_Abstract
 	}
 	//------------------------------------------------
 	/**
+	 * Sets the binary directory (if needed)
+	 *
+	 * @param  string  $binDir  The directory with binaries
+	 *
+	 * @return  Jadva_Installer_Database  Provides a fluent interface
+	 */
+	public function setBinDir($binDir)
+	{
+		$this->_binDir = $this->_checkDirectory($binDir);
+
+		return $this;
+	}
+	//------------------------------------------------
+	/**
 	 * Adds a directory with installation scripts
 	 *
 	 * @param  string  $directory  The directory with installation scripts to add
@@ -232,6 +247,9 @@ abstract class Jadva_Installer_Database_Abstract
 		$this->_outputFormatter->outputStart();
 
 		try{
+			$this->_outputFormatter->outputInfo('Doing pre-install system check');
+			$this->_preInstallSystemCheck();
+
 			$this->_outputFormatter->outputInfo('Reading the directories');
 			foreach($this->_directoryList as $directory) {
 				$this->_loadFilesFromDirectory($directory);
@@ -370,6 +388,12 @@ abstract class Jadva_Installer_Database_Abstract
 	protected $_databaseName         = NULL;
 	//------------------------------------------------
 	/**
+	 * Contains the binary directory (if needed)
+	 * @var  string|NULL
+	 */
+	protected $_binDir               = NULL;
+	//------------------------------------------------
+	/**
 	 * Contains the list of directories to load database scripts from
 	 * @var  string
 	 */
@@ -475,6 +499,17 @@ abstract class Jadva_Installer_Database_Abstract
 			$node = $this->_nodeLists[$dbType]->getNode($scriptName, $scriptVersion);
 			$this->_setContent($fullUri, $node);
 		}
+	}
+	//------------------------------------------------
+	/**
+	 * Does a system check before installing
+	 *
+	 * @throws  Jadva_Installer_Database_Exception  When the system doesn't check out
+	 * @return  void
+	 */
+	protected function _preInstallSystemCheck()
+	{
+		//No check by default
 	}
 	//------------------------------------------------
 	/**

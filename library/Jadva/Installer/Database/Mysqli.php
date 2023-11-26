@@ -22,9 +22,9 @@
  * @category   JAdVA
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
- * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009-2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Mysqli.php 245 2009-08-21 09:02:58Z jaachan $
+ * @version    $Id: Mysqli.php 314 2010-01-23 10:45:06Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_Abstract */
@@ -66,6 +66,39 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 	 * @var  MySQLi
 	 */
 	protected $_mysqliConnection = NULL;
+	//------------------------------------------------
+	/** Implements Jadva_Installer_Database_Abstract::_connectToDatabase */
+	protected function _preInstallSystemCheck()
+	{
+		$output = array();
+		$returnVar = NULL;
+
+		list($commandPrefix, $commandSuffix) = $this->_getCommandFix();
+
+		$commandSuffix .= ' --version';
+
+		exec($commandPrefix . 'mysqldump' . $commandSuffix, $output, $returnVar);
+
+		if( 0 !== $returnVar ) {
+			/** @see Jadva_Installer_Database_Exception */
+			require_once 'Jadva/Installer/Database/Exception.php';
+			throw new Jadva_Installer_Database_Exception('mysqldump command not found, ' . 
+				($this->_binDir ? 'binaries directory: ' . $this->_binDir : 'no binaries directory set')
+			);
+		}
+
+		$output = array();
+		$returnVar = NULL;
+		exec($commandPrefix . 'mysql' . $commandSuffix, $output, $returnVar);
+
+		if( 0 !== $returnVar ) {
+			/** @see Jadva_Installer_Database_Exception */
+			require_once 'Jadva/Installer/Database/Exception.php';
+			throw new Jadva_Installer_Database_Exception('mysql command not found');
+		}
+
+		//Perhaps do a version check? Though that could be dependend on the user's install scripts
+	}
 	//------------------------------------------------
 	/** Implements Jadva_Installer_Database_Abstract::_connectToDatabase */
 	protected function _connectToDatabase()
@@ -218,7 +251,9 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			$parameter_list['socket'] = $this->_credentialsSock;
 		}
 
-		$command = 'mysqldump';
+		list($commandPrefix, $commandSuffix) = $this->_getCommandFix();
+
+		$command = $commandPrefix . 'mysqldump' . $commandSuffix;
 		foreach($parameter_list as $key => $value ) {
 			if( is_int($key) ) {
 				$command .= ' ' . $value;
@@ -229,6 +264,12 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 					$command .= ' --' . $key . '="' . $value . '"';
 				}
 			}
+		}
+
+		if( !Jadva_File_Abstract::fileSchemeIsLinux() ) {
+			//Then, when both the directory and the commands are escaped, you need to escape the whole thing
+			// again. This might be fixed in later versions, but it wasn't fixed in 5.2.6
+			$command = '"' . $command . '"';
 		}
 
 		$filename = $this->_restoreDirectory . $this->_databaseName . '_' . date('YmdHis') . '.mysql';
@@ -290,7 +331,9 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			$parameter_list['socket'] = $this->_credentialsSock;
 		}
 
-		$command = 'mysql';
+		list($commandPrefix, $commandSuffix) = $this->_getCommandFix();
+
+		$command = $commandPrefix . 'mysqldump' . $commandSuffix;
 		foreach($parameter_list as $key => $value ) {
 			if( is_int($key) ) {
 				$command .= ' ' . $value;
@@ -301,6 +344,12 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 					$command .= ' --' . $key . '="' . $value . '"';
 				}
 			}
+		}
+
+		if( !Jadva_File_Abstract::fileSchemeIsLinux() ) {
+			//Then, when both the directory and the commands are escaped, you need to escape the whole thing
+			// again. This might be fixed in later versions, but it wasn't fixed in 5.2.6
+			$command = '"' . $command . '"';
 		}
 
 		$pipes     = array();
@@ -351,6 +400,29 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 	const PARSER_STATE_QUOTE_ONE_ESCAPED     = 'parserStateQuoteOneEscaped';
 	const PARSER_STATE_QUOTE_TWO             = 'parserStateQuoteTwo';
 	const PARSER_STATE_QUOTE_TWO_ESCAPED     = 'parserStateQuoteTwoEscaped';
+	//------------------------------------------------
+	/**
+	 * Returns the command prefix and suffix
+	 *
+	 * @return  array  The prefix at key 0, and the suffix at key 1
+	 */
+	protected function _getCommandFix()
+	{
+		if( !class_exists('Jadva_File_Abstract') ) {
+			/** @see Jadva_File_Abstract */
+			require_once 'Jadva/File/Abstract.php';
+		}
+
+		$commandPrefix = $this->_binDir;
+		$commandSuffix = '';
+
+		if( !Jadva_File_Abstract::fileSchemeIsLinux() ) {
+			$commandPrefix = '"' . $commandPrefix;
+			$commandSuffix .= '.exe"';
+		}
+
+		return array($commandPrefix, $commandSuffix);
+	}
 	//------------------------------------------------
 	/**
 	 * Implements Jadva_Installer_Database_Abstract::_parseDatabaseScript

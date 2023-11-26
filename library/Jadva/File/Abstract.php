@@ -24,7 +24,7 @@
  * @subpackage Jadva_File_Abstract
  * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 255 2009-08-21 12:02:18Z jaachan $
+ * @version    $Id: Abstract.php 312 2010-01-13 11:31:10Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -65,6 +65,9 @@ abstract class Jadva_File_Abstract
 	/** The scheme for files on the local file system */
 	const SCHEME_FILE = 'file';
 	//------------------------------------------------
+	/** The scheme for files over the Hypertext Transfer Protocol (HTTP) */
+	const SCHEME_HTTP = 'http';
+	//------------------------------------------------
 	//
 	// Static helper functions
 	//
@@ -98,11 +101,19 @@ abstract class Jadva_File_Abstract
 			return $in_path;
 		}
 
+		if( empty($in_path) ) {
+			/** @see Jadva_File_Exception */
+			require_once 'Jadva/File/Exception.php';
+			throw new Jadva_File_Exception('Empty path passed');
+		}
+
 		$path = self::cleanPath($in_path);
 
 		if( is_dir($path) ) {
 			$className = 'Jadva_File_Directory';
-			$path = rtrim($path, '/') . '/';
+			if( ':///' !== substr($path, -4) ) {
+				$path = rtrim($path, '/') . '/';
+			}
 		} elseif( file_exists($path) ) {
 			$className = 'Jadva_File';
 			$path = rtrim($path, '/');
@@ -143,7 +154,7 @@ abstract class Jadva_File_Abstract
 	 *
 	 * @return  Jadva_File  The file on the given path
 	 */
-	public static function verifyExistance($in_path, $in_flags = 1)
+	public static function verifyExistance($in_path, $in_flags = self::FLAG_R)
 	{
 		$file = self::getInstanceFor($in_path);
 
@@ -442,6 +453,12 @@ abstract class Jadva_File_Abstract
 	protected function __construct($path)
 	{
 		$this->_url = $path;
+
+		if( FALSE === strpos($path, '://') ) {
+			/** @see Jadva_File_Exception */
+			require_once 'Jadva/File/Exception.php';
+			throw new Jadva_File_Exception(sprintf('Internal error: Invalid path passed ("%1$s")', $path));
+		}
 
 		list($this->_scheme, $this->_path) = explode('://', $path);
 	}

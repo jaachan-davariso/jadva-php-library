@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Jadva_FaqList_Group</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+						<script src="../../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../../media/images/plus.png";
+				imgMinus.src = "../../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Jadva_FaqList_Group</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Class to represent one FAQ question group</p>
+		<p class="notes">
+			Located in <a class="field" href="_library---Jadva---FaqList---Group.php.html">/library/Jadva/FaqList/Group.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a37">37</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#ID_PREFIX" title="details" class="const-name">ID_PREFIX</a> = 					<span class="var-type"> 'jadva_faqgrp_'</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																								<div class="var-title">
+					<span class="var-type">string|NULL</span>
+					<a href="#$name" title="details" class="var-name">$name</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string|NULL</span>
+					<a href="#$_id" title="details" class="var-name">$_id</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$_questionList" title="details" class="var-name">$_questionList</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																		
+				<div class="method-definition">
+					static 						<span class="method-result">string</span>
+										<a href="#_generateGroupId" title="details" class="method-name">_generateGroupId</a>
+										()
+									</div>
+																		
+				<div class="method-definition">
+											<span class="method-result">Jadva_FaqList_Group</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">NULL</span>])
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_FaqList/Jadva_FaqList/Jadva_FaqList_Question.html">Jadva_FaqList_Question</a></span>
+										<a href="#addQuestion" title="details" class="method-name">addQuestion</a>
+											(<span class="var-type"><a href="../../Jadva_FaqList/Jadva_FaqList/Jadva_FaqList_Question.html">Jadva_FaqList_Question</a></span>&nbsp;<span class="var-name">$question</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_FaqList/Jadva_FaqList/Jadva_FaqList_Question.html">Jadva_FaqList_Question</a></span>
+										<a href="#getQuestion" title="details" class="method-name">getQuestion</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$questionId</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#getQuestions" title="details" class="method-name">getQuestions</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#hasQuestion" title="details" class="method-name">hasQuestion</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$questionId</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#hasQuestions" title="details" class="method-name">hasQuestions</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#id" title="details" class="method-name">id</a>
+										()
+									</div>
+																			</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$name" id="$name"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string|NULL</span>
+			<span class="var-name">$name</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a50">50</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The name of the group</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_id" id="$_id"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string|NULL</span>
+			<span class="var-name">$_id</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a151">151</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the identity</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_questionList" id="$_questionList"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_questionList</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a158">158</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the list of questions</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method_generateGroupId" id="_generateGroupId"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static _generateGroupId</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a165">165</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Generated a unique question id</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The id</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		static <span class="method-result">string</span>
+		<span class="method-name">
+			_generateGroupId
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a70">70</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default constructor</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Jadva_FaqList_Group</span>
+		<span class="method-name">
+			__construct
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">NULL</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: The name of the group</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$id</span><span class="var-description">: (OPTIONAL) The id, will be generated if necessary</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodaddQuestion" id="addQuestion"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addQuestion</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a88">88</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds a question to this group</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_FaqList/Jadva_FaqList/Jadva_FaqList_Question.html">Jadva_FaqList_Question</a></span>
+		<span class="method-name">
+			addQuestion
+		</span>
+					(<span class="var-type"><a href="../../Jadva_FaqList/Jadva_FaqList/Jadva_FaqList_Question.html">Jadva_FaqList_Question</a></span>&nbsp;<span class="var-name">$question</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../Jadva_FaqList/Jadva_FaqList/Jadva_FaqList_Question.html">Jadva_FaqList_Question</a></span>
+				<span class="var-name">$question</span><span class="var-description">: The question to add</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetQuestion" id="getQuestion"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getQuestion</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a103">103</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the question with the given identity</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The question</li>
+				<li><span class="field">pre:</span> $this-&gt;hasQuestion($questionId)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_FaqList/Jadva_FaqList/Jadva_FaqList_Question.html">Jadva_FaqList_Question</a></span>
+		<span class="method-name">
+			getQuestion
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$questionId</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$questionId</span><span class="var-description">: The identity of the question</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetQuestions" id="getQuestions"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getQuestions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a119">119</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the list of questions for this group</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The questions</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getQuestions
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodhasQuestion" id="hasQuestion"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">hasQuestion</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a131">131</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns whether the question with the given identity has been added to this group</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if the question with the given identity has been added to this group, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			hasQuestion
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$questionId</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$questionId</span><span class="var-description">: The identity of the question</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodhasQuestions" id="hasQuestions"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">hasQuestions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a141">141</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns whether this group has questions</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if questions have been added to this group, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			hasQuestions
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodid" id="id"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">id</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a59">59</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the identity of this group</p>
+<p class="description"><p>If all instances are created without specifying an id, this is guaranteed to be unique</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The identity</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			id
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constID_PREFIX" id="ID_PREFIX"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">ID_PREFIX</span>
+			 = <span class="const-default"> 'jadva_faqgrp_'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FaqList_Jadva_FaqList_libraryJadvaFaqListGroup.php.html#a43">43</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Prefixed for unique ids</p>
+	
+	
+</div>
+						
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 23 Jan 2010 14:49:08 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+	</p>
+	</div></body>
+</html>

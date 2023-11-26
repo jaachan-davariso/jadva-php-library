@@ -24,7 +24,7 @@
  * @subpackage Jadva_File_Directory
  * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Directory.php 253 2009-08-21 11:03:50Z jaachan $
+ * @version    $Id: Directory.php 312 2010-01-13 11:31:10Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File */
@@ -61,6 +61,20 @@ class Jadva_File_Directory extends Jadva_File_Abstract implements IteratorAggreg
 		}
 
 		return $directory;
+	}
+	//------------------------------------------------
+	/**
+	 * Overrides the parent function to return a directory whenever possible
+	 *
+	 * @see  Jadva_File_Abstract::getInstanceFor
+	 */
+	public static function getInstanceFor($in_path)
+	{
+		if( is_string($in_path) ) {
+			$in_path = rtrim($in_path, '\\/') . '/';
+		}
+
+		return parent::getInstanceFor($in_path);
 	}
 	//------------------------------------------------
 	/**
@@ -189,6 +203,19 @@ class Jadva_File_Directory extends Jadva_File_Abstract implements IteratorAggreg
 	/** Implements Jadva_File_Abstract::exists */
 	public function exists()
 	{
+		if( self::SCHEME_HTTP === $this->_scheme ) {
+			$headers = @get_headers($this->_url);
+
+			$http = NULL;
+			foreach($headers as $h) {
+				if( 'HTTP/' === substr($h, 0, 5) ) {
+					$http = $h;
+				}
+			}
+
+			return FALSE === strpos($http, '404');
+		}
+
 		return is_dir($this->_url);
 	}
 	//------------------------------------------------

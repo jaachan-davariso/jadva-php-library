@@ -1,5 +1,19 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.6
+ New features:
+  - A new component, FaqList has been added. It can covert XML files to HTML,
+    with indexes and such, and is used for FAQ's. For the DTD, see
+    http://standards.jadva.net/faq-list/faq-list-0.1.dtd
+  - The Jadva_Database installer can now have a binaries directory set, in case
+    the mysql binaries are not in the path.
+ Fixes:
+  - Fixed a default parameter on Jadva_File::verifyExistance and 
+    Jadva_File_Abstract::verifyExistance.
+  - Jadva_File_Abstract::getInstanceFor now throws an exception if you pass an
+    empty path. See also Jadva_File_Abstract::realpath.
+  - Fixed a bug in Jadva_File where it couldn't handle the Linux root path.
+
 0.2.5
  Fixes:
   - Removed the checks on the FusionCharts allowed attributes since keeping 

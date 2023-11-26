@@ -24,7 +24,7 @@
  * @subpackage Jadva_File
  * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: File.php 297 2009-09-10 15:36:11Z jaachan $
+ * @version    $Id: File.php 312 2010-01-13 11:31:10Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File_Abstract */
@@ -47,7 +47,7 @@ class Jadva_File extends Jadva_File_Abstract
 	 *
 	 * @return  Jadva_File  The file on the given path
 	 */
-	public static function verifyExistance($in_path, $in_flags = 1)
+	public static function verifyExistance($in_path, $in_flags = self::FLAG_R)
 	{
 		$file = parent::verifyExistance($in_path, $in_flags);
 
@@ -130,6 +130,19 @@ class Jadva_File extends Jadva_File_Abstract
 	/** Implements Jadva_File_Abstract::exists */
 	public function exists()
 	{
+		if( self::SCHEME_HTTP === $this->_scheme ) {
+			$headers = @get_headers($this->_url);
+
+			$http = NULL;
+			foreach($headers as $h) {
+				if( 'HTTP/' === substr($h, 0, 5) ) {
+					$http = $h;
+				}
+			}
+
+			return FALSE === strpos($http, '404');
+		}
+
 		return file_exists($this->_url);
 	}
 	//------------------------------------------------
