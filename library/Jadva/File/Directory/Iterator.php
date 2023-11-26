@@ -24,7 +24,7 @@
  * @subpackage Jadva_File_Directory_Iterator
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Iterator.php 99 2009-03-16 18:32:15Z jaachan $
+ * @version    $Id: Iterator.php 212 2009-07-14 17:09:21Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File_Directory */
@@ -62,14 +62,11 @@ class Jadva_File_Directory_Iterator implements SeekableIterator, Countable
 		} elseif( $in_filter instanceof Jadva_File_Filter_Interface ) {
 			$this->_filter = $in_filter;
 		} else {
-			/** @see Zend_Loader */
-			require_once 'Zend/Loader.php';
-
 			$filterName = (string) $in_filter;
 
 			$className = 'Jadva_File_Filter_' . $filterName;
 
-			Zend_Loader::loadClass($className);
+			require_once str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 			$filter = new $className;
 
 			if( !($filter instanceof Jadva_File_Filter_Interface) ) {

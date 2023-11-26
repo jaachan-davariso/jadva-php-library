@@ -1,5 +1,27 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.3
+ New features:
+  - Added a file filter that filters based on regular expressions on the base
+    name.
+  - Added functions to quickly get a file or subdirectory from a directory.
+  - Introduced various exceptions for file operations.
+  - Allowed the setting of the database port and socket for the database 
+    installer.
+ Changes:
+  - The Jadva_File subpackage now uses internally a file:// scheme, this to 
+    allow testing with the vfs:// scheme as well. Note that the getPath() 
+    function will return the path localised for the file scheme, i.e. it will
+    return "C:\Windows\" on a Windows machine, as it did before.
+  - Changed the FileSize filter to make the maximum inclusive. 
+ Fixes:
+  - Fixed a bug where the Jadva_File_Abstract constants where faulty numbered.
+  - Fixed a bug where files without an extension were filtered out when denying
+    files with a given extension.
+  - Fixed a bug where the Jadva_File::getSize() function returned cached values.
+  - Fixed a uncertainty to what would happen when copying or moving files; now 
+    assuring that the target will be overwritten.
+
 0.2.2
  Changes:
   - Automatically fixed the installer table for the 0.2.0 name change.

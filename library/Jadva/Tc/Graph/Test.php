@@ -27,6 +27,9 @@
  * @version    $Id: Mysqli.php 39 2008-09-25 13:59:21Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
+/** @see Jadva_Test_Abstract */
+require_once 'Jadva/Test/Abstract.php';
+
 /** @see Jadva_Tc_Graph */
 require_once 'Jadva/Tc/Graph.php';
 

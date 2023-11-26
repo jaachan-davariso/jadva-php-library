@@ -200,6 +200,20 @@
 							<div class="index-item-description">Contains the database connection credentials (The password to use for connecting)</div>
 					</dd>
 			<dt class="field">
+						<span class="var-title">$_credentialsPort</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_credentialsPort">Jadva_Installer_Database_Abstract::$_credentialsPort</a> in Abstract.php</div>
+							<div class="index-item-description">Contains the database connection credentials (The port to connect to)</div>
+					</dd>
+			<dt class="field">
+						<span class="var-title">$_credentialsSock</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_credentialsSock">Jadva_Installer_Database_Abstract::$_credentialsSock</a> in Abstract.php</div>
+							<div class="index-item-description">Contains the database connection credentials (The socket to connect to)</div>
+					</dd>
+			<dt class="field">
 						<span class="var-title">$_credentialsUser</span>
 					</dt>
 		<dd class="index-item-body">
@@ -294,13 +308,6 @@
 						<span class="method-title">_checkVersionTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_checkVersionTable">Jadva_Installer_Database_Abstract::_checkVersionTable()</a> in Abstract.php</div>
-							<div class="index-item-description">Checks whether the version table exists, creates it if it doesn't</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_checkVersionTable</span>
-					</dt>
-		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_checkVersionTable">Jadva_Installer_Database_Mysqli::_checkVersionTable()</a> in Mysqli.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_checkVersionTable</div>
 					</dd>
@@ -312,17 +319,24 @@
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_checkVersionTable</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">_connectToDatabase</span>
+						<span class="method-title">_checkVersionTable</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_connectToDatabase">Jadva_Installer_Database_Mysqli::_connectToDatabase()</a> in Mysqli.php</div>
-							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_connectToDatabase</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_checkVersionTable">Jadva_Installer_Database_Abstract::_checkVersionTable()</a> in Abstract.php</div>
+							<div class="index-item-description">Checks whether the version table exists, creates it if it doesn't</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_connectToDatabase</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_connectToDatabase">Jadva_Installer_Database_Zend::_connectToDatabase()</a> in Zend.php</div>
+							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_connectToDatabase</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_connectToDatabase</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_connectToDatabase">Jadva_Installer_Database_Mysqli::_connectToDatabase()</a> in Mysqli.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_connectToDatabase</div>
 					</dd>
 			<dt class="field">
@@ -336,14 +350,14 @@
 						<span class="method-title">_createRestorePoint</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_createRestorePoint">Jadva_Installer_Database_Zend::_createRestorePoint()</a> in Zend.php</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_createRestorePoint">Jadva_Installer_Database_Mysqli::_createRestorePoint()</a> in Mysqli.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_createRestorePoint</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_createRestorePoint</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_createRestorePoint">Jadva_Installer_Database_Mysqli::_createRestorePoint()</a> in Mysqli.php</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_createRestorePoint">Jadva_Installer_Database_Zend::_createRestorePoint()</a> in Zend.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_createRestorePoint</div>
 					</dd>
 			<dt class="field">
@@ -364,15 +378,22 @@
 						<span class="method-title">_databaseIsLocked</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_databaseIsLocked">Jadva_Installer_Database_Mysqli::_databaseIsLocked()</a> in Mysqli.php</div>
-							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_databaseIsLocked</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_databaseIsLocked">Jadva_Installer_Database_Abstract::_databaseIsLocked()</a> in Abstract.php</div>
+							<div class="index-item-description">Checks whether the database is locked</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_databaseIsLocked</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_databaseIsLocked">Jadva_Installer_Database_Abstract::_databaseIsLocked()</a> in Abstract.php</div>
-							<div class="index-item-description">Checks whether the database is locked</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_databaseIsLocked">Jadva_Installer_Database_Mysqli::_databaseIsLocked()</a> in Mysqli.php</div>
+							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_databaseIsLocked</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_disconnectFromDatabase</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_disconnectFromDatabase">Jadva_Installer_Database_Zend::_disconnectFromDatabase()</a> in Zend.php</div>
+							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_disconnectFromDatabase</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_disconnectFromDatabase</span>
@@ -389,17 +410,10 @@
 							<div class="index-item-description">Disconnects from the database</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">_disconnectFromDatabase</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_disconnectFromDatabase">Jadva_Installer_Database_Zend::_disconnectFromDatabase()</a> in Zend.php</div>
-							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_disconnectFromDatabase</div>
-					</dd>
-			<dt class="field">
 						<span class="method-title">_executeDatabaseScript</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_executeDatabaseScript">Jadva_Installer_Database_Mysqli::_executeDatabaseScript()</a> in Mysqli.php</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_executeDatabaseScript">Jadva_Installer_Database_Zend::_executeDatabaseScript()</a> in Zend.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_executeDatabaseScript</div>
 					</dd>
 			<dt class="field">
@@ -413,7 +427,7 @@
 						<span class="method-title">_executeDatabaseScript</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_executeDatabaseScript">Jadva_Installer_Database_Zend::_executeDatabaseScript()</a> in Zend.php</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_executeDatabaseScript">Jadva_Installer_Database_Mysqli::_executeDatabaseScript()</a> in Mysqli.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_executeDatabaseScript</div>
 					</dd>
 			<dt class="field">
@@ -434,15 +448,15 @@
 						<span class="method-title">_getVersions</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_getVersions">Jadva_Installer_Database_Zend::_getVersions()</a> in Zend.php</div>
-							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_getVersions</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_getVersions">Jadva_Installer_Database_Abstract::_getVersions()</a> in Abstract.php</div>
+							<div class="index-item-description">Returns all the current versions of the installed scripts</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_getVersions</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_getVersions">Jadva_Installer_Database_Abstract::_getVersions()</a> in Abstract.php</div>
-							<div class="index-item-description">Returns all the current versions of the installed scripts</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_getVersions">Jadva_Installer_Database_Zend::_getVersions()</a> in Zend.php</div>
+							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_getVersions</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_getVersions</span>
@@ -462,6 +476,13 @@
 						<span class="method-title">_lockDatabase</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_lockDatabase">Jadva_Installer_Database_Abstract::_lockDatabase()</a> in Abstract.php</div>
+							<div class="index-item-description">Locks the database, if possible. Issues a notice if locking is not possible.</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_lockDatabase</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_lockDatabase">Jadva_Installer_Database_Zend::_lockDatabase()</a> in Zend.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_lockDatabase</div>
 					</dd>
@@ -471,13 +492,6 @@
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_lockDatabase">Jadva_Installer_Database_Mysqli::_lockDatabase()</a> in Mysqli.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_lockDatabase</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_lockDatabase</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_lockDatabase">Jadva_Installer_Database_Abstract::_lockDatabase()</a> in Abstract.php</div>
-							<div class="index-item-description">Locks the database, if possible. Issues a notice if locking is not possible.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_parseDatabaseScript</span>
@@ -504,6 +518,13 @@
 						<span class="method-title">_restoreRestorePoint</span>
 					</dt>
 		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_restoreRestorePoint">Jadva_Installer_Database_Zend::_restoreRestorePoint()</a> in Zend.php</div>
+							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_restoreRestorePoint</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">_restoreRestorePoint</span>
+					</dt>
+		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_restoreRestorePoint">Jadva_Installer_Database_Mysqli::_restoreRestorePoint()</a> in Mysqli.php</div>
 							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_restoreRestorePoint</div>
 					</dd>
@@ -515,25 +536,11 @@
 							<div class="index-item-description">Restores the restore point</div>
 					</dd>
 			<dt class="field">
-						<span class="method-title">_restoreRestorePoint</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_restoreRestorePoint">Jadva_Installer_Database_Zend::_restoreRestorePoint()</a> in Zend.php</div>
-							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_restoreRestorePoint</div>
-					</dd>
-			<dt class="field">
 						<span class="method-title">_setContent</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_setContent">Jadva_Installer_Database_Abstract::_setContent()</a> in Abstract.php</div>
 							<div class="index-item-description">Sets the content for a database script node</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">_storeVersions</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_storeVersions">Jadva_Installer_Database_Mysqli::_storeVersions()</a> in Mysqli.php</div>
-							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_storeVersions</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_storeVersions</span>
@@ -550,11 +557,18 @@
 							<div class="index-item-description">Updates the versions table</div>
 					</dd>
 			<dt class="field">
+						<span class="method-title">_storeVersions</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_storeVersions">Jadva_Installer_Database_Mysqli::_storeVersions()</a> in Mysqli.php</div>
+							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_storeVersions</div>
+					</dd>
+			<dt class="field">
 						<span class="method-title">_unlockDatabase</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_unlockDatabase">Jadva_Installer_Database_Abstract::_unlockDatabase()</a> in Abstract.php</div>
-							<div class="index-item-description">Unlocks the database, if it was locked.</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_unlockDatabase">Jadva_Installer_Database_Zend::_unlockDatabase()</a> in Zend.php</div>
+							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_unlockDatabase</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">_unlockDatabase</span>
@@ -567,21 +581,21 @@
 						<span class="method-title">_unlockDatabase</span>
 					</dt>
 		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html#method_unlockDatabase">Jadva_Installer_Database_Zend::_unlockDatabase()</a> in Zend.php</div>
-							<div class="index-item-description">Implements Jadva_Installer_Database_Abstract::_unlockDatabase</div>
-					</dd>
-			<dt class="field">
-						<span class="method-title">__construct</span>
-					</dt>
-		<dd class="index-item-body">
-			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method__construct">Jadva_Installer_Database_Mysqli::__construct()</a> in Mysqli.php</div>
-							<div class="index-item-description">Default constructor</div>
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_unlockDatabase">Jadva_Installer_Database_Abstract::_unlockDatabase()</a> in Abstract.php</div>
+							<div class="index-item-description">Unlocks the database, if it was locked.</div>
 					</dd>
 			<dt class="field">
 						<span class="method-title">__construct</span>
 					</dt>
 		<dd class="index-item-body">
 			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method__construct">Jadva_Installer_Database_Abstract::__construct()</a> in Abstract.php</div>
+							<div class="index-item-description">Default constructor</div>
+					</dd>
+			<dt class="field">
+						<span class="method-title">__construct</span>
+					</dt>
+		<dd class="index-item-body">
+			<div class="index-item-details"><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method__construct">Jadva_Installer_Database_Mysqli::__construct()</a> in Mysqli.php</div>
 							<div class="index-item-description">Default constructor</div>
 					</dd>
 			<dt class="field">

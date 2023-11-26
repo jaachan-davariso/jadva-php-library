@@ -24,7 +24,7 @@
  * @subpackage Jadva_File_Filter
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Interface.php 99 2009-03-16 18:32:15Z jaachan $
+ * @version    $Id: Interface.php 212 2009-07-14 17:09:21Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File */
@@ -47,6 +47,7 @@ interface Jadva_File_Filter_Interface
 	 *
 	 * @param  Jadva_File  $file  The file to filter
 	 *
+	 * @throws  Jadva_File_Filter_Exception in case of irrepairable error during filtering
 	 * @return  boolean  TRUE if this file passes the filter (i.e. stays in the list),
 	 *                   FALSE when it's filtered out
 	 */

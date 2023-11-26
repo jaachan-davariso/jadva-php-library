@@ -107,12 +107,8 @@
         		<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Class to represent a directory on the file system</p>
 <p class="description"><p>Used for ease of access to the various actions to perform on directories.</p></p>
-	<ul class="tags">
-				<li><span class="field">copyright:</span> Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)</li>
-				<li><span class="field">license:</span> <a href="http://www.JaAchan.com/software/LICENSE.txt">http://www.JaAchan.com/software/LICENSE.txt</a></li>
-			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_library---Jadva---File---Directory.php.html">/library/Jadva/File/Directory.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a44">44</a></span>)
+			Located in <a class="field" href="_library---Jadva---File---Directory.php.html">/library/Jadva/File/Directory.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a42">42</a></span>)
 		</p>
 		
 				
@@ -140,11 +136,11 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																																																																		
+																																																																																																																		
 				<div class="method-definition">
 					static 						<span class="method-result"><a href="../../Jadva_File/Jadva_File_Directory/Jadva_File_Directory.html">Jadva_File_Directory</a></span>
 										<a href="#verifyExistance" title="details" class="method-name">verifyExistance</a>
-											(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_path</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_flags</span> = <span class="var-default">5</span>])
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_path</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_flags</span> = <span class="var-default">self::FLAG_RX</span>])
 									</div>
 																		
 				<div class="method-definition">
@@ -184,9 +180,21 @@
 									</div>
 														
 				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_File/Jadva_File/Jadva_File.html">Jadva_File</a></span>
+										<a href="#getFile" title="details" class="method-name">getFile</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_name</span>)
+									</div>
+														
+				<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#getIterator" title="details" class="method-name">getIterator</a>
 										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_File/Jadva_File_Directory/Jadva_File_Directory.html">Jadva_File_Directory</a></span>
+										<a href="#getSubDirectory" title="details" class="method-name">getSubDirectory</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_name</span>)
 									</div>
 														
 				<div class="method-definition">
@@ -238,6 +246,12 @@
 													<span class="var-title">
 								<span class="var-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#var$_path">Jadva_File_Abstract::$_path</a></span><br>
 							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#var$_scheme">Jadva_File_Abstract::$_scheme</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#var$_url">Jadva_File_Abstract::$_url</a></span><br>
+							</span>
 											</blockquote> 
 										
 		</div>
@@ -260,7 +274,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">static verifyExistance</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a55">55</a></span>)
+		<span class="method-title">static verifyExistance</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a53">53</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -275,7 +289,7 @@
 		<span class="method-name">
 			verifyExistance
 		</span>
-					(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_path</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_flags</span> = <span class="var-default">5</span>])
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_path</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_flags</span> = <span class="var-default">self::FLAG_RX</span>])
 			</div>
 	
 			<ul class="parameters">
@@ -299,7 +313,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">copy</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a165">165</a></span>)
+		<span class="method-title">copy</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a207">207</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -334,7 +348,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">deltree</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a128">128</a></span>)
+		<span class="method-title">deltree</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a166">166</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -359,14 +373,13 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">ensureExistance</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a76">76</a></span>)
+		<span class="method-title">ensureExistance</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a73">73</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Makes sure this directory exists</p>
 	<ul class="tags">
 				<li><span class="field">return:</span> Provides a fluent interface</li>
-				<li><span class="field">todo:</span> Perhaps speed up by using recursive parameter of mkdir?</li>
 				<li><span class="field">access:</span> public</li>
 			</ul>
 	
@@ -390,7 +403,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">exists</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a152">152</a></span>)
+		<span class="method-title">exists</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a190">190</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -420,7 +433,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">filter</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a105">105</a></span>)
+		<span class="method-title">filter</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a99">99</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -454,7 +467,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">getEntries</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a118">118</a></span>)
+		<span class="method-title">getEntries</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a112">112</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -475,11 +488,42 @@
 		
 			
 	</div>
-<a name="methodgetIterator" id="getIterator"><!-- --></a>
+<a name="methodgetFile" id="getFile"><!-- --></a>
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">getIterator</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a217">217</a></span>)
+		<span class="method-title">getFile</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a125">125</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a file from this directory</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The file</li>
+				<li><span class="field">throws:</span> Jadva_File_Directory_Exception when the given name belongs to a directory</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_File/Jadva_File/Jadva_File.html">Jadva_File</a></span>
+		<span class="method-name">
+			getFile
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$in_name</span><span class="var-description">: The name of the file</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetIterator" id="getIterator"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getIterator</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a259">259</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -504,11 +548,42 @@
 					</dl>
 			
 	</div>
+<a name="methodgetSubDirectory" id="getSubDirectory"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getSubDirectory</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a147">147</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a sub directory from this directory</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The sub directory</li>
+				<li><span class="field">throws:</span> Jadva_File_Directory_Exception when the given name belongs to a file</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_File/Jadva_File_Directory/Jadva_File_Directory.html">Jadva_File_Directory</a></span>
+		<span class="method-name">
+			getSubDirectory
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$in_name</span><span class="var-description">: The name of the sub directory</span>			</li>
+				</ul>
+		
+			
+	</div>
 <a name="methodisDir" id="isDir"><!-- --></a>
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">isDir</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a146">146</a></span>)
+		<span class="method-title">isDir</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a184">184</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -538,7 +613,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">isExecutable</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a158">158</a></span>)
+		<span class="method-title">isExecutable</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a196">196</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -568,7 +643,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">move</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a184">184</a></span>)
+		<span class="method-title">move</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a226">226</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -603,7 +678,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">remove</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a211">211</a></span>)
+		<span class="method-title">remove</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Directory_libraryJadvaFileDirectory.php.html#a253">253</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -639,16 +714,22 @@
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodcleanPath">Jadva_File_Abstract::cleanPath()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodcopy">Jadva_File_Abstract::copy()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodexists">Jadva_File_Abstract::exists()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodfileSchemeIsLinux">Jadva_File_Abstract::fileSchemeIsLinux()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetBasename">Jadva_File_Abstract::getBasename()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetInstanceFor">Jadva_File_Abstract::getInstanceFor()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetParent">Jadva_File_Abstract::getParent()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetParentPath">Jadva_File_Abstract::getParentPath()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetParentUrl">Jadva_File_Abstract::getParentUrl()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetPath">Jadva_File_Abstract::getPath()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetScheme">Jadva_File_Abstract::getScheme()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetUrl">Jadva_File_Abstract::getUrl()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodisDir">Jadva_File_Abstract::isDir()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodisExecutable">Jadva_File_Abstract::isExecutable()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodisReadable">Jadva_File_Abstract::isReadable()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodisSchemeFile">Jadva_File_Abstract::isSchemeFile()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodisWritable">Jadva_File_Abstract::isWritable()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodmove">Jadva_File_Abstract::move()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodrealpath">Jadva_File_Abstract::realpath()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodremove">Jadva_File_Abstract::remove()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodverifyExistance">Jadva_File_Abstract::verifyExistance()</a></span><br>
 											</blockquote>
@@ -686,13 +767,45 @@
 							<span class="const-title">
 								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constFLAG_IS_WRITABLE">Jadva_File_Abstract::FLAG_IS_WRITABLE</a></span><br>
 							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constFLAG_R">Jadva_File_Abstract::FLAG_R</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constFLAG_RW">Jadva_File_Abstract::FLAG_RW</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constFLAG_RWX">Jadva_File_Abstract::FLAG_RWX</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constFLAG_RX">Jadva_File_Abstract::FLAG_RX</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constFLAG_W">Jadva_File_Abstract::FLAG_W</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constFLAG_WX">Jadva_File_Abstract::FLAG_WX</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constFLAG_X">Jadva_File_Abstract::FLAG_X</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#constSCHEME_FILE">Jadva_File_Abstract::SCHEME_FILE</a></span><br>
+							</span>
 											</blockquote> 
 										
 		</div>
 	</div>
 
 	<p class="notes" id="credit">
-		Documentation generated on Fri, 10 Jul 2009 16:42:19 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+		Documentation generated on Fri, 21 Aug 2009 14:12:28 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
 	</p>
 	</div></body>
 </html>

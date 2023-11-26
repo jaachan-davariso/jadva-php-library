@@ -22,9 +22,9 @@
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File_Filter
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: FileSize.php 99 2009-03-16 18:32:15Z jaachan $
+ * @version    $Id: FileSize.php 254 2009-08-21 11:29:03Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File_Filter_Abstract */
@@ -36,8 +36,6 @@ require_once 'Jadva/File/Filter/Abstract.php';
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File_Filter
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
- * @license    http://www.JaAchan.com/software/LICENSE.txt
  */
 class Jadva_File_Filter_FileSize extends Jadva_File_Filter_Abstract
 {
@@ -45,7 +43,7 @@ class Jadva_File_Filter_FileSize extends Jadva_File_Filter_Abstract
 	/**
 	 * Implements Jadva_File_Filter_Interface::filter
 	 *
-	 * Filters files with min <= size < max
+	 * Filters files with min <= size <= max
 	 */
 	public function filter(Jadva_File_Abstract $file)
 	{
@@ -59,7 +57,7 @@ class Jadva_File_Filter_FileSize extends Jadva_File_Filter_Abstract
 			return FALSE;
 		}
 
-		if( $this->hasMax() && ($this->getMax() <= $filesize) ) {
+		if( $this->hasMax() && ($this->getMax() < $filesize) ) {
 			return FALSE;
 		}
 

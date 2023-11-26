@@ -22,9 +22,9 @@
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File_Filter
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Extension.php 99 2009-03-16 18:32:15Z jaachan $
+ * @version    $Id: Extension.php 253 2009-08-21 11:03:50Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File_Filter_Abstract */
@@ -36,8 +36,6 @@ require_once 'Jadva/File/Filter/Abstract.php';
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File_Filter
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
- * @license    http://www.JaAchan.com/software/LICENSE.txt
  */
 class Jadva_File_Filter_Extension extends Jadva_File_Filter_Abstract
 {
@@ -110,7 +108,7 @@ class Jadva_File_Filter_Extension extends Jadva_File_Filter_Abstract
 		}
 
 		if( !$file->hasExtension() ) {
-			return FALSE;
+			return !$this->_allow;
 		}
 
 		$extension = $file->getExtension();

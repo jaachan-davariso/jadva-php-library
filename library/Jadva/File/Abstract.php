@@ -22,33 +22,68 @@
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File_Abstract
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 198 2009-07-03 14:14:25Z jaachan $
+ * @version    $Id: Abstract.php 255 2009-08-21 12:02:18Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
  * Abstract class to represent a file or directory on the file system
  *
+ * Functionality in this class has only been tested on the file system and on vfsStream. Working with relative path is
+ * not supported/tested, safe for the realpath function. Also not tested are SMB server or the sort.
+ *
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File_Abstract
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
- * @license    http://www.JaAchan.com/software/LICENSE.txt
  */
 abstract class Jadva_File_Abstract
 {
 	//------------------------------------------------
 	/** The file/directory is/must be readable */
-	const FLAG_IS_READABLE   = 1;
+	const FLAG_IS_READABLE   = 4;
 	/** The file/directory is/must be writable */
 	const FLAG_IS_WRITABLE   = 2;
 	/** The file/directory is/must be executable */
-	const FLAG_IS_EXECUTABLE = 4;
+	const FLAG_IS_EXECUTABLE = 1;
+	//------------------------------------------------
+	/** The file/directory is/must be readable */
+	const FLAG_R = 4;
+	/** The file/directory is/must be writable */
+	const FLAG_W = 2;
+	/** The file/directory is/must be executable */
+	const FLAG_X = 1;
+	/** The file/directory is/must be readable and writable*/
+	const FLAG_RW = 6;
+	/** The file/directory is/must be readable and executable*/
+	const FLAG_RX = 5;
+	/** The file/directory is/must be writable and executable*/
+	const FLAG_WX = 3;
+	/** The file/directory is/must be readable, writable and executable*/
+	const FLAG_RWX = 7;
+	//------------------------------------------------
+	/** The scheme for files on the local file system */
+	const SCHEME_FILE = 'file';
 	//------------------------------------------------
 	//
 	// Static helper functions
 	//
+	//------------------------------------------------
+	/**
+	 * Returns whether the current file system is a linux style file system
+	 *
+	 * @return  boolean  TRUE if the current file system is a linux style file system, FALSE otherwise
+	 */
+	public static function fileSchemeIsLinux()
+	{
+		static $result = NULL;
+
+		if( NULL === $result ) {
+			$result = '/' == substr(__FILE__, 0, 1);
+		}
+
+		return $result;
+	}
 	//------------------------------------------------
 	/**
 	 * Returns an instance for the given path, existing or not
@@ -67,14 +102,14 @@ abstract class Jadva_File_Abstract
 
 		if( is_dir($path) ) {
 			$className = 'Jadva_File_Directory';
-			$path = rtrim($path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+			$path = rtrim($path, '/') . '/';
 		} elseif( file_exists($path) ) {
 			$className = 'Jadva_File';
-			$path = rtrim($path, DIRECTORY_SEPARATOR);
+			$path = rtrim($path, '/');
 		} else {
 			//No existing file or directory, guess which one it should be base on the convention
-			// that directories are always passed with a DIRECTORY_SEPARATOR at the end
-			if( DIRECTORY_SEPARATOR == substr($path, -1) ) {
+			// that directories are always passed with a / at the end
+			if( '/' == substr($path, -1) ) {
 				$className = 'Jadva_File_Directory';
 			} else {
 				$className = 'Jadva_File';
@@ -89,6 +124,18 @@ abstract class Jadva_File_Abstract
 	}
 	//------------------------------------------------
 	/**
+	 * Returns an instance for the real path
+	 *
+	 * @param  string  The path
+	 *
+	 * @return  Jadva_File_Abstract  The file or directory on the given path
+	 */
+	public static function realpath($in_path)
+	{
+		return self::getInstanceFor(realpath($in_path));
+	}
+	//------------------------------------------------
+	/**
 	 * Verifies whether a file exists, and throws an exception if it doesn't
 	 *
 	 * @param  string   $in_path   The path to verifiy
@@ -96,34 +143,34 @@ abstract class Jadva_File_Abstract
 	 *
 	 * @return  Jadva_File  The file on the given path
 	 */
-	public static function verifyExistance($in_path, $in_flags = 5)
+	public static function verifyExistance($in_path, $in_flags = 1)
 	{
 		$file = self::getInstanceFor($in_path);
 
 		if( !$file->exists() ) {
-			/** @see Jadva_File_Directory_Exception */
-			require_once 'Jadva/File/Directory/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given file or directory ("' . $in_path . '") does not exist.');
+			/** @see Jadva_File_Exception_NotExists */
+			require_once 'Jadva/File/Exception/NotExists.php';
+			throw new Jadva_File_Exception_NotExists($in_path);
 		}
 
 		$flags = (int) $in_flags;
 
 		if( ($flags & self::FLAG_IS_READABLE) && !$file->isReadable() ) {
-			/** @see Jadva_File_Directory_Exception */
-			require_once 'Jadva/File/Directory/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given file or directory ("' . $in_path . '") is not readable.');
+			/** @see Jadva_File_Exception_NotReadable */
+			require_once 'Jadva/File/Exception/NotReadable.php';
+			throw new Jadva_File_Exception_NotReadable($in_path);
 		}
 
 		if( ($flags & self::FLAG_IS_WRITABLE) && !$file->isWritable() ) {
-			/** @see Jadva_File_Directory_Exception */
-			require_once 'Jadva/File/Directory/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given file or directory ("' . $in_path . '") is not writable.');
+			/** @see Jadva_File_Exception_NotWritable */
+			require_once 'Jadva/File/Exception/NotWritable.php';
+			throw new Jadva_File_Exception_NotWritable($in_path);
 		}
 
 		if( ($flags & self::FLAG_IS_EXECUTABLE) && !$file->isExecutable() ) {
-			/** @see Jadva_File_Directory_Exception */
-			require_once 'Jadva/File/Directory/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given file or directory ("' . $in_path . '") is not executable.');
+			/** @see Jadva_File_Exception_NotExecutable */
+			require_once 'Jadva/File/Exception/NotExecutable.php';
+			throw new Jadva_File_Exception_NotExecutable($in_path);
 		}
 
 		return $file;
@@ -140,7 +187,42 @@ abstract class Jadva_File_Abstract
 	{
 		$path = (string) $in_path;
 
-		$path = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $path);
+		//Find a scheme, if it exists. Assume file by default.
+		if( FALSE !== strpos($path, '://') ) {
+			list($scheme, $path) = explode('://', $path, 2);
+		} else {
+			$scheme = self::SCHEME_FILE;
+		}
+
+		//Clean up the directory separators
+		$path = str_replace('\\', '/', $path);
+
+		//Find out whether the path is supposed to appoint a directory
+		$pathIsDir = '/' == substr($path, -1);
+
+		//Find out whether the path is supposed to begin with a slash
+		$startIsSlash = (self::SCHEME_FILE == $scheme) && self::fileSchemeIsLinux();
+
+		//Clean up on all the slashes
+		$path = trim($path, '/');
+		$path = preg_replace('#/+#', '/', $path);
+
+		//Restore whether the path is supposed to appoint a directory
+		if( $pathIsDir ) {
+			$path .= '/';
+		}
+
+		//Restore whether the path is supposed to begin with a slash
+		if( $startIsSlash ) {
+			$path = '/' . $path;
+		}
+
+		//Restore the scheme
+		$path = $scheme . '://' . $path;
+
+		//Remove directories that don't count
+		$path = str_replace('/./', '/', $path);
+		$path = preg_replace('#/[^/]*/\.\./#', '/', $path);
 
 		return $path;
 	}
@@ -152,11 +234,54 @@ abstract class Jadva_File_Abstract
 	/**
 	 * Returns the path
 	 *
+	 * Will return a localised path for file system files (i.e. D:\text.txt instead of file://D:/test.txt). Does not
+	 * include the scheme.
+	 *
 	 * @param  string  The path
 	 */
 	public function getPath()
 	{
-		return $this->_path;
+		$path = $this->_path;
+
+		if( $this->isSchemeFile() && ('/' != DIRECTORY_SEPARATOR) ) {
+			$path = str_replace('/', DIRECTORY_SEPARATOR, $path);
+		}
+
+		return $path;
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the scheme
+	 *
+	 * @param  string  The scheme
+	 */
+	public function getScheme()
+	{
+		return $this->_scheme;
+	}
+	//------------------------------------------------
+	/**
+	 * Returns whehther the scheme is file
+	 *
+	 * i.e. whether it's a file or directory on the local file system
+	 *
+	 * @param  boolean  TRUE if the scheme is file, FALSE otherwise
+	 */
+	public function isSchemeFile()
+	{
+		return self::SCHEME_FILE === $this->_scheme;
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the URL
+	 *
+	 * The URL being basically just the path, but including the scheme and using the URL separators
+	 *
+	 * @param  string  The url
+	 */
+	public function getUrl()
+	{
+		return $this->_url;
 	}
 	//------------------------------------------------
 	/**
@@ -166,7 +291,7 @@ abstract class Jadva_File_Abstract
 	 */
 	public function getBasename()
 	{
-		return basename($this->_path);
+		return basename($this->_url);
 	}
 	//------------------------------------------------
 	/**
@@ -188,6 +313,8 @@ abstract class Jadva_File_Abstract
 	/**
 	 * Copies this file or directory into the given directory
 	 *
+	 * The target will be overwritten.
+	 *
 	 * @param  Jadva_File_Directory|string  The directory to move this file to
 	 *
 	 * @return  boolean  TRUE if the copy was successfull, FALSE otherwise
@@ -196,6 +323,8 @@ abstract class Jadva_File_Abstract
 	//------------------------------------------------
 	/**
 	 * Moves this file or directory into the given directory
+	 *
+	 * The target will be overwritten.
 	 *
 	 * Afterwards, the path of this file or directory is updated to reflect the new location
 	 *
@@ -219,7 +348,7 @@ abstract class Jadva_File_Abstract
 	 */
 	public function isReadable()
 	{
-		return is_readable($this->_path);
+		return is_readable($this->_url);
 	}
 	//------------------------------------------------
 	/**
@@ -229,7 +358,7 @@ abstract class Jadva_File_Abstract
 	 */
 	public function isWritable()
 	{
-		return is_writable($this->_path);
+		return is_writable($this->_url);
 	}
 	//------------------------------------------------
 	/**
@@ -239,7 +368,7 @@ abstract class Jadva_File_Abstract
 	 */
 	public function isExecutable()
 	{
-		return is_executable($this->_path);
+		return is_executable($this->_url);
 	}
 	//------------------------------------------------
 	/**
@@ -249,18 +378,52 @@ abstract class Jadva_File_Abstract
 	 */
 	public function getParent()
 	{
-		return self::getInstanceFor($this->getParentPath());
+		return self::getInstanceFor(dirname($this->_url) . '/');
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the URL of the parent directory
+	 *
+	 * @return  string  The url of the parent directory
+	 */
+	public function getParentUrl()
+	{
+		return $this->_scheme . '://' . dirname($this->_path) . '/';
 	}
 	//------------------------------------------------
 	/**
 	 * Returns the path of the parent directory
 	 *
+	 * Will return a localized path for file system files (i.e. D:\text.txt instead of file://D:/test.txt).
+	 *
 	 * @return  string  The path of the parent directory
 	 */
 	public function getParentPath()
 	{
-		return dirname($this->_path) . DIRECTORY_SEPARATOR;
+		$path = dirname($this->_path) . '/';
+
+		if( $this->isSchemeFile() ) {
+			if( '/' != DIRECTORY_SEPARATOR ) {
+				$path = str_replace('/', DIRECTORY_SEPARATOR, $path);
+			}
+		}
+
+		return $path;
 	}
+	//------------------------------------------------
+	/**
+	 * Contains the full URL
+	 *
+	 * @var  string
+	 */
+	protected $_url;
+	//------------------------------------------------
+	/**
+	 * Contains the URL scheme
+	 *
+	 * @var  string
+	 */
+	protected $_scheme;
 	//------------------------------------------------
 	/**
 	 * Contains the path
@@ -278,7 +441,9 @@ abstract class Jadva_File_Abstract
 	 */
 	protected function __construct($path)
 	{
-		$this->_path = $path;
+		$this->_url = $path;
+
+		list($this->_scheme, $this->_path) = explode('://', $path);
 	}
 	//------------------------------------------------
 }

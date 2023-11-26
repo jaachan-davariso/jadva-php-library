@@ -22,9 +22,9 @@
  * @category   JAdVA
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 206 2009-07-10 14:34:50Z jaachan $
+ * @version    $Id: Abstract.php 245 2009-08-21 09:02:58Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_TableNode_List */
@@ -86,8 +86,6 @@ require_once 'Jadva/Installer/Database/TableNode/List.php';
  * @category   JAdVA
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
- * @license    http://www.JaAchan.com/software/LICENSE.txt
  */
 //----------------------------------------------------------------------------------------------------------------------
 abstract class Jadva_Installer_Database_Abstract
@@ -149,14 +147,18 @@ abstract class Jadva_Installer_Database_Abstract
 	 * @param  string  $username  The username to use for connecting
 	 * @param  string  $password  The password to use for connecting
 	 * @param  string  $host      The host to connect to. Defaults to 'localhost'
+	 * @param  string  $port      (OPTIONAL) The port to connect to
+	 * @param  string  $socket    (OPTIONAL) The socket to connect to
 	 *
 	 * @return  Jadva_Installer_Database  Provides a fluent interface
 	 */
-	public function setCredentials($username, $password, $host = 'localhost')
+	public function setCredentials($username, $password, $host = 'localhost', $port = NULL, $socket = NULL)
 	{
 		$this->_credentialsUser = (string) $username;
 		$this->_credentialsPass = (string) $password;
 		$this->_credentialsHost = (string) $host;
+		$this->_credentialsPort = NULL === $port ? NULL : (int) $port;
+		$this->_credentialsSock = NULL === $socket ? NULL : (int) $socket;
 
 		return $this;
 	}
@@ -348,6 +350,18 @@ abstract class Jadva_Installer_Database_Abstract
 	 * @var  string
 	 */
 	protected $_credentialsHost      = NULL;
+	//------------------------------------------------
+	/**
+	 * Contains the database connection credentials (The port to connect to)
+	 * @var  string
+	 */
+	protected $_credentialsPort      = NULL;
+	//------------------------------------------------
+	/**
+	 * Contains the database connection credentials (The socket to connect to)
+	 * @var  string
+	 */
+	protected $_credentialsSock      = NULL;
 	//------------------------------------------------
 	/**
 	 * Contains the database name to install into

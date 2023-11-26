@@ -22,9 +22,9 @@
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: File.php 162 2009-04-30 09:51:33Z jaachan $
+ * @version    $Id: File.php 255 2009-08-21 12:02:18Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File_Abstract */
@@ -38,8 +38,6 @@ require_once 'Jadva/File/Abstract.php';
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
- * @license    http://www.JaAchan.com/software/LICENSE.txt
  */
 class Jadva_File extends Jadva_File_Abstract
 {
@@ -49,14 +47,14 @@ class Jadva_File extends Jadva_File_Abstract
 	 *
 	 * @return  Jadva_File  The file on the given path
 	 */
-	public static function verifyExistance($in_path, $in_flags = 5)
+	public static function verifyExistance($in_path, $in_flags = 1)
 	{
 		$file = parent::verifyExistance($in_path, $in_flags);
 
 		if( $file->isDir() ) {
-			/** @see Jadva_File_Exception */
-			require_once 'Jadva/File/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given file ("' . $in_path . '") is a directory.');
+			/** @see Jadva_File_Exception_NotaFile */
+			require_once 'Jadva/File/Exception/NotaFile.php';
+			throw new Jadva_File_Exception_NotaFile($file);
 		}
 
 		return $file;
@@ -69,17 +67,25 @@ class Jadva_File extends Jadva_File_Abstract
 	 */
 	public function isImage()
 	{
-		return FALSE !== @getimagesize($this->_path);
+		return FALSE !== @getimagesize($this->getUrl());
 	}
 	//------------------------------------------------
 	/**
 	 * Returns the size of this file
 	 *
+	 * Will clear the stat cache for this file to ensure up-to-date information.
+	 *
 	 * @return  integer  The size of this file
 	 */
 	public function getSize()
 	{
-		return filesize($this->_path);
+		if( version_compare(PHP_VERSION, '5.3.0', '<') ) {
+			clearstatcache();
+		} else {
+			clearstatcache(TRUE, $this->getPath());
+		}
+
+		return filesize($this->getUrl());
 	}
 	//------------------------------------------------
 	/**
@@ -114,27 +120,35 @@ class Jadva_File extends Jadva_File_Abstract
 	/** Implements Jadva_File_Abstract::exists */
 	public function exists()
 	{
-		return file_exists($this->_path);
+		return file_exists($this->_url);
 	}
 	//------------------------------------------------
 	/** Implements Jadva_File_Abstract::copy */
 	public function copy($in_directory)
 	{
-		$directory = Jadva_File_Directory::verifyExistance($in_directory, 7);
+		$directory = Jadva_File_Directory::verifyExistance($in_directory, self::FLAG_WX);
 
 		$newPath = $directory->getPath() . $this->getBasename();
 
-		return copy($this->_path, $newPath);
+		if( file_exists($newPath) ) {
+			unlink($newPath);
+		}
+
+		return @copy($this->_path, $newPath);
 	}
 	//------------------------------------------------
 	/** Implements Jadva_File_Abstract::move */
 	public function move($in_directory)
 	{
-		$directory = Jadva_File_Directory::verifyExistance($in_directory, 7);
+		$directory = Jadva_File_Directory::verifyExistance($in_directory, self::FLAG_WX);
 
 		$newPath = $directory->getPath() . $this->getBasename();
-		$result = rename($this->_path, $newPath);
 
+		if( file_exists($newPath) ) {
+			unlink($newPath);
+		}
+
+		$result = @rename($this->_path, $newPath);
 		if( !$result ) {
 			return FALSE;
 		}
@@ -147,7 +161,7 @@ class Jadva_File extends Jadva_File_Abstract
 	/** Implements Jadva_File_Abstract::remove */
 	public function remove()
 	{
-		return unlink($this->_path);
+		return @unlink($this->_path);
 	}
 	//------------------------------------------------
 }

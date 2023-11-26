@@ -22,9 +22,9 @@
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File_Filter
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Images.php 99 2009-03-16 18:32:15Z jaachan $
+ * @version    $Id: Images.php 254 2009-08-21 11:29:03Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File_Filter_Interface */
@@ -36,8 +36,6 @@ require_once 'Jadva/File/Filter/Interface.php';
  * @category   JAdVA
  * @package    Jadva_File
  * @subpackage Jadva_File_Filter
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
- * @license    http://www.JaAchan.com/software/LICENSE.txt
  */
 class Jadva_File_Filter_Images implements Jadva_File_Filter_Interface
 {

@@ -22,9 +22,9 @@
  * @category   JAdVA
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Mysqli.php 206 2009-07-10 14:34:50Z jaachan $
+ * @version    $Id: Mysqli.php 245 2009-08-21 09:02:58Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_Abstract */
@@ -42,8 +42,6 @@ require_once 'Jadva/Installer/Database/Abstract.php';
  * @category   JAdVA
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
- * @license    http://www.JaAchan.com/software/LICENSE.txt
  */
 class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 {
@@ -76,7 +74,9 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			$this->_credentialsHost,
 			$this->_credentialsUser,
 			$this->_credentialsPass,
-			$this->_databaseName
+			$this->_databaseName,
+			$this->_credentialsPort,
+			$this->_credentialsSocket
 		);
 
 		if( mysqli_connect_error() ) {
@@ -210,6 +210,14 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			$this->_databaseName,
 		);
 
+		if( !empty($this->_credentialsPort) ) {
+			$parameter_list['port'] = $this->_credentialsPort;
+		}
+
+		if( !empty($this->_credentialsSock) ) {
+			$parameter_list['socket'] = $this->_credentialsSock;
+		}
+
 		$command = 'mysqldump';
 		foreach($parameter_list as $key => $value ) {
 			if( is_int($key) ) {
@@ -273,6 +281,14 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			'host'           => $this->_credentialsHost,
 			$this->_databaseName,
 		);
+
+		if( !empty($this->_credentialsPort) ) {
+			$parameter_list['port'] = $this->_credentialsPort;
+		}
+
+		if( !empty($this->_credentialsSock) ) {
+			$parameter_list['socket'] = $this->_credentialsSock;
+		}
 
 		$command = 'mysql';
 		foreach($parameter_list as $key => $value ) {
