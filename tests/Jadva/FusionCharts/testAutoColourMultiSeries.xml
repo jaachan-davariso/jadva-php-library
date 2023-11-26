@@ -1,0 +1,14 @@
+<graph>
+	<categories>
+		<category name="Product A"/>
+		<category name="Product B"/>
+	</categories>
+	<dataset color="AFD8F8">
+		<set value="100"/>
+		<set value="200"/>
+	</dataset>
+	<dataset color="F6BD0F">
+		<set value="150"/>
+		<set value="175"/>
+	</dataset>
+</graph>

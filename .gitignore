@@ -1,0 +1,10 @@
+/deps
+/phpunit
+/vfstream
+/tests/Jadva/Installer/Database/Restore/*.mysql
+/tests/TestConfiguration.php.dist
+/tests/reports/*.css
+/tests/reports/*.gif
+/tests/reports/*.html
+/tests/reports/*.js
+/tests/reports/*.png

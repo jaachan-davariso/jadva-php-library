@@ -1,0 +1,10 @@
+<graph
+ issliced='1'
+ slicingdistance='4'
+ decimalprecision='0'
+>
+	<set value='41' name='Selected' color='99CC00' alpha='85'/>
+	<set value='84' name='Tested' color='333333' alpha='85'/>
+	<set value='126' name='Interviewed' color='99CC00' alpha='85'/>
+	<set value='180' name='Candidates Applied' color='333333' alpha='85'/>
+</graph>

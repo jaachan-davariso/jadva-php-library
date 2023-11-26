@@ -464,7 +464,7 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 					$queryList[] = $curText;
 					$curText = '';
 					$curIndex += $delimiterLength;
-					continue;
+					break;
 				}
 
 				switch($char) {

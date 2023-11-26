@@ -1,0 +1,30 @@
+<graph
+ caption='Monthly Sales Summary'
+ subcaption='For the year 2004'
+ xaxisname='Month'
+ yaxisminvalue='15000'
+ yaxisname='Sales'
+ decimalprecision='0'
+ formatnumberscale='0'
+ numberprefix='$'
+ shownames='1'
+ showvalues='0'
+ showalternatehgridcolor='1'
+ alternatehgridcolor='ff5904'
+ divlinecolor='ff5904'
+ divlinealpha='20'
+ alternatehgridalpha='5'
+>
+	<set value='17400' name='Jan' hovertext='January'/>
+	<set value='19800' name='Feb' hovertext='February'/>
+	<set value='21800' name='Mar' hovertext='March'/>
+	<set value='23800' name='Apr' hovertext='April'/>
+	<set value='29600' name='May' hovertext='May'/>
+	<set value='27600' name='Jun' hovertext='June'/>
+	<set value='31800' name='Jul' hovertext='July'/>
+	<set value='39700' name='Aug' hovertext='August'/>
+	<set value='37800' name='Sep' hovertext='September'/>
+	<set value='21900' name='Oct' hovertext='October'/>
+	<set value='32900' name='Nov' hovertext='November'/>
+	<set value='39800' name='Dec' hovertext='December'/>
+</graph>

@@ -1,0 +1,12 @@
+<graph
+ shownames='1'
+ decimalprecision='0'
+>
+	<set value='20' name='USA' issliced='1'/>
+	<set value='7' name='France'/>
+	<set value='12' name='India'/>
+	<set value='11' name='England'/>
+	<set value='8' name='Italy'/>
+	<set value='19' name='Canada'/>
+	<set value='15' name='Germany'/>
+</graph>

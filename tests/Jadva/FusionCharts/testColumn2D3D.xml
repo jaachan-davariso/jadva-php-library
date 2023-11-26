@@ -1,0 +1,20 @@
+<graph
+ caption='Monthly Unit Sales'
+ xaxisname='Month'
+ yaxisname='Units'
+ decimalprecision='0'
+ formatnumberscale='0'
+>
+	<set value='462' name='Jan' color='AFD8F8'/>
+	<set value='857' name='Feb' color='F6BD0F'/>
+	<set value='671' name='Mar' color='8BBA00'/>
+	<set value='494' name='Apr' color='FF8E46'/>
+	<set value='761' name='May' color='008E8E'/>
+	<set value='960' name='Jun' color='D64646'/>
+	<set value='629' name='Jul' color='8E468E'/>
+	<set value='622' name='Aug' color='588526'/>
+	<set value='376' name='Sep' color='B3AA00'/>
+	<set value='494' name='Oct' color='008ED6'/>
+	<set value='761' name='Nov' color='9D080D'/>
+	<set value='960' name='Dec' color='A186BE'/>
+</graph>

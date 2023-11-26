@@ -1,0 +1,29 @@
+<graph
+ caption='Business Results: 2005'
+ yaxisname='Revenue (Millions)'
+ hovercapbgcolor='FFFFFF'
+ divlinecolor='999999'
+ divlinealpha='80'
+ numdivlines='5'
+ decimalprecision='0'
+ numberprefix='$'
+ numbersuffix='M'
+>
+	<categories>
+		<category name='Hardware'/>
+		<category name='Software'/>
+		<category name='Service'/>
+	</categories>
+
+	<dataset seriesname='Domestic' color='839F2F'>
+		<set value='84'/>
+		<set value='207'/>
+		<set value='116'/>
+	</dataset>
+
+	<dataset seriesname='International' color='56B9F9'>
+		<set value='116'/>
+		<set value='237'/>
+		<set value='83'/>
+	</dataset>
+</graph>

@@ -1,0 +1,14 @@
+<graph>
+	<categories>
+		<category name="May 09"/>
+		<category name="June 09"/>
+		<category name="July 09"/>
+		<category name="August 09"/>
+	</categories>
+	<dataset seriesname="Product A">
+		<set value="100"/>
+		<set value="150"/>
+		<set value="50"/>
+		<set value="125"/>
+	</dataset>
+</graph>

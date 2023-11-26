@@ -1,0 +1,6 @@
+CREATE TABLE test (
+	test__id INTEGER UNSIGNED auto_increment,
+	test__text TEXT,
+
+	PRIMARY KEY (test__id)
+);

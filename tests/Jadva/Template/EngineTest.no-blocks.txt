@@ -1,0 +1,7 @@
+{header}
+
+Dear {user.name},
+
+Just now, on {date:changed}, someone from IP address {ip} changed your password.
+
+{footer}
