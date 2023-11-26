@@ -9,21 +9,17 @@
 		<body>
 						<div align="center"><h1>Todo List</h1></div>
 <h2>Jadva_Installer</h2>
-<h3><a href="Jadva_Installer/Jadva_Installer_Database/_Installer---Database---Abstract.php.html">Abstract.php</a></h3>
-<ul>
-    <li>replace the exceptions in _loadFilesFromDirectory to sensible ones</li>
-</ul>
-<h3><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html">Jadva_Installer_Database_Abstract</a></h3>
-<ul>
-    <li>Add a 'done' message to the log, it's a bit unclear ATM whether it finished or not.</li>
-</ul>
 <h3><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html">Jadva_Installer_Database_Mysqli</a></h3>
 <ul>
-    <li>See if we need to throw an error if _parseDatabaseScript doesn't finish in a proper state (unclosed strings         or so)</li>
+    <li>See if we need to throw an error if _parseDatabaseScript doesn't finish in a proper state (unclosed strings         or so). So far it seems MySQL throws the error for us.</li>
 </ul>
 <h3><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Zend.html">Jadva_Installer_Database_Zend</a></h3>
 <ul>
     <li>At the moment, this only works for MySQL, and not completely either</li>
+</ul>
+<h3><a href="Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#methodsetRestoreDirectory">Jadva_Installer_Database_Abstract::setRestoreDirectory()</a></h3>
+<ul>
+    <li>Fix bug with relative paths.</li>
 </ul>
 <h2>Jadva_File</h2>
 <h3><a href="Jadva_File/Jadva_File_Directory/Jadva_File_Directory.html#methodensureExistance">Jadva_File_Directory::ensureExistance()</a></h3>
@@ -60,7 +56,7 @@
     <li>Add support for $callbacks</li>
 </ul>
 	<p class="notes" id="credit">
-		Documentation generated on Thu, 30 Apr 2009 13:12:15 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+		Documentation generated on Fri, 10 Jul 2009 16:42:47 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
 	</p>
 	</body>
 </html>

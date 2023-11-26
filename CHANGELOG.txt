@@ -1,5 +1,20 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.2
+ Changes:
+  - Automatically fixed the installer table for the 0.2.0 name change.
+  - Moved the content check all the way to the beginning so we don't connect to
+    MySQL and create a restore point when we have obviously faulty files.
+  - Added a decent 'Done' message in the DB installer.
+ Fixes:
+  - Fixed a bug where, when mysql wouldn't run successfully, the installer would
+    give the wrong error message.
+  - Fixed a bug where the MySQLi DB Installer wouldn't be able to connect to
+    different hosts.
+  - Fixed a bug where the MySQLi DB Installer couldn't cope with white space so
+    well.
+  - Added a better error when the query files make a cyclic graph.
+
 0.2.1
  - Fixed a bug where the MySQLi installer would not execute queries that weren't
    ended by a delimeter
@@ -11,7 +26,7 @@ This is the changelog for the JAdVA PHP components library:
 
 0.1.1
  - Fixed a bug where the installer would crash if MySQL threw a warning
- - When a query has failed, the query is now outputted in <pre>-format for 
+ - When a query has failed, the query is now outputted in <pre>-format for
     better readability
 0.1.0
  - Initial release

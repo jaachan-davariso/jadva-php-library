@@ -24,7 +24,7 @@
  * @subpackage Jadva_File_Abstract
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 162 2009-04-30 09:51:33Z jaachan $
+ * @version    $Id: Abstract.php 198 2009-07-03 14:14:25Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -103,7 +103,7 @@ abstract class Jadva_File_Abstract
 		if( !$file->exists() ) {
 			/** @see Jadva_File_Directory_Exception */
 			require_once 'Jadva/File/Directory/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given directory ("' . $in_path . '") does not exist.');
+			throw new Jadva_File_Directory_Exception('The given file or directory ("' . $in_path . '") does not exist.');
 		}
 
 		$flags = (int) $in_flags;
@@ -111,19 +111,19 @@ abstract class Jadva_File_Abstract
 		if( ($flags & self::FLAG_IS_READABLE) && !$file->isReadable() ) {
 			/** @see Jadva_File_Directory_Exception */
 			require_once 'Jadva/File/Directory/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given directory ("' . $in_path . '") is not readable.');
+			throw new Jadva_File_Directory_Exception('The given file or directory ("' . $in_path . '") is not readable.');
 		}
 
 		if( ($flags & self::FLAG_IS_WRITABLE) && !$file->isWritable() ) {
 			/** @see Jadva_File_Directory_Exception */
 			require_once 'Jadva/File/Directory/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given directory ("' . $in_path . '") is not writable.');
+			throw new Jadva_File_Directory_Exception('The given file or directory ("' . $in_path . '") is not writable.');
 		}
 
 		if( ($flags & self::FLAG_IS_EXECUTABLE) && !$file->isExecutable() ) {
 			/** @see Jadva_File_Directory_Exception */
 			require_once 'Jadva/File/Directory/Exception.php';
-			throw new Jadva_File_Directory_Exception('The given directory ("' . $in_path . '") is not executable.');
+			throw new Jadva_File_Directory_Exception('The given file or directory ("' . $in_path . '") is not executable.');
 		}
 
 		return $file;

@@ -24,7 +24,7 @@
  * @subpackage Jadva_Installer_Database
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Mysqli.php 161 2009-04-30 09:00:18Z jaachan $
+ * @version    $Id: Mysqli.php 206 2009-07-10 14:34:50Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_Abstract */
@@ -36,7 +36,7 @@ require_once 'Jadva/Installer/Database/Abstract.php';
  * For issues with the parsing of your script, see {@link _parseDatabaseScript}.
  *
  * @todo  See if we need to throw an error if _parseDatabaseScript doesn't finish in a proper state (unclosed strings
- *        or so)
+ *        or so). So far it seems MySQL throws the error for us.
  *
  * @see        Jadva_Installer_Database_Abstract
  * @category   JAdVA
@@ -127,12 +127,21 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 		$results = $this->_executeQuery($query);
 
 		if( 0 === $results->num_rows ) {
-			$query = 'CREATE TABLE jadva_installer_database_table_versions ('
-			       . '    scriptName    VARCHAR(255)     NOT NULL,'
-			       . '    scriptVersion INTEGER UNSIGNED NOT NULL,'
-			       . '    PRIMARY KEY(scriptName)'
-			       . ');';
-			$this->_executeQuery($query);
+			$query = 'SHOW TABLES LIKE "Jadva_Installer_database_table_versions";';
+			$results = $this->_executeQuery($query);
+
+			if( 0 === $results->num_rows ) {
+
+				$query = 'CREATE TABLE jadva_installer_database_table_versions ('
+				       . '    scriptName    VARCHAR(255)     NOT NULL,'
+				       . '    scriptVersion INTEGER UNSIGNED NOT NULL,'
+				       . '    PRIMARY KEY(scriptName)'
+				       . ');';
+				$this->_executeQuery($query);
+			} else {
+				$query = 'RENAME TABLE Jadva_Installer_database_table_versions TO jadva_installer_database_table_versions;';
+				$this->_executeQuery($query);
+			}
 		}
 	}
 	//------------------------------------------------
@@ -197,6 +206,7 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			'add-locks'      => NULL,
 			'user'           => $this->_credentialsUser,
 			'password'       => $this->_credentialsPass,
+			'host'           => $this->_credentialsHost,
 			$this->_databaseName,
 		);
 
@@ -260,6 +270,7 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 		$parameter_list = array(
 			'user'           => $this->_credentialsUser,
 			'password'       => $this->_credentialsPass,
+			'host'           => $this->_credentialsHost,
 			$this->_databaseName,
 		);
 
@@ -302,7 +313,7 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 		if( 0 !== $returnVar ) {
 			$this->_outputFormatter->outputErr($errors);
 			require_once 'Jadva/Installer/Database/Exception.php';
-			throw new Jadva_Installer_Database_Exception('Could not restore restorepoint');
+			throw new Jadva_Installer_Database_Exception('mysql returned with exit code "' . $returnVar . '".');
 		}
 		
 		$this->_outputFormatter->outputSuccess('Restorepoint restored');
@@ -535,11 +546,26 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			$curIndex++;
 		}
 
-		//Deal with files that forget a ; after the last query
-		if( !empty($curText) ) {
-			$queryList[] = $curText;
-		}
+		//Add the last query
+		$queryList[] = $curText;
 
+		//Remove empty queries
+		$list = array();
+		foreach($queryList as $queryOriginal) {
+			$query = $queryOriginal;
+			$query = str_replace(array("\n", "\r\n"), ' ', $query);
+			$query = preg_replace('/[ \t]+/', ' ', $query);
+			$query = trim($query);
+
+			if( empty($query) ) {
+				continue;
+			}
+
+			$list[] = $queryOriginal;
+		}
+		$queryList = $list;
+
+		// Parse comments to find requirements
 		$requirementList = array();
 		foreach($oneLineCommentsList as $oneLineComment) {
 			$oneLineComment = trim($oneLineComment);

@@ -19,14 +19,12 @@
  * accepted, they will be released as soon as possible, and,
  * should you want to, you will be noted as contributor.
  *
- * @todo replace the exceptions in _loadFilesFromDirectory to sensible ones
- *
  * @category   JAdVA
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 53 2008-12-16 07:24:51Z jaachan $
+ * @version    $Id: Abstract.php 206 2009-07-10 14:34:50Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_TableNode_List */
@@ -85,8 +83,6 @@ require_once 'Jadva/Installer/Database/TableNode/List.php';
  * possible while using Zend. Therefore, the above stated requirements for MySQLi should be generalised to other DBMSs,
  * but this is not written yet.
  *
- * @todo Add a 'done' message to the log, it's a bit unclear ATM whether it finished or not.
- *
  * @category   JAdVA
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
@@ -131,8 +127,11 @@ abstract class Jadva_Installer_Database_Abstract
 	/**
 	 * Sets the directory to store the restore point in
 	 *
+	 * Note that this function ATM only takes full paths
+	 *
 	 * @param  string  $directory  The directory to store the restore point in
 	 *
+	 * @todo  Fix bug with relative paths.
 	 * @return  Jadva_Installer_Database  Provides a fluent interface
 	 */
 	public function setRestoreDirectory($directory)
@@ -236,6 +235,25 @@ abstract class Jadva_Installer_Database_Abstract
 				$this->_loadFilesFromDirectory($directory);
 			}
 
+			$this->_outputFormatter->outputInfo('Retrieving the list of files');
+			try {
+				$list = $this->_nodeLists[$this->_dbType]->getNodesAsTopologicalSort();
+			} catch(Jadva_Tc_Graph_Exception $e) {
+				/** @see Jadva_Installer_Database_Exception */
+				require_once 'Jadva/Installer/Database/Exception.php';
+				throw new Jadva_Installer_Database_Exception('Error while sorting query files: ' . $e->getMessage());
+			}
+
+			$this->_outputFormatter->outputInfo('Checking for content');
+			foreach($list as $node) {
+				if( NULL === $node->content ) {
+					/** @see Jadva_Installer_Database_Exception */
+					require_once 'Jadva/Installer/Database/Exception.php';
+					throw new Jadva_Installer_Database_Exception('Missing content for file "' . $node->filename . '"');
+				}
+			}
+			$this->_outputFormatter->outputSuccess('File list updated and sorted');
+
 			$this->_outputFormatter->outputInfo('Connecting to the database');
 			$this->_connectToDatabase();
 
@@ -244,10 +262,6 @@ abstract class Jadva_Installer_Database_Abstract
 
 			$this->_outputFormatter->outputInfo('Creating a restore point');
 			$this->_createRestorePoint();
-
-			$this->_outputFormatter->outputInfo('Retrieving the list of files');
-			$list = $this->_nodeLists[$this->_dbType]->getNodesAsTopologicalSort();
-			$this->_outputFormatter->outputSuccess('File list updated and sorted');
 
 			$this->_outputFormatter->outputInfo('Checking version table');
 			$this->_checkVersionTable();
@@ -262,11 +276,6 @@ abstract class Jadva_Installer_Database_Abstract
 				$currentVersion = intval(@$oldVersionList[$node->scriptName]);
 				if( $currentVersion < $node->scriptVersion ) {
 					$this->_outputFormatter->outputInfo('Updating script "' . $node->scriptName . '" to version ' . $node->scriptVersion);
-					if( NULL === $node->content ) {
-						/** @see Jadva_Installer_Database_Exception */
-						require_once 'Jadva/Installer/Database/Exception.php';
-						throw new Jadva_Installer_Database_Exception('Missing content for file "' . $node->filename . '"');
-					}
 
 					$this->_executeDatabaseScript($node->content);
 
@@ -283,6 +292,8 @@ abstract class Jadva_Installer_Database_Abstract
 			} else {
 				$this->_outputFormatter->outputSuccess('Database is up to date');
 			}
+
+			$this->_outputFormatter->outputSuccess('Done.');
 		} catch(Jadva_Installer_Database_Exception $e) {
 			if( NULL === $this->_restorePointLocation ) {
 				$this->_outputFormatter->outputCrit('An error has occurred before or during the creating of the restore point');
@@ -293,7 +304,7 @@ abstract class Jadva_Installer_Database_Abstract
 				try {
 					$this->_restoreRestorePoint();
 				} catch(Jadva_Installer_Database_Exception $e2) {
-					$this->_outputFormatter->outputErr ('An error has occurred while restoring the restore point: ' . $e->getMessage());
+					$this->_outputFormatter->outputErr ('An error has occurred while restoring the restore point: ' . $e2->getMessage());
 				}
 			}
 		}
@@ -430,13 +441,17 @@ abstract class Jadva_Installer_Database_Abstract
 			$list = explode('.', $filename);
 
 			if( count($list) < 3 ) {
-				throw new Exception('Could not determine information about file "' . $file . '"');
+				/** @see Jadva_Installer_Database_Exception */
+				require_once 'Jadva/Installer/Database/Exception.php';
+				throw new Jadva_Installer_Database_Exception('Could not determine information about file "' . $file . '"');
 			}
 
 			list($scriptName, $scriptVersion, $dbType) = $list;
 
 			if( !is_numeric($scriptVersion) ) {
-				throw new Exception('Not a number: "' . $scriptVersion .'"');
+				/** @see Jadva_Installer_Database_Exception */
+				require_once 'Jadva/Installer/Database/Exception.php';
+				throw new Jadva_Installer_Database_Exception('Not a number: "' . $scriptVersion .'"');
 			}
 
 			if( !array_key_exists($dbType, $this->_nodeLists) ) {
