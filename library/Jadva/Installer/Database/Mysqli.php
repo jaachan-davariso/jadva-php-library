@@ -24,7 +24,7 @@
  * @subpackage Jadva_Installer_Database
  * @copyright  Copyright (c) 2009-2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Mysqli.php 314 2010-01-23 10:45:06Z jaachan $
+ * @version    $Id: Mysqli.php 322 2010-01-25 11:46:13Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_Abstract */
@@ -333,7 +333,7 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 
 		list($commandPrefix, $commandSuffix) = $this->_getCommandFix();
 
-		$command = $commandPrefix . 'mysqldump' . $commandSuffix;
+		$command = $commandPrefix . 'mysql' . $commandSuffix;
 		foreach($parameter_list as $key => $value ) {
 			if( is_int($key) ) {
 				$command .= ' ' . $value;

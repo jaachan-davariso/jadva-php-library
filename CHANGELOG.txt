@@ -1,5 +1,9 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.6.1
+ Bug fix release; database installer wouldn't restore when the installation
+ went wrong.
+
 0.2.6
  New features:
   - A new component, FaqList has been added. It can covert XML files to HTML,
