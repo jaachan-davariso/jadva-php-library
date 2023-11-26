@@ -1,5 +1,10 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.1
+ - Fixed a bug where the MySQLi installer would not execute queries that weren't
+   ended by a delimeter
+ - Added copy, move & remove functions to files and directories.
+
 0.2.0
  ! The table name for the database installer is now all lowercase
  - Added functionality for managing files

@@ -135,13 +135,19 @@
 		</div>
 		<div class="info-box-body">			
 			<div class="method-summary">
-																																																										
+																																																																																		
 				<div class="method-definition">
 					static 						<span class="method-result"><a href="../../Jadva_File/Jadva_File/Jadva_File.html">Jadva_File</a></span>
 										<a href="#verifyExistance" title="details" class="method-name">verifyExistance</a>
 											(<span class="var-type"></span>&nbsp;<span class="var-name">$in_path</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$in_flags</span> = <span class="var-default">5</span>])
 									</div>
 																		
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#copy" title="details" class="method-name">copy</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$in_directory</span>)
+									</div>
+														
 				<div class="method-definition">
 											<span class="method-result">void</span>
 										<a href="#exists" title="details" class="method-name">exists</a>
@@ -175,6 +181,18 @@
 				<div class="method-definition">
 											<span class="method-result">boolean</span>
 										<a href="#isImage" title="details" class="method-name">isImage</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#move" title="details" class="method-name">move</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$in_directory</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#remove" title="details" class="method-name">remove</a>
 										()
 									</div>
 																			</div>
@@ -222,7 +240,7 @@
 		<div class="info-box-body">
 			<A NAME='method_detail'></A>
 <a name="methodverifyExistance" id="verifyExistance"><!-- --></a>
-<div class="oddrow">
+<div class="evenrow">
 	
 	<div class="method-header">
 		<span class="method-title">static verifyExistance</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_File.php.html#a52">52</a></span>)
@@ -260,6 +278,41 @@
 					</dl>
 			
 	</div>
+<a name="methodcopy" id="copy"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">copy</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_File.php.html#a121">121</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_File_Abstract::copy</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			copy
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$in_directory</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$in_directory</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodcopy">Jadva_File_Abstract::copy()</a></dt>
+						<dd>Copies this file or directory into the given directory</dd>
+					</dl>
+			
+	</div>
 <a name="methodexists" id="exists"><!-- --></a>
 <div class="evenrow">
 	
@@ -268,7 +321,7 @@
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Implements Jadva_File::exists</p>
+<p class="short-description">Implements Jadva_File_Abstract::exists</p>
 	<ul class="tags">
 				<li><span class="field">access:</span> public</li>
 			</ul>
@@ -422,6 +475,71 @@
 		
 			
 	</div>
+<a name="methodmove" id="move"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">move</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_File.php.html#a131">131</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_File_Abstract::move</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			move
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$in_directory</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$in_directory</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodmove">Jadva_File_Abstract::move()</a></dt>
+						<dd>Moves this file or directory into the given directory</dd>
+					</dl>
+			
+	</div>
+<a name="methodremove" id="remove"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">remove</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_File.php.html#a148">148</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_File_Abstract::remove</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			remove
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodremove">Jadva_File_Abstract::remove()</a></dt>
+						<dd>Removes this file or directory</dd>
+					</dl>
+			
+	</div>
 							<h4>Inherited Methods</h4>
 				<a name='inherited_methods'><!-- --></a>	
 									<!-- =========== Summary =========== -->
@@ -429,6 +547,7 @@
 					<blockquote>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#method__construct">Jadva_File_Abstract::__construct()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodcleanPath">Jadva_File_Abstract::cleanPath()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodcopy">Jadva_File_Abstract::copy()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodexists">Jadva_File_Abstract::exists()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetBasename">Jadva_File_Abstract::getBasename()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodgetInstanceFor">Jadva_File_Abstract::getInstanceFor()</a></span><br>
@@ -439,6 +558,8 @@
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodisExecutable">Jadva_File_Abstract::isExecutable()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodisReadable">Jadva_File_Abstract::isReadable()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodisWritable">Jadva_File_Abstract::isWritable()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodmove">Jadva_File_Abstract::move()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodremove">Jadva_File_Abstract::remove()</a></span><br>
 													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html#methodverifyExistance">Jadva_File_Abstract::verifyExistance()</a></span><br>
 											</blockquote>
 										
@@ -481,7 +602,7 @@
 	</div>
 
 	<p class="notes" id="credit">
-		Documentation generated on Sat, 21 Mar 2009 13:01:02 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+		Documentation generated on Thu, 30 Apr 2009 13:12:01 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
 	</p>
 	</div></body>
 </html>

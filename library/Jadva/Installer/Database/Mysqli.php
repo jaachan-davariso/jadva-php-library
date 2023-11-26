@@ -24,7 +24,7 @@
  * @subpackage Jadva_Installer_Database
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Mysqli.php 113 2009-03-21 10:40:10Z jaachan $
+ * @version    $Id: Mysqli.php 161 2009-04-30 09:00:18Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_Abstract */
@@ -35,7 +35,8 @@ require_once 'Jadva/Installer/Database/Abstract.php';
  *
  * For issues with the parsing of your script, see {@link _parseDatabaseScript}.
  *
- * @todo Fix check on connection
+ * @todo  See if we need to throw an error if _parseDatabaseScript doesn't finish in a proper state (unclosed strings
+ *        or so)
  *
  * @see        Jadva_Installer_Database_Abstract
  * @category   JAdVA
@@ -71,12 +72,23 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 	/** Implements Jadva_Installer_Database_Abstract::_connectToDatabase */
 	protected function _connectToDatabase()
 	{
-		$this->_mysqliConnection = new mysqli(
+		$mysqli = @new mysqli(
 			$this->_credentialsHost,
 			$this->_credentialsUser,
 			$this->_credentialsPass,
 			$this->_databaseName
 		);
+
+		if( mysqli_connect_error() ) {
+			/** @see Jadva_Installer_Database_Exception */
+			require_once 'Jadva/Installer/Database/Exception.php';
+			throw new Jadva_Installer_Database_Exception(
+				'MySQLi error while connecting to database: (' . mysqli_connect_errno() . ') '
+				  . mysqli_connect_error()
+			);
+		}
+
+		$this->_mysqliConnection = $mysqli;
 	}
 	//------------------------------------------------
 	/** Implements Jadva_Installer_Database_Abstract::_lockDatabase */
@@ -521,6 +533,11 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			}
 
 			$curIndex++;
+		}
+
+		//Deal with files that forget a ; after the last query
+		if( !empty($curText) ) {
+			$queryList[] = $curText;
 		}
 
 		$requirementList = array();

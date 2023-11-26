@@ -105,11 +105,11 @@
 	<ul class="tags">
 				<li><span class="field">copyright:</span> Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)</li>
 				<li><span class="field">see:</span> <a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html">Jadva_Installer_Database_Abstract</a></li>
-				<li><span class="field">todo:</span> Fix check on connection</li>
+				<li><span class="field">todo:</span> See if we need to throw an error if _parseDatabaseScript doesn't finish in a proper state (unclosed strings         or so)</li>
 				<li><span class="field">license:</span> <a href="http://www.JaAchan.com/software/LICENSE.txt">http://www.JaAchan.com/software/LICENSE.txt</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_Installer---Database---Mysqli.php.html">/Installer/Database/Mysqli.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a47">47</a></span>)
+			Located in <a class="field" href="_Installer---Database---Mysqli.php.html">/Installer/Database/Mysqli.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a48">48</a></span>)
 		</p>
 		
 				
@@ -336,7 +336,7 @@
 		<span class="var-title">
 			<span class="var-type">MySQLi</span>
 			<span class="var-name">$_mysqliConnection</span>
-			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a69">69</a></span>)
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a70">70</a></span>)
 		</span>
 	</div>
 
@@ -410,7 +410,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a57">57</a></span>)
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a58">58</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -446,7 +446,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_checkVersionTable</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a112">112</a></span>)
+		<span class="method-title">_checkVersionTable</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a124">124</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -476,7 +476,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_connectToDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a72">72</a></span>)
+		<span class="method-title">_connectToDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a73">73</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -506,7 +506,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_createRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a181">181</a></span>)
+		<span class="method-title">_createRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a193">193</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -536,7 +536,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_databaseIsLocked</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a89">89</a></span>)
+		<span class="method-title">_databaseIsLocked</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a101">101</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -566,7 +566,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_disconnectFromDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a102">102</a></span>)
+		<span class="method-title">_disconnectFromDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a114">114</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -596,7 +596,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_executeDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a145">145</a></span>)
+		<span class="method-title">_executeDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a157">157</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -631,7 +631,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_executeQuery</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a557">557</a></span>)
+		<span class="method-title">_executeQuery</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a574">574</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -661,7 +661,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_getVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a128">128</a></span>)
+		<span class="method-title">_getVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a140">140</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -691,7 +691,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_lockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a83">83</a></span>)
+		<span class="method-title">_lockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a95">95</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -721,7 +721,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_parseDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a333">333</a></span>)
+		<span class="method-title">_parseDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a345">345</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -757,7 +757,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_restoreRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a241">241</a></span>)
+		<span class="method-title">_restoreRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a253">253</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -787,7 +787,7 @@
 <div class="evenrow">
 	
 	<div class="method-header">
-		<span class="method-title">_storeVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a157">157</a></span>)
+		<span class="method-title">_storeVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a169">169</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -822,7 +822,7 @@
 <div class="oddrow">
 	
 	<div class="method-header">
-		<span class="method-title">_unlockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a95">95</a></span>)
+		<span class="method-title">_unlockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a107">107</a></span>)
 	</div> 
 	
 	<!-- ========== Info from phpDoc block ========= -->
@@ -902,7 +902,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_COMMENT_MULTI</span>
 			 = <span class="const-default"> 'parserStateCommentMulti'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a307">307</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a319">319</a></span>)
 		</span>
 	</div>
 
@@ -918,7 +918,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_COMMENT_MULTI_END</span>
 			 = <span class="const-default"> 'parserStateCommentMultiEnd'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a308">308</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a320">320</a></span>)
 		</span>
 	</div>
 
@@ -934,7 +934,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_COMMENT_MULTI_START</span>
 			 = <span class="const-default"> 'parserStateCommentMultiStart'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a306">306</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a318">318</a></span>)
 		</span>
 	</div>
 
@@ -950,7 +950,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_COMMENT_ONELINE</span>
 			 = <span class="const-default"> 'parserStateCommentOnline'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a305">305</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a317">317</a></span>)
 		</span>
 	</div>
 
@@ -966,7 +966,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_DASH</span>
 			 = <span class="const-default"> 'parserStateDash'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a304">304</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a316">316</a></span>)
 		</span>
 	</div>
 
@@ -982,7 +982,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_OUT</span>
 			 = <span class="const-default"> 'parserStateOut'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a301">301</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a313">313</a></span>)
 		</span>
 	</div>
 
@@ -998,7 +998,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_QUOTE_ONE</span>
 			 = <span class="const-default"> 'parserStateQuoteOne'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a311">311</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a323">323</a></span>)
 		</span>
 	</div>
 
@@ -1014,7 +1014,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_QUOTE_ONE_ESCAPED</span>
 			 = <span class="const-default"> 'parserStateQuoteOneEscaped'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a312">312</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a324">324</a></span>)
 		</span>
 	</div>
 
@@ -1030,7 +1030,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_QUOTE_TWO</span>
 			 = <span class="const-default"> 'parserStateQuoteTwo'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a313">313</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a325">325</a></span>)
 		</span>
 	</div>
 
@@ -1046,7 +1046,7 @@
 		<span class="const-title">
 			<span class="const-name">PARSER_STATE_QUOTE_TWO_ESCAPED</span>
 			 = <span class="const-default"> 'parserStateQuoteTwoEscaped'</span>
-			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a314">314</a></span>)
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a326">326</a></span>)
 		</span>
 	</div>
 
@@ -1059,7 +1059,7 @@
 	</div>
 
 	<p class="notes" id="credit">
-		Documentation generated on Sat, 21 Mar 2009 13:01:09 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+		Documentation generated on Thu, 30 Apr 2009 13:12:09 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
 	</p>
 	</div></body>
 </html>

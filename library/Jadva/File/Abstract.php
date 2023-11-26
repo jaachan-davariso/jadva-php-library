@@ -24,7 +24,7 @@
  * @subpackage Jadva_File_Abstract
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 99 2009-03-16 18:32:15Z jaachan $
+ * @version    $Id: Abstract.php 162 2009-04-30 09:51:33Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -53,12 +53,16 @@ abstract class Jadva_File_Abstract
 	/**
 	 * Returns an instance for the given path, existing or not
 	 *
-	 * @param  string   $in_path   The path to get an instance for
+	 * @param  Jadva_File_Abstract|string   $in_path   The path to get an instance for
 	 *
 	 * @return  Jadva_File_Abstract  The file or directory on the given path
 	 */
 	public static function getInstanceFor($in_path)
 	{
+		if( $in_path instanceof self ) {
+			return $in_path;
+		}
+
 		$path = self::cleanPath($in_path);
 
 		if( is_dir($path) ) {
@@ -75,6 +79,10 @@ abstract class Jadva_File_Abstract
 			} else {
 				$className = 'Jadva_File';
 			}
+		}
+
+		if( !class_exists($className, FALSE) ) {
+			require_once str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 		}
 
 		return new $className($path);
@@ -176,6 +184,33 @@ abstract class Jadva_File_Abstract
 	 * @return  boolean  TRUE if this file exists
 	 */
 	abstract public function exists();
+	//------------------------------------------------
+	/**
+	 * Copies this file or directory into the given directory
+	 *
+	 * @param  Jadva_File_Directory|string  The directory to move this file to
+	 *
+	 * @return  boolean  TRUE if the copy was successfull, FALSE otherwise
+	 */
+	abstract public function copy($in_directory);
+	//------------------------------------------------
+	/**
+	 * Moves this file or directory into the given directory
+	 *
+	 * Afterwards, the path of this file or directory is updated to reflect the new location
+	 *
+	 * @param  Jadva_File_Directory|string  The directory to move this file to
+	 *
+	 * @return  boolean  TRUE if the move was successfull, FALSE otherwise
+	 */
+	abstract public function move($in_directory);
+	//------------------------------------------------
+	/**
+	 * Removes this file or directory
+	 *
+	 * @return  boolean  TRUE if the removal was successfull, FALSE otherwise
+	 */
+	abstract public function remove();
 	//------------------------------------------------
 	/**
 	 * Returns whether this file is readable

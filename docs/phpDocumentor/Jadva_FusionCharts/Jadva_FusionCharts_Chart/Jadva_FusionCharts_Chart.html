@@ -1,0 +1,1040 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Jadva_FusionCharts_Chart</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+						<script src="../../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../../media/images/plus.png";
+				imgMinus.src = "../../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Jadva_FusionCharts_Chart</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Class around a FusionCharts Chart</p>
+	<ul class="tags">
+				<li><span class="field">copyright:</span> Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)</li>
+				<li><span class="field">see:</span> <a href="http://www.fusioncharts.com/">http://www.fusioncharts.com/</a></li>
+				<li><span class="field">license:</span> <a href="http://www.JaAchan.com/software/LICENSE.txt">http://www.JaAchan.com/software/LICENSE.txt</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_FusionCharts---Chart.php.html">/FusionCharts/Chart.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a41">41</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#SERIES_TYPE_GANTT" title="details" class="const-name">SERIES_TYPE_GANTT</a> = 					<span class="var-type"> 5</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#SERIES_TYPE_MSSTACKED" title="details" class="const-name">SERIES_TYPE_MSSTACKED</a> = 					<span class="var-type"> 4</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#SERIES_TYPE_MULTI_SERIES" title="details" class="const-name">SERIES_TYPE_MULTI_SERIES</a> = 					<span class="var-type"> 2</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#SERIES_TYPE_SCATTER_AND_BUBBLE" title="details" class="const-name">SERIES_TYPE_SCATTER_AND_BUBBLE</a> = 					<span class="var-type"> 3</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#SERIES_TYPE_SINGLE_SERIES" title="details" class="const-name">SERIES_TYPE_SINGLE_SERIES</a> = 					<span class="var-type"> 1</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+												<div class="var-title">
+					static <span class="var-type">array</span>
+					<a href="#$_allowdGraphAttributes" title="details" class="var-name">$_allowdGraphAttributes</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">array</span>
+					<a href="#$_allowdSetAttributesOther" title="details" class="var-name">$_allowdSetAttributesOther</a>
+				</div>
+																<div class="var-title">
+					static <span class="var-type">array</span>
+					<a href="#$_allowdSetAttributesSingleSeries" title="details" class="var-name">$_allowdSetAttributesSingleSeries</a>
+				</div>
+																																								<div class="var-title">
+					static <span class="var-type">array</span>
+					<a href="#$_graphTypeToSeriesType" title="details" class="var-name">$_graphTypeToSeriesType</a>
+				</div>
+																																<div class="var-title">
+					static <span class="var-type">array</span>
+					<a href="#$_seriesTypeToDefaultGraphType" title="details" class="var-name">$_seriesTypeToDefaultGraphType</a>
+				</div>
+																																												<div class="var-title">
+					<span class="var-type">integer|NULL</span>
+					<a href="#$_dataSetCount" title="details" class="var-name">$_dataSetCount</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$_graphAttributes" title="details" class="var-name">$_graphAttributes</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string|NULL</span>
+					<a href="#$_graphType" title="details" class="var-name">$_graphType</a>
+				</div>
+																								<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$_maxValue" title="details" class="var-name">$_maxValue</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">integer|NULL</span>
+					<a href="#$_seriesType" title="details" class="var-name">$_seriesType</a>
+				</div>
+																			</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																						
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+										<a href="#addGraphAttributes" title="details" class="method-name">addGraphAttributes</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$attribs</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+										<a href="#addValue" title="details" class="method-name">addValue</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_dataSetNumber</span>, <span class="var-type">float</span>&nbsp;<span class="var-name">$in_value</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$attribs</span> = <span class="var-default">array()</span>])
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getDataSetCount" title="details" class="method-name">getDataSetCount</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getGraphType" title="details" class="method-name">getGraphType</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getSeriesType" title="details" class="method-name">getSeriesType</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">TRUE</span>
+										<a href="#hasDataSetCount" title="details" class="method-name">hasDataSetCount</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#hasGraphType" title="details" class="method-name">hasGraphType</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">TRUE</span>
+										<a href="#hasSeriesType" title="details" class="method-name">hasSeriesType</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+										<a href="#setDataSetCount" title="details" class="method-name">setDataSetCount</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_dataSetCount</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+										<a href="#setGraphAttributes" title="details" class="method-name">setGraphAttributes</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$attribs</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+										<a href="#setGraphType" title="details" class="method-name">setGraphType</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_type</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+										<a href="#setSeriesType" title="details" class="method-name">setSeriesType</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_seriesType</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#toXml" title="details" class="method-name">toXml</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$_allowdGraphAttributes" id="$_allowdGraphAttributes"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">array</span>
+			<span class="var-name">$_allowdGraphAttributes</span>
+			 = <span class="var-default">array(<br />		//Background Properties<br />		'bgColor', 'bgAlpha', 'bgSWF',<br /><br />		//Canvas Properties<br />		'canvasBgColor', 'canvasBgAlpha', 'canvasBorderColor', 'canvasBorderThickness',<br /><br />		//Chart and Axis Titles<br />		'caption', 'subCaption', 'xAxisName', 'yAxisName',<br /><br />		//Chart Numerical Limits<br />		'yAxisMinValue', 'yAxisMaxValue',<br /><br />		//Generic Properties<br />		'shownames', 'showValues', 'showLimits', 'rotateNames', 'animation', 'showColumnShadow',<br /><br />		//Font Properties<br />		'baseFont', 'baseFontSize', 'baseFontColor', 'outCnvBaseFont ', 'outCnvBaseFontSze', 'outCnvBaseFontColor',<br /><br />		//Number Formatting Options<br />		'numberPrefix',     'numberSuffix',      'formatNumber',     'formatNumberScale',<br />		'decimalSeparator', 'thousandSeparator', 'decimalPrecision', 'divLineDecimalPrecision',<br />		'limitsDecimalPrecision',<br /><br />		//Zero Plane<br />		'zeroPlaneThickness', 'zeroPlaneColor', 'zeroPlaneAlpha',<br /><br />		//Divisional Lines (Horizontal)<br />		'numdivlines',      'divlinecolor',            'divLineThickness',    'divLineAlpha', <br />		'showDivLineValue', 'showAlternateHGridColor', 'alternateHGridColor', 'alternateHGridAlpha',<br /><br />		//Divisional Lines (Vertical)<br />		'numVDivLines',            'VDivlinecolor',       'VDivLineThickness',   'VDivLineAlpha',<br />		'showAlternateVGridColor', 'alternateVGridColor', 'alternateVGridAlpha',<br /><br />		//Hover Caption Properties<br />		'showhovercap', 'hoverCapBgColor', 'hoverCapBorderColor', 'hoverCapSepChar',<br /><br />		//Chart Margins<br />		'chartLeftMargin', 'chartRightMargin', 'chartTopMargin', 'chartBottomMargin',<br />	)</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a386">386</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the attributes allowed to set for graphs</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_allowdSetAttributesOther" id="$_allowdSetAttributesOther"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">array</span>
+			<span class="var-name">$_allowdSetAttributesOther</span>
+			 = <span class="var-default">array(<br />		'color', 'link', 'alpha',<br />	)</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a442">442</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the attributes allowed to set for set elements, for graphs that aren't single series</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_allowdSetAttributesSingleSeries" id="$_allowdSetAttributesSingleSeries"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">array</span>
+			<span class="var-name">$_allowdSetAttributesSingleSeries</span>
+			 = <span class="var-default">array(<br />		'name', 'color', 'hoverText', 'link', 'alpha', 'showName',<br />	)</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a433">433</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the attributes allowed to set for set elements, for single series graphs</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_graphTypeToSeriesType" id="$_graphTypeToSeriesType"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">array</span>
+			<span class="var-name">$_graphTypeToSeriesType</span>
+			 = <span class="var-default">array(<br />		//Free Single Series<br />		'Area2D'     =&gt; 1, 'Bar2D'      =&gt; 1, 'Column2D'   =&gt; 1, 'Column3D'   =&gt; 1, 'Doughnut2D' =&gt; 1,<br />		'Line'       =&gt; 1, 'Pie2D'      =&gt; 1, 'Pie3D'      =&gt; 1, 'Funnel'     =&gt; 1,<br /><br />		//Free Multi Series<br />		'MSArea2D'         =&gt; 2, 'MSBar2D'          =&gt; 2, 'MSColumn2D'       =&gt; 2, 'MSColumn2DLineDY' =&gt; 2,<br />		'MSColumn3D'       =&gt; 2, 'MSColumn3DLineDY' =&gt; 2, 'MSLine'           =&gt; 2, 'StackedArea2D'    =&gt; 2,<br />		'StackedBar2D'     =&gt; 2, 'StackedColumn2D'  =&gt; 2, 'StackedColumn3D'  =&gt; 2,<br />	)</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a360">360</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Maps the graph type onto the data set count</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_seriesTypeToDefaultGraphType" id="$_seriesTypeToDefaultGraphType"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			static <span class="var-type">array</span>
+			<span class="var-name">$_seriesTypeToDefaultGraphType</span>
+			 = <span class="var-default">array(<br />		1 =&gt; 'Line',<br />		2 =&gt; 'MSLine',<br />	)</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a376">376</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Maps the data set count onto the graph used by default</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_dataSetCount" id="$_dataSetCount"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer|NULL</span>
+			<span class="var-name">$_dataSetCount</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a458">458</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the number of data sets in this chart</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_graphAttributes" id="$_graphAttributes"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_graphAttributes</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a469">469</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_graphType" id="$_graphType"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string|NULL</span>
+			<span class="var-name">$_graphType</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a465">465</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the SWF name to display the chart with</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_maxValue" id="$_maxValue"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_maxValue</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a467">467</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_seriesType" id="$_seriesType"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer|NULL</span>
+			<span class="var-name">$_seriesType</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a451">451</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the series type of this chart</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodaddGraphAttributes" id="addGraphAttributes"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addGraphAttributes</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a225">225</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds (and overrides) attributes for the graphs</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+		<span class="method-name">
+			addGraphAttributes
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$attribs</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$attribs</span><span class="var-description">: The graph attributes to set</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodaddValue" id="addValue"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">addValue</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a260">260</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds a value to a dataset</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+		<span class="method-name">
+			addValue
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_dataSetNumber</span>, <span class="var-type">float</span>&nbsp;<span class="var-name">$in_value</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$attribs</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$in_dataSetNumber</span><span class="var-description">: The number of the data set</span>			</li>
+					<li>
+				<span class="var-type">float</span>
+				<span class="var-name">$in_value</span><span class="var-description">: The value to add</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$attribs</span><span class="var-description">: (OPTIONAL) Additonal attributes for the value</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetDataSetCount" id="getDataSetCount"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDataSetCount</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a118">118</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the number of data sets in this graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The number of data sets in this graph</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getDataSetCount
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetGraphType" id="getGraphType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getGraphType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a166">166</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the type of the graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The type of the graph</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getGraphType
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetSeriesType" id="getSeriesType"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getSeriesType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a55">55</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the series type of this graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The series type of this graph</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getSeriesType
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodhasDataSetCount" id="hasDataSetCount"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">hasDataSetCount</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a128">128</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns whether the number of data sets in this graph has been set yet</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if the number of data sets in this graph has been set yet, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">TRUE</span>
+		<span class="method-name">
+			hasDataSetCount
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodhasGraphType" id="hasGraphType"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">hasGraphType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a176">176</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns whether the type of the graph has been set yet</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if the type of the graph has been set yet, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			hasGraphType
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodhasSeriesType" id="hasSeriesType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">hasSeriesType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a65">65</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns whether the number of data sets in this graph has been set yet</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if the series type of this graph has been set yet, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">TRUE</span>
+		<span class="method-name">
+			hasSeriesType
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsetDataSetCount" id="setDataSetCount"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setDataSetCount</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a140">140</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the number of data sets in this graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+		<span class="method-name">
+			setDataSetCount
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_dataSetCount</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$in_dataSetCount</span><span class="var-description">: The number of data sets in this graph</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetGraphAttributes" id="setGraphAttributes"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setGraphAttributes</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a243">243</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets attributes for the graphs</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+		<span class="method-name">
+			setGraphAttributes
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$attribs</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$attribs</span><span class="var-description">: The graph attributes to set</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetGraphType" id="setGraphType"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setGraphType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a188">188</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the type of the graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+		<span class="method-name">
+			setGraphType
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_type</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$in_type</span><span class="var-description">: The type of the graph</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetSeriesType" id="setSeriesType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setSeriesType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a86">86</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the series type of this graph</p>
+<p class="description"><p>Possible values:  <pre>    1 => Single Series
+    2 => Multi Series
+    3 => Scatter and Bubble
+    4 => MSStacked
+    5 => Gantt</pre></p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart.html">Jadva_FusionCharts_Chart</a></span>
+		<span class="method-name">
+			setSeriesType
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$in_seriesType</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$in_seriesType</span><span class="var-description">: The series type of this graph</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtoXml" id="toXml"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">toXml</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a309">309</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Generates an XML document of this chart</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The XML document of this chart</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			toXml
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constSERIES_TYPE_GANTT" id="SERIES_TYPE_GANTT"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SERIES_TYPE_GANTT</span>
+			 = <span class="const-default"> 5</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a48">48</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constSERIES_TYPE_MSSTACKED" id="SERIES_TYPE_MSSTACKED"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SERIES_TYPE_MSSTACKED</span>
+			 = <span class="const-default"> 4</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a47">47</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constSERIES_TYPE_MULTI_SERIES" id="SERIES_TYPE_MULTI_SERIES"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SERIES_TYPE_MULTI_SERIES</span>
+			 = <span class="const-default"> 2</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a45">45</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constSERIES_TYPE_SCATTER_AND_BUBBLE" id="SERIES_TYPE_SCATTER_AND_BUBBLE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SERIES_TYPE_SCATTER_AND_BUBBLE</span>
+			 = <span class="const-default"> 3</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a46">46</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constSERIES_TYPE_SINGLE_SERIES" id="SERIES_TYPE_SINGLE_SERIES"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SERIES_TYPE_SINGLE_SERIES</span>
+			 = <span class="const-default"> 1</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_FusionCharts_Jadva_FusionCharts_Chart_FusionChartsChart.php.html#a44">44</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+						
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 30 Apr 2009 13:11:54 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+	</p>
+	</div></body>
+</html>

@@ -24,7 +24,7 @@
  * @subpackage Jadva_File_Directory
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Directory.php 99 2009-03-16 18:32:15Z jaachan $
+ * @version    $Id: Directory.php 166 2009-04-30 10:54:20Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File */
@@ -120,23 +120,97 @@ class Jadva_File_Directory extends Jadva_File_Abstract implements IteratorAggreg
 		return $this->filter();
 	}
 	//------------------------------------------------
+	/**
+	 * Recursively deletes this directory
+	 *
+	 * @return  boolean  TRUE if the removal was successfull, FALSE otherwise
+	 */
+	public function deltree()
+	{
+		foreach($this->getEntries() as $entry) {
+			if( $entry->isDir() ) {
+				$result = $entry->deltree();
+			} else {
+				$result = $entry->remove();
+			}
+
+			if( !$result ) {
+				return FALSE;
+			}
+		}
+
+		return $this->remove();
+	}
+	//------------------------------------------------
 	/** Implements Jadva_File_Abstract::isDir */
 	public function isDir()
 	{
 		return TRUE;
 	}
 	//------------------------------------------------
-	/** Implements Jadva_File::exists */
+	/** Implements Jadva_File_Abstract::exists */
 	public function exists()
 	{
 		return is_dir($this->_path);
 	}
 	//------------------------------------------------
-	/** Implements Jadva_File::isExecutable */
+	/** Implements Jadva_File_Abstract::isExecutable */
 	public function isExecutable()
 	{
 		//is_executable is not reliable for directories
 		return @file_exists($this->_path . '.');
+	}
+	//------------------------------------------------
+	/** Implements Jadva_File_Abstract::copy */
+	public function copy($in_directory)
+	{
+		$directory = Jadva_File_Directory::verifyExistance($in_directory, 7);
+
+		$targetDirectory = Jadva_File_Directory::getInstanceFor($directory->getPath() . $this->getBaseName() . DIRECTORY_SEPARATOR);
+		$targetDirectory->ensureExistance(fileperms($this->_path));
+
+		foreach($this->getEntries() as $entry) {
+			$result = $entry->copy($targetDirectory);
+
+			if( !$result ) {
+				return FALSE;
+			}
+		}
+
+		return TRUE;
+	}
+	//------------------------------------------------
+	/** Implements Jadva_File_Abstract::move */
+	public function move($in_directory)
+	{
+		$directory = Jadva_File_Directory::verifyExistance($in_directory, 7);
+
+		$targetDirectory = Jadva_File_Directory::getInstanceFor($directory->getPath() . $this->getBaseName() . DIRECTORY_SEPARATOR);
+		$targetDirectory->ensureExistance(fileperms($this->_path));
+
+		foreach($this->getEntries() as $entry) {
+			$result = $entry->move($targetDirectory);
+
+			if( !$result ) {
+				return FALSE;
+			}
+		}
+
+		$this->remove();
+
+		$this->_path = $targetDirectory->getPath();
+
+		return TRUE;
+	}
+	//------------------------------------------------
+	/**
+	 * Implements Jadva_File_Abstract::remove
+	 *
+	 * @see deltree
+	 */
+	public function remove()
+	{
+		return rmdir($this->_path);
 	}
 	//------------------------------------------------
 	/** Implements IteratorAggregate::getIterator */

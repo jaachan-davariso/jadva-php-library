@@ -24,7 +24,7 @@
  * @subpackage Jadva_File
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: File.php 99 2009-03-16 18:32:15Z jaachan $
+ * @version    $Id: File.php 162 2009-04-30 09:51:33Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_File_Abstract */
@@ -111,10 +111,43 @@ class Jadva_File extends Jadva_File_Abstract
 		return FALSE;
 	}
 	//------------------------------------------------
-	/** Implements Jadva_File::exists */
+	/** Implements Jadva_File_Abstract::exists */
 	public function exists()
 	{
 		return file_exists($this->_path);
+	}
+	//------------------------------------------------
+	/** Implements Jadva_File_Abstract::copy */
+	public function copy($in_directory)
+	{
+		$directory = Jadva_File_Directory::verifyExistance($in_directory, 7);
+
+		$newPath = $directory->getPath() . $this->getBasename();
+
+		return copy($this->_path, $newPath);
+	}
+	//------------------------------------------------
+	/** Implements Jadva_File_Abstract::move */
+	public function move($in_directory)
+	{
+		$directory = Jadva_File_Directory::verifyExistance($in_directory, 7);
+
+		$newPath = $directory->getPath() . $this->getBasename();
+		$result = rename($this->_path, $newPath);
+
+		if( !$result ) {
+			return FALSE;
+		}
+
+		$this->_path = $newPath;
+
+		return TRUE;
+	}
+	//------------------------------------------------
+	/** Implements Jadva_File_Abstract::remove */
+	public function remove()
+	{
+		return unlink($this->_path);
 	}
 	//------------------------------------------------
 }
