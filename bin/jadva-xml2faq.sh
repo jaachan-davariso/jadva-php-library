@@ -10,4 +10,3 @@ fi
 $PHP_LOC jadva-xml2faq.php $*
 
 exit $?
-

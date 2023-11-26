@@ -1,5 +1,20 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.7:
+ New features:
+  - [FaqList] You can now use a custom stylesheet file.
+ Changes:
+  - [FaqList] Prevented the icons directory from being added when no icons are
+    given.
+  - [FaqList] Now checks the ids of questions for uniqueness.
+  - [FaqList] The <code> tag is no longer replaced by a <div> tag (because it's
+    actually a valid HTML tag).
+ Fixes:
+  - [FaqList] Fixed a bug where specifying a file as the input would crash the
+    bin script.
+  - [FaqList] Fixed a bug where questions added to existing groups in new files
+    would be added to new groups instead.
+
 0.2.6.2
  Bug fix release; using the Jadva_Installer_Database_Abstract class would 
  output a newline to the browser.

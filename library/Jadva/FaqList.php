@@ -24,7 +24,7 @@
  * @subpackage Jadva_FaqList
  * @copyright  Copyright (c) 2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: FaqList.php 317 2010-01-23 12:25:58Z jaachan $
+ * @version    $Id: FaqList.php 350 2010-06-19 09:55:01Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_FaqList_Group */
@@ -121,10 +121,11 @@ class Jadva_FaqList
 	 * Loads the XML from the given string
 	 *
 	 * @param  string  $xml  The XML
+	 * @param  string  $xmlFileName  (OPTIONAL) The location of the XML file, if any
 	 *
 	 * @return  Jadva_FaqList  Provides a fluent interface
 	 */
-	public function loadXml($xml)
+	public function loadXml($xml, $xmlFileName = NULL)
 	{
 		$document = new DOMDocument;
 		$result = $document->loadXML($xml, LIBXML_NOBLANKS);
@@ -153,24 +154,32 @@ class Jadva_FaqList
 		$groupNodeList = $xpath->query('/faq/group');
 		for($itEl = 0; $itEl < $groupNodeList->length; $itEl++) {
 			$groupNode = $groupNodeList->item($itEl);
+			$groupName = $groupNode->getAttribute('name');
+			$groupId   = $groupNode->getAttribute('id');
+			$grooup    = NULL;
 
-			$group = new Jadva_FaqList_Group(
-				$groupNode->getAttribute('name'),
-				$groupNode->getAttribute('id')
-			);
+			if( $groupId && $this->hasGroup($groupId) ) {
+				$group = $this->getGroup($groupId);
+			} elseif( $groupName ) {
+				$group = $this->lookupGroup($groupName);
+			}
 
-			$this->addGroup($group);
+			if( !$group ) {
+				$group = new Jadva_FaqList_Group($groupName, $groupId);
+				$this->addGroup($group);
+			}
 
 			$xpath = new DOMXpath($document);
 			$questionNodeList = $xpath->query('./question', $groupNode);
 			for($itQuestEl = 0; $itQuestEl < $questionNodeList->length; $itQuestEl++) {
 				$questionNode = $questionNodeList->item($itQuestEl);
-
-				$group->addQuestion(new Jadva_FaqList_Question(
+				$question = new Jadva_FaqList_Question(
 					$questionNode->getAttribute('text'),
 					$this->_domNodeToText($questionNode),
 					$questionNode->getAttribute('id')
-				));
+				);
+
+				$this->addQuestion($question, $group, $xmlFileName);
 			}
 		}
 
@@ -180,12 +189,15 @@ class Jadva_FaqList
 	/**
 	 * Converts this FAQ list to a website
 	 *
+	 * Note that for copying files or the style sheet, you need a source directory.
+	 *
 	 * @param  Jadva_File_Directory|string  $targetDirectory  The directory to store the files in
 	 * @param  Jadva_File_Directory|string  $sourceDirectory  (OPTIONAL) The directory to copy files from, if any
+	 * @param  string                       $styleSheet       (OPTIONAL) The name of the stylesheet file, if any
 	 *
 	 * @return  Jadva_FaqList  Provides a fluent interface
 	 */
-	public function toHtml($targetDirectory, $sourceDirectory = NULL)
+	public function toHtml($targetDirectory, $sourceDirectory = NULL, $styleSheet = NULL)
 	{
 		/** @see Jadva_File_Directory */
 		require_once 'Jadva/File/Directory.php';
@@ -194,9 +206,10 @@ class Jadva_FaqList
 		$directory->ensureExistance();
 		$dp = $directory->getPath();
 
-		$iconDirectory = Jadva_File_Directory::getInstanceFor($dp . 'icons/');
-		$iconDirectory->ensureExistance();
-		$idp = $iconDirectory->getPath();
+		if( NULL !== $sourceDirectory ) {
+			$directory = Jadva_File_Directory::verifyExistance($sourceDirectory);
+			$sp = $directory->getPath();
+		}
 
 		$iconList = array();
 		$fileList = array();
@@ -214,17 +227,28 @@ class Jadva_FaqList
 		file_put_contents($dp . 'toc.html', $this->_generateToc());
 
 		//Copy additional files
-		copy(
-			dirname(__FILE__) . DIRECTORY_SEPARATOR . 'FaqList' . DIRECTORY_SEPARATOR . 'style.css',
-			$dp . 'style.css'
-		);
+		if( !empty($styleSheet) ) {
+			$styleSheet = realpath($sp . $styleSheet);
+			if( FALSE === $styleSheet ) {
+				$this->_warning('Could not find given stylesheet');
+			}
+		}
 
-		$this->_copyIcons($iconList, $idp);
+		if( empty($styleSheet) ) {
+			$styleSheet = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'FaqList' . DIRECTORY_SEPARATOR . 'style.css';
+		}
+		copy($styleSheet, $dp . 'style.css');
+
+
+		if( 0 < count($iconList) ) {
+			$iconDirectory = Jadva_File_Directory::getInstanceFor($dp . 'icons/');
+			$iconDirectory->ensureExistance();
+			$idp = $iconDirectory->getPath();
+
+			$this->_copyIcons($iconList, $idp);
+		}
 
 		if( 0 < count($fileList) ) {
-			$directory = Jadva_File_Directory::verifyExistance($sourceDirectory);
-			$sp = $directory->getPath();
-
 			$this->_copyFiles($fileList, $sp, $dp);
 		}
 
@@ -294,7 +318,7 @@ class Jadva_FaqList
 			throw new Jadva_FaqList_Exception(sprintf('Group with identity "%1$s" was not added to this list', $groupId));
 		}
 
-		return $this->_groupList[$group->id()];
+		return $this->_groupList[$groupId];
 	}
 	//------------------------------------------------
 	/**
@@ -326,6 +350,26 @@ class Jadva_FaqList
 	}
 	//------------------------------------------------
 	/**
+	 * Find a group by its name
+	 *
+	 * @param  string  $in_groupName  The name of the group to find
+	 *
+	 * @return  Jadva_FaqList_Group|NULL  The group, or NULL if no group with that name was added
+	 */
+	public function lookupGroup($in_groupName)
+	{
+		$groupName = (string) $in_groupName;
+
+		foreach($this->_groupList as $group) {
+			if( $group->name == $groupName ) {
+				return $group;
+			}
+		}
+
+		return NULL;
+	}
+	//------------------------------------------------
+	/**
 	 * Adds a question to the given group
 	 *
 	 * @param  Jadva_FaqList_Question  $question  The question to add
@@ -333,8 +377,37 @@ class Jadva_FaqList
 	 *
 	 * @return  boolean  TRUE if the given group has been added to this list yet, FALSE otherwise
 	 */
-	public function addQuestion(Jadva_FaqList_Question $question, Jadva_FaqList_Group $group)
+	public function addQuestion(Jadva_FaqList_Question $question, Jadva_FaqList_Group $group, $fileFound = NULL)
 	{
+		if( array_key_exists($question->id(), $this->_questionMap) ) {
+			$firstInfo = $this->_questionMap[$question->id()];
+			$first = $firstInfo['group']->name . ' (' . $firstInfo['group']->id();
+			if( $firstInfo['file'] ) {
+				$first .= ', ' . $firstInfo['file'];
+			}
+			$first .= ')';
+
+			$later = $group->name . ' (' . $group->id();
+			if( $fileFound ) {
+				$later .= ', ' . $fileFound;
+			}
+			$later .= ')';
+
+			$this->_error(sprintf(
+				'Double question id found: %1$s' . "\n"
+				. ' First defined in %2$s' . "\n"
+				. ' Later also defined in %3$s',
+				$question->id(), $first, $later
+			));
+
+			return $this;
+		}
+
+		$this->_questionMap[$question->id()] = array(
+			'group' => $group,
+			'file'  => $fileFound,
+		);
+
 		$this->getGroup($group)->addQuestion($question);
 
 		return $this;
@@ -372,6 +445,13 @@ class Jadva_FaqList
 	 * @var  array
 	 */
 	protected $_groupList = array();
+	//------------------------------------------------
+	/**
+	 * Contains a mapping from question to (id of the) group they belong in and file they were found in
+	 *
+	 * @var  array
+	 */
+	protected $_questionMap = array();
 	//------------------------------------------------
 	/**
 	 * Contains the list of errors
@@ -441,7 +521,16 @@ class Jadva_FaqList
 			//Dunno what node this is
 		}
 
-		return $node->ownerDocument->saveXML($node);
+		$document = $node->ownerDocument;
+
+		$return = array();
+		for($itEl = 0; $itEl < $node->childNodes->length; $itEl++) {
+			$child = $node->childNodes->item($itEl);
+
+			$return[] = trim($document->saveXML($child));
+		}
+
+		return implode(" ", $return);
 	}
 	//------------------------------------------------
 	/**
@@ -598,32 +687,6 @@ class Jadva_FaqList
 
 
 			$answer = str_replace('</qlink', '</a', $answer);
-
-			$matchesList = array(); $replaceList = array(); $replaceMatchList = array();
-			$matchCount = preg_match_all('/<code[^>]*>/', $answer, $matchesList);
-			foreach($matchesList[0] as $match) {
-				if( empty($match) ) {
-					continue;
-				}
-
-				if( FALSE !== strpos($match, 'lang="') ) {
-					list($pre, $rest) = explode('lang="', $match);
-					list($lang, $post) = explode('"', $rest, 2);
-
-					$replaceList[]      = '/<code([^>*])lang="' . $lang . '"/';
-					$replaceMatchList[] = '<div class="code ' . $lang . '-code"\1';
-				}
-			}
-
-			if( count($replaceList) ) {
-				$replaceList      = array_unique($replaceList);
-				$replaceMatchList = array_unique($replaceMatchList);
-				$answer = preg_replace($replaceList, $replaceMatchList, $answer);
-			}
-
-			//Simple <code> tags.
-			$answer = str_replace('<code>', '<div class="code">', $answer);
-			$answer = str_replace('</code>', '</div>', $answer);
 
 			$answer = str_replace('<url>', '<span class="in-text-url">', $answer);
 			$answer = str_replace('</url>', '</span>', $answer);

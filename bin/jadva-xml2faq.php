@@ -24,7 +24,7 @@
  * @subpackage Jadva_Bin_Faq
  * @copyright  Copyright (c) 2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: jadva-xml2faq.php 317 2010-01-23 12:25:58Z jaachan $
+ * @version    $Id: jadva-xml2faq.php 349 2010-06-19 09:11:55Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 // Set up environment
@@ -57,6 +57,8 @@ function showHelp($errorMessage = NULL)
 	echo PHP_EOL;
 	echo ' and OPTIONS are one or more of' . PHP_EOL;
 	echo ' --help     show this and exit' . PHP_EOL;
+	echo ' --library  the location of the JAdVA library' . PHP_EOL;
+	echo ' --style    the name of the stylesheet' . PHP_EOL;
 	echo ' --verbose  be more verbose to what is happening' . PHP_EOL;
 	echo ' --quiet    show no output, save for errors and warnings' . PHP_EOL;
 	echo PHP_EOL;
@@ -95,6 +97,7 @@ $OPTIONS = new stdClass;
 $OPTIONS->verboseLevel = 1;
 $OPTIONS->libraryLocation = NULL;
 $OPTIONS->iconDir = NULL;
+$OPTIONS->styleSheet = NULL;
 
 for($itArg = 1; $itArg < $argc; $itArg++) {
 	$arg = $argv[$itArg];
@@ -118,6 +121,13 @@ for($itArg = 1; $itArg < $argc; $itArg++) {
 		break;
 	case '--quiet':
 		$OPTIONS->verboseLevel = 0;
+		break;
+	case '--style':
+		$itArg++;
+		if( $itArg == $argc ) {
+			showHelp('Missing parameter for option --style');
+		}
+		$OPTIONS->styleSheet = $argv[$itArg];
 		break;
 	case '--library':
 		$itArg++;
@@ -173,6 +183,8 @@ if( version_compare(str_replace('.dev', '', Jadva_Version::VERSION), REQUIRED_JA
 // Load classes
 /** @see Jadva_File */
 require_once 'Jadva/File.php';
+/** @see Jadva_File_Directory */
+require_once 'Jadva/File/Directory.php';
 /** @see Jadva_FaqList */
 require_once 'Jadva/FaqList.php';
 //----------------------------------------------------------------------------------------------------------------------
@@ -218,14 +230,14 @@ if( 0 == $OPTIONS->verboseLevel ) {
 $inputFiles = 0;
 if( !$inputFile->isDir() ) {
 	output(1, 'Loading data from ' . $inputFile->getPath());
-	$faq->loadXml($inputFile->getContents());
+	$faq->loadXml($inputFile->getContents(), $inputFile->getPath());
 
 	$sourceDir = $inputFile->getParent();
 	$inputFiles = 1;
 } else {
 	foreach($inputFile->filter('Extension', array('extensions' => array('xml'))) as $file) {
 		output(1, 'Loading data from ' . $file->getPath());
-		$faq->loadXml($file->getContents());
+		$faq->loadXml($file->getContents(), $file->getPath());
 		$inputFiles++;
 	}
 
@@ -243,7 +255,7 @@ if( 0 < count($errors) ) {
 }
 
 output(1, 'Saving HTML files to ' . $outputDir->getPath());
-$faq->toHtml($outputDir, $sourceDir);
+$faq->toHtml($outputDir, $sourceDir, $OPTIONS->styleSheet);
 //----------------------------------------------------------------------------------------------------------------------
 // Inform user of completion
 $warnings = $faq->getWarnings();

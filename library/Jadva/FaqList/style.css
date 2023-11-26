@@ -1,5 +1,5 @@
 /**
- * Style for the BMIT generated FAQs
+ * Style for the generated FAQs
  *
  * @copyright 2010, Ja`Achan da`Variso
  */
@@ -47,7 +47,7 @@ dl.question_list dd {
 	margin: 0 0 1.5em 1em;
 }
 
-div.code {
+pre.code {
 	font-family: monospace;
 	white-space: pre;
 	border: 1px solid black;
