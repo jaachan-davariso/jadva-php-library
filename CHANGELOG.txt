@@ -1,5 +1,15 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.8.1
+ Changes:
+  - [DbInstaller] Made the setCredentials work with the setOptions function.
+ Fixes:
+  - [DbInstaller] Fixed a bug where subdirectories in any of the installation
+    script directories could prevent other script from being loaded.
+  - [DbInstaller] Prevented HTML-escaped spaces in the TXT output formatter.
+  - [DbInstaller] Fixed a bug where files with dots in them didn't properly work
+    in the installer. 
+
 0.2.8
  New features:
   - [FaqList] A extendable sytem for rendering FaqLists has been added

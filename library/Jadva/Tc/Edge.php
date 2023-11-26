@@ -98,6 +98,32 @@ class Jadva_Tc_Edge extends Jadva_Tc_Object
 	}
 	//------------------------------------------------
 	/**
+	 * Sets the length of this edge
+	 *
+	 * @param  NULL|integer  $newLength  The new length
+	 *
+	 * @return  NULL|integer  Provides a fluent interface
+	 */
+	public function setLength($newLength)
+	{
+		$this->_bailIfDead();
+		$this->_bailIfReadOnly();
+
+		$this->_length = (int) $newLength;
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the length of this edge
+	 *
+	 * @return  NULL|integer The length
+	 */
+	public function getLength()
+	{
+		$this->_bailIfDead();
+		return $this->_length;
+	}
+	//------------------------------------------------
+	/**
 	 * Contains the parent object
 	 *
 	 * @var  mixed
@@ -117,6 +143,13 @@ class Jadva_Tc_Edge extends Jadva_Tc_Object
 	 * @var  Jadva_Tc_Node
 	 */
 	protected $_nodeTo;
+	//------------------------------------------------
+	/**
+	 * Contains the length of the node
+	 *
+	 * @var  integer
+	 */
+	protected $_length = 1;
 	//------------------------------------------------
 	/**
 	 * Removes itself from the from and to nodes, and cleans up the references

@@ -176,7 +176,7 @@ class Jadva_Installer_OutputFormatter_Txt implements Jadva_Installer_OutputForma
 	protected function _outputMessage($message, $messageLevel)
 	{
 		$this->outputText = date('[Y-m-d H:i:s]')
-			. '[' . str_replace(' ', '&nbsp;', str_pad($messageLevel, 7, ' ', STR_PAD_RIGHT)) . '] '
+			. '[' . str_pad($messageLevel, 7, ' ', STR_PAD_RIGHT) . '] '
 			. $message;
 
 		$this->_messageCount++;

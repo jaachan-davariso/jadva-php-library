@@ -24,7 +24,7 @@
  * @subpackage Jadva_Installer_Database
  * @copyright  Copyright (c) 2009-2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 357 2010-09-24 11:50:34Z jaachan $
+ * @version    $Id: Abstract.php 389 2011-11-19 10:26:22Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_TableNode_List */
@@ -186,16 +186,24 @@ abstract class Jadva_Installer_Database_Abstract
 	/**
 	 * Sets the database connection credentials
 	 *
-	 * @param  string  $username  The username to use for connecting
-	 * @param  string  $password  The password to use for connecting
-	 * @param  string  $host      The host to connect to. Defaults to 'localhost'
-	 * @param  string  $port      (OPTIONAL) The port to connect to
-	 * @param  string  $socket    (OPTIONAL) The socket to connect to
+	 * @param  array|string  $username  The username to use for connecting, or an array with all the parameters
+	 * @param  string        $password  The password to use for connecting
+	 * @param  string        $host      The host to connect to. Defaults to 'localhost'
+	 * @param  integer       $port      (OPTIONAL) The port to connect to
+	 * @param  string        $socket    (OPTIONAL) The socket to connect to
 	 *
 	 * @return  Jadva_Installer_Database  Provides a fluent interface
 	 */
-	public function setCredentials($username, $password, $host = 'localhost', $port = NULL, $socket = NULL)
+	public function setCredentials($username, $password = NULL, $host = 'localhost', $port = NULL, $socket = NULL)
 	{
+		if( is_array($username) ) {
+			$socket   = @$username['socket'];
+			$port     = @$username['port'];
+			$host     = empty($username['host']) ? 'localhost' : $username['host'];
+			$password = $username['password'];
+			$username = $username['username'];
+		}
+
 		$this->_credentialsUser = (string) $username;
 		$this->_credentialsPass = (string) $password;
 		$this->_credentialsHost = (string) $host;
@@ -516,7 +524,7 @@ abstract class Jadva_Installer_Database_Abstract
 			$fullUri = $file->getPath() . DIRECTORY_SEPARATOR . $filename;
 			if( $file->isDir() ) {
 				$this->_loadFilesFromDirectory($fullUri . DIRECTORY_SEPARATOR);
-				return;
+				continue;
 			}
 
 			$list = explode('.', $filename);
@@ -527,7 +535,9 @@ abstract class Jadva_Installer_Database_Abstract
 				throw new Jadva_Installer_Database_Exception('Could not determine information about file "' . $file . '"');
 			}
 
-			list($scriptName, $scriptVersion, $dbType) = $list;
+			$dbType = array_pop($list);
+			$scriptVersion = array_pop($list);
+			$scriptName = implode('.', $list);
 
 			if( !is_numeric($scriptVersion) ) {
 				/** @see Jadva_Installer_Database_Exception */

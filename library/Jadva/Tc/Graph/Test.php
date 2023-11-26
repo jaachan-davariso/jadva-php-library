@@ -58,6 +58,8 @@ class Jadva_Tc_Graph_Test extends Jadva_Test_Abstract
 		$this->basicTests();
 		$this->cycleTests();
 		$this->topologicalSortTests();
+
+		$this->breadthFirstSearch();
 	}
 	//------------------------------------------------
 	/**
@@ -279,6 +281,81 @@ class Jadva_Tc_Graph_Test extends Jadva_Test_Abstract
 		unset($graph);
 		$graphDestructed = Jadva_Tc_Test_Graph::destructCalledForGraph($graphIdentity);
 		$this->_assertTrue($graphDestructed, 'Creation and destruction of a graph after adding two nodes and an edge', FALSE);
+	}
+	//------------------------------------------------
+	/**
+	 * Tests the Breadth-first Search
+	 *
+	 * @return void
+	 */
+	public function breadthFirstSearch()
+	{
+		$nodeStore = array();
+		$graph = new Jadva_Tc_Graph;
+
+		$add_node = function ($nodes) use ($graph, &$nodeStore) {
+			$nodes = func_get_args();
+
+			foreach($nodes as $text) {
+				$node = $graph->addNode();
+				$node->data = $text;
+
+				$nodeStore[$text] = $node;
+			}
+		};
+
+		$add_edge = function($edges) use ($graph, &$nodeStore) {
+			$edges = func_get_args();
+
+			foreach($edges as $edge) {
+				list($from, $to) = $edge;
+
+				$edge = $graph->addEdge($nodeStore[$from], $nodeStore[$to]);
+				$edge->data = $from . ' -> ' . $to;
+
+				$edge = $graph->addEdge($nodeStore[$to], $nodeStore[$from]);
+				$edge->data = $to . ' -> ' . $from;
+			}
+		};
+
+		//Example taken from "Introduction to Algorithms", Second edition, Chapter 22.2, page 533
+		$add_node('r', 's', 't', 'u', 'v', 'w', 'x', 'y');
+		$add_edge(array('r', 'v'), array('r', 's'), array('s', 'w'), array('w', 't'), array('w', 'x'),
+			array('t', 'u'), array('t', 'x'), array('x', 'u'), array('x', 'y'), array('u', 'y'));
+
+		$visitList = array();
+
+		$graph->bfs($nodeStore['s'], array(
+			'preNodeVisit' => function($node) use (&$visitList) {
+				$visitList[] = $node->data;
+			},
+			'postNodeVisit' => function($node) use (&$visitList) {
+				$visitList[] = $node->data;
+			},
+		));
+
+		$this->_assertEqualsStrict(
+			$visitList,
+			array('s', 's', 'r', 'r', 'w', 'w', 'v', 'v', 't', 't', 'x', 'x', 'u', 'u', 'y', 'y'),
+			'Breadth-first search, Nodes visited in order'
+		);
+
+		$distanceMap = array(
+			'r' => 1,
+			's' => 0,
+			't' => 2,
+			'u' => 3,
+			'v' => 2,
+			'w' => 1,
+			'x' => 2,
+			'y' => 3,
+		);
+
+		$actDistanceMap = array();
+		foreach($nodeStore as $node) {
+			$actDistanceMap[$node->data] = $node->distance;
+		}
+		$this->_assertEqualsStrict($distanceMap, $actDistanceMap, 'Breadth-first search, Distance match');
 	}
 	//------------------------------------------------
 	/**

@@ -81,6 +81,7 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 		}
 
 		$this->_dfsFinished        = TRUE;  //No nodes
+		$this->_bfsFinished        = TRUE;  //No nodes
 		$this->_graphContainsCycle = FALSE; //No nodes
 	}
 	//------------------------------------------------
@@ -96,6 +97,7 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 		$newNode = new $this->_nodeClass($this);
 		$this->_nodeList[] = $newNode;
 		$this->_dfsFinished = FALSE;
+		$this->_bfsFinished = FALSE;
 		return $newNode;
 	}
 	//------------------------------------------------
@@ -113,6 +115,7 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 		$newEdge = new $this->_edgeClass($this, $nodeOne, $nodeTwo, FALSE);
 		$this->_edgeList[] = $newEdge;
 		$this->_dfsFinished = FALSE;
+		$this->_bfsFinished = FALSE;
 		return $newEdge;
 	}
 	//------------------------------------------------
@@ -132,6 +135,7 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 
 		$edge->delete();
 		$this->_dfsFinished = FALSE;
+		$this->_bfsFinished = FALSE;
 	}
 	//------------------------------------------------
 	/**
@@ -190,6 +194,45 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 	}
 	//------------------------------------------------
 	/**
+	 * Does a Breadth-first Search with the given callbacks
+	 *
+	 * The array should contain only valid callbacks (see call_user_func). The preNodeVisit is called before a node
+	 * is visited, the postNodeVisit is called after it is visited.
+	 *
+	 * @param  Jadva_Tc_Node  $source     (OPTIONAL) The node to start form. Will take any node if not passed.
+	 * @param  array          $callbacks  (OPTIONAL) The functions to call when visiting
+	 *
+	 * @return  void
+	 */
+	public function bfs($source = NULL, array $callbacks = array())
+	{
+		//Parameter overloading
+		if( is_array($source) ) {
+			$callbacks = $source;
+			$source = NULL;
+		}
+
+		//See if there's anything to search at all
+		if( empty($this->_nodeList) ) {
+			return;
+		}
+
+		//Pick a source if none given, check if it is
+		if( empty($source) ) {
+			$source = $this->_nodeList[0];
+		} elseif( $source->getParent() != $this ) {
+			require_once 'Jadva/Tc/Graph/Exception.php';
+			throw new Jadva_Tc_Graph_Exception('Invalid source; does not belong to this graph');
+		}
+
+		//Tell the _bfs function to do a new search
+		$this->_bfsFinished = FALSE;
+
+		//And go
+		$this->_bfs($source, $callbacks);
+	}
+	//------------------------------------------------
+	/**
 	 * Contains all the nodes in this graph
 	 *
 	 * @var  array
@@ -218,11 +261,25 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 	protected $_dfsFinished;
 	//------------------------------------------------
 	/**
+	 * Contains whether a BFS was finished for the current nodes/edges
+	 *
+	 * @var  boolean
+	 */
+	protected $_bfsFinished;
+	//------------------------------------------------
+	/**
 	 * Contains the clock for the DFS function
 	 *
 	 * @var  boolean
 	 */
 	protected $_dfsTime;
+	//------------------------------------------------
+	/**
+	 * Contains the clock for the BFS function
+	 *
+	 * @var  boolean
+	 */
+	protected $_bfsTime;
 	//------------------------------------------------
 	/**
 	 * Contains the class used for creating the added nodes
@@ -239,9 +296,7 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 	/**
 	 * Does a Depth First Search on the current graph
 	 *
-	 * @todo  Add support for $callbacks
-	 *
-	 * @param  array  $callbacks  Not implemented yet. Should handle callbacks for events in the DFS
+	 * @param  array  $callbacks  Contains callbacks for events in the DFS
 	 *
 	 * @return void
 	 */
@@ -318,6 +373,68 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 		if( array_key_exists('postNodeVisit', $callbacks) ) {
 			call_user_func($callbacks['postNodeVisit'], $nodeU);
 		}
+	}
+	//------------------------------------------------
+	/**
+	 * Does a Breadth First Search on the current graph
+	 *
+	 * @param  Jadva_Tc_Node  $source     The source of the search
+	 * @param  array          $callbacks  Contains callbacks for events in the BFS
+	 *
+	 * @return void
+	 */
+	protected function _bfs(Jadva_Tc_Node $source, array $callbacks = array())
+	{
+		if( $this->_bfsFinished ) {
+			return;
+		}
+
+		//Set the colour to white (undiscovered) and clear other properties we'll set later
+		foreach($this->_nodeList as $node) {
+			$node->colour        = Jadva_Tc_Node::COLOUR_WHITE;
+			$node->predecessor   = NULL;
+			$node->discoveryTime = NULL;
+			$node->finishingTime = NULL;
+
+			$node->source = $source;
+			$node->distance = INF;
+		}
+
+		//Source is slightly different
+		$source->colour = Jadva_Tc_Node::COLOUR_GREY;
+		$source->distance = 0;
+
+		$queue = array($source);
+		while( count($queue) ) {
+			$nodeU = array_shift($queue);
+			foreach($nodeU->getOutgoingEdges() as $edge) {
+				$nodeV = $edge->getNodeTo();
+
+				if( Jadva_Tc_Node::COLOUR_WHITE !== $nodeV->colour ) {
+					continue;
+				}
+
+
+				$nodeV->colour = Jadva_Tc_Node::COLOUR_GREY;
+				$nodeV->distance = $nodeU->distance + 1;
+				$nodeV->distanceLength = $nodeU->distance + $edge->length;
+				$nodeV->predecessor = $nodeU;
+
+				$queue[] = $nodeV;
+			}
+
+			if( array_key_exists('preNodeVisit', $callbacks) ) {
+				call_user_func($callbacks['preNodeVisit'], $nodeU);
+			}
+
+			$nodeU->colour = Jadva_Tc_Node::COLOUR_BLACK;
+
+			if( array_key_exists('postNodeVisit', $callbacks) ) {
+				call_user_func($callbacks['postNodeVisit'], $nodeU);
+			}
+		}
+
+		$this->_bfsFinished = TRUE;
 	}
 	//------------------------------------------------
 	/**

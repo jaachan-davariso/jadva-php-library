@@ -183,6 +183,58 @@ class Jadva_Tc_Node extends Jadva_Tc_Object
 	}
 	//------------------------------------------------
 	/**
+	 * Sets the distance from the source in node count
+	 *
+	 * @param  NULL|integer  $newDistance  The new distance
+	 *
+	 * @return  NULL|integer  Provides a fluent interface
+	 */
+	public function setDistance($newDistance)
+	{
+		$this->_bailIfDead();
+		$this->_bailIfReadOnly();
+
+		$this->_distance = (int) $newDistance;
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the distance from the source in node count
+	 *
+	 * @return  NULL|integer The distance
+	 */
+	public function getDistance()
+	{
+		$this->_bailIfDead();
+		return $this->_distance;
+	}
+	//------------------------------------------------
+	/**
+	 * Sets the distance from the source in total edge length
+	 *
+	 * @param  NULL|integer  $newDistanceLength  The new distance
+	 *
+	 * @return  NULL|integer  Provides a fluent interface
+	 */
+	public function setDistanceLength($newDistanceLength)
+	{
+		$this->_bailIfDead();
+		$this->_bailIfReadOnly();
+
+		$this->_distanceLength = (int) $newDistanceLength;
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the distance from the source in total edge length
+	 *
+	 * @return  NULL|integer The distance
+	 */
+	public function getDistanceLength()
+	{
+		$this->_bailIfDead();
+		return $this->_distanceLength;
+	}
+	//------------------------------------------------
+	/**
 	 * Sets the predecessor
 	 *
 	 * @param  NULL|Jadva_Tc_Node  $newPredecessor  The new predecessor
@@ -209,6 +261,35 @@ class Jadva_Tc_Node extends Jadva_Tc_Object
 	{
 		$this->_bailIfDead();
 		return $this->_predecessor;
+	}
+	//------------------------------------------------
+	/**
+	 * Sets the source node that the distance parameters count for
+	 *
+	 * @param  NULL|Jadva_Tc_Node  $newSource  The new source
+	 *
+	 * @return  NULL|Jadva_Tc_Node  Provides a fluent interface
+	 */
+	public function setSource($newSource)
+	{
+		$this->_bailIfDead();
+		$this->_bailIfReadOnly();
+		if( (NULL !== $newSource) && !($newSource instanceof Jadva_Tc_Node)) {
+			trigger_error('Argument 1 passed to ' . __METHOD__ . '() must be an instance of Jadva_Tc_Node or NULL', E_USER_ERROR);
+		}
+
+		$this->_source = $newSource;
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the source
+	 *
+	 * @return  NULL|Jadva_Tc_Node The source
+	 */
+	public function getSource()
+	{
+		$this->_bailIfDead();
+		return $this->_source;
 	}
 	//------------------------------------------------
 	/**
@@ -359,6 +440,13 @@ class Jadva_Tc_Node extends Jadva_Tc_Object
 	protected $_predecessor;
 	//------------------------------------------------
 	/**
+	 * Contains the source
+	 *
+	 * @var  NULL|Jadva_Tc_Node
+	 */
+	protected $_source;
+	//------------------------------------------------
+	/**
 	 * Contains the discovery time
 	 *
 	 * @var  mixed
@@ -385,6 +473,20 @@ class Jadva_Tc_Node extends Jadva_Tc_Object
 	 * @var  mixed
 	 */
 	protected $_edgesIncoming;
+	//------------------------------------------------
+	/**
+	 * Contains the distance from the source in node count
+	 *
+	 * @var  integer
+	 */
+	protected $_distance;
+	//------------------------------------------------
+	/**
+	 * Contains the distance from the source in edge length
+	 *
+	 * @var  integer
+	 */
+	protected $_distanceLength;
 	//------------------------------------------------
 	/**
 	 * Deletes all the incoming and outgoing edges, and removes the references to them

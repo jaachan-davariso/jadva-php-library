@@ -71,6 +71,21 @@ abstract class Jadva_Test_Abstract
 	}
 	//------------------------------------------------
 	/**
+	 * Asserts that $expResult is strictly equal to $actResult
+	 *
+	 * @param  mixed    $expResult  The expected result
+	 * @param  mixed    $actResult  The actual result
+	 * @param  string   $message    The message to display
+	 * @param  boolean  $continue   Whether to continue on the tests if this one fails
+	 *
+	 * @return void
+	 */
+	protected function _assertEqualsStrict($expResult, $actResult, $message, $continue = TRUE)
+	{
+		$this->_displayTest($message, $expResult === $actResult, $continue);
+	}
+	//------------------------------------------------
+	/**
 	 * Displays a message
 	 *
 	 * @param  string   $message    The message to display

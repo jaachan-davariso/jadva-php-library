@@ -60,6 +60,15 @@ abstract class Jadva_Tc_Object
 	const STATE_DEAD   = 'stateDead';
 	//------------------------------------------------
 	/**
+	 * General variable to store data in a node
+	 *
+	 * Not changed by the Tc classes. Also not cleaned on delete.
+	 *
+	 * @var  mixed
+	 */
+	public $data;
+	//------------------------------------------------
+	/**
 	 * Default constructor.
 	 *
 	 * Generates an class-unique identity
