@@ -8,7 +8,7 @@
 											</head>
 		<body>
 						<h1>Source for file AggregateInterface.php</h1>
-<p>Documentation is available at <a href="../Jadva_View/Jadva_View_Helper/_library---Jadva---FusionCharts---Chart---AggregateInterface.php.html">AggregateInterface.php</a></p>
+<p>Documentation is available at <a href="../Jadva_FusionCharts/Jadva_FusionCharts_Chart/_library---Jadva---FusionCharts---Chart---AggregateInterface.php.html">AggregateInterface.php</a></p>
 <div class="src-code">
 <div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line"><a name="a2"></a><span class="src-comm">//----------------------------------------------------------------------------------------------------------------------</span></div></li>
@@ -32,38 +32,36 @@
 <li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*&nbsp;should&nbsp;you&nbsp;want&nbsp;to,&nbsp;you&nbsp;will&nbsp;be&nbsp;noted&nbsp;as&nbsp;contributor.</span></div></li>
 <li><div class="src-line"><a name="a21"></a><span class="src-doc">&nbsp;*</span></div></li>
 <li><div class="src-line"><a name="a22"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@category</span><span class="src-doc">&nbsp;&nbsp;&nbsp;JAdVA</span></div></li>
-<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Jadva_View</span></div></li>
-<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;Jadva_View_Helper</span></div></li>
-<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;&nbsp;Copyright&nbsp;(c)&nbsp;2008&nbsp;Ja`Achan&nbsp;da`Variso&nbsp;(http://www.JaAchan.com/)</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Jadva_FusionCharts</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;Jadva_FusionCharts_Chart</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;&nbsp;Copyright&nbsp;(c)&nbsp;2009&nbsp;Ja`Achan&nbsp;da`Variso&nbsp;(http://www.JaAchan.com/)</span></div></li>
 <li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.JaAchan.com/software/LICENSE.txt</span></div></li>
-<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;AggregateInterface.php&nbsp;142&nbsp;2009-04-10&nbsp;11:46:11Z&nbsp;jaachan&nbsp;$</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;AggregateInterface.php&nbsp;269&nbsp;2009-08-26&nbsp;17:11:14Z&nbsp;jaachan&nbsp;$</span></div></li>
 <li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;*/</span></div></li>
 <li><div class="src-line"><a name="a29"></a><span class="src-comm">//----------------------------------------------------------------------------------------------------------------------</span></div></li>
 <li><div class="src-line"><a name="a30"></a><span class="src-doc">/**</span></div></li>
 <li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;*&nbsp;Interface&nbsp;to&nbsp;generate&nbsp;an&nbsp;external&nbsp;</span><span class="src-doc-inlinetag">{@link&nbsp;Jadva_FusionCharts_Chart}</span></div></li>
 <li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;*</span></div></li>
 <li><div class="src-line"><a name="a33"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@category</span><span class="src-doc">&nbsp;&nbsp;&nbsp;JAdVA</span></div></li>
-<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Jadva_View</span></div></li>
-<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;Jadva_View_Helper</span></div></li>
-<li><div class="src-line"><a name="a36"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;&nbsp;Copyright&nbsp;(c)&nbsp;2008&nbsp;Ja`Achan&nbsp;da`Variso&nbsp;(http://www.JaAchan.com/)</span></div></li>
-<li><div class="src-line"><a name="a37"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://www.JaAchan.com/software/LICENSE.txt</span></div></li>
-<li><div class="src-line"><a name="a38"></a><span class="src-doc">&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a39"></a><span class="src-key">interface&nbsp;</span><a href="../Jadva_View/Jadva_View_Helper/Jadva_FusionCharts_Chart_AggregateInterface.html">Jadva_FusionCharts_Chart_AggregateInterface</a></div></li>
-<li><div class="src-line"><a name="a40"></a><span class="src-sym">{</span></div></li>
-<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//------------------------------------------------</span></div></li>
-<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
-<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;FusionCharts&nbsp;Chart&nbsp;that&nbsp;displays&nbsp;the&nbsp;information&nbsp;of&nbsp;the&nbsp;object</span></div></li>
-<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
-<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">Jadva_FusionCharts_Chart&nbsp;</span><span class="src-doc">&nbsp;The&nbsp;chart&nbsp;that&nbsp;displays&nbsp;the&nbsp;information&nbsp;of&nbsp;the&nbsp;object</span></div></li>
-<li><div class="src-line"><a name="a46"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Jadva_View/Jadva_View_Helper/Jadva_FusionCharts_Chart_AggregateInterface.html#methodgetFusionChartsChart">getFusionChartsChart</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//------------------------------------------------</span></div></li>
-<li><div class="src-line"><a name="a49"></a><span class="src-sym">}</span></div></li>
-<li><div class="src-line"><a name="a50"></a><span class="src-comm">//----------------------------------------------------------------------------------------------------------------------</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Jadva_FusionCharts</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;Jadva_FusionCharts_Chart</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-key">interface&nbsp;</span><a href="../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart_AggregateInterface.html">Jadva_FusionCharts_Chart_AggregateInterface</a></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//------------------------------------------------</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;FusionCharts&nbsp;Chart&nbsp;that&nbsp;displays&nbsp;the&nbsp;information&nbsp;of&nbsp;the&nbsp;object</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">Jadva_FusionCharts_Chart&nbsp;</span><span class="src-doc">&nbsp;The&nbsp;chart&nbsp;that&nbsp;displays&nbsp;the&nbsp;information&nbsp;of&nbsp;the&nbsp;object</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Jadva_FusionCharts/Jadva_FusionCharts_Chart/Jadva_FusionCharts_Chart_AggregateInterface.html#methodgetFusionChartsChart">getFusionChartsChart</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//------------------------------------------------</span></div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a48"></a><span class="src-comm">//----------------------------------------------------------------------------------------------------------------------</span></div></li>
 </ol></div>
 </div>
 	<p class="notes" id="credit">
-		Documentation generated on Fri, 21 Aug 2009 14:12:24 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+		Documentation generated on Wed, 02 Sep 2009 19:05:21 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
 	</p>
 	</body>
 </html>

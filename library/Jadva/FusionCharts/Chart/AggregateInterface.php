@@ -20,21 +20,19 @@
  * should you want to, you will be noted as contributor.
  *
  * @category   JAdVA
- * @package    Jadva_View
- * @subpackage Jadva_View_Helper
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @package    Jadva_FusionCharts
+ * @subpackage Jadva_FusionCharts_Chart
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: AggregateInterface.php 142 2009-04-10 11:46:11Z jaachan $
+ * @version    $Id: AggregateInterface.php 269 2009-08-26 17:11:14Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
  * Interface to generate an external {@link Jadva_FusionCharts_Chart}
  *
  * @category   JAdVA
- * @package    Jadva_View
- * @subpackage Jadva_View_Helper
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
- * @license    http://www.JaAchan.com/software/LICENSE.txt
+ * @package    Jadva_FusionCharts
+ * @subpackage Jadva_FusionCharts_Chart
  */
 interface Jadva_FusionCharts_Chart_AggregateInterface
 {

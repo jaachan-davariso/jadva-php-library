@@ -1,5 +1,12 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.4
+ New features:
+  - Added a Zend-style View Helper to render FusionCharts charts.
+  - Greatly enhanced the functionality in the FusionCharts chart class. It can
+    now deal with multiseries charts, funnel charts, trend lines, automatic
+    colouring, category attributes and data set attributes.
+
 0.2.3
  New features:
   - Added a file filter that filters based on regular expressions on the base

@@ -24,7 +24,7 @@
  * @subpackage Jadva_Version
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Version.php 258 2009-08-21 12:10:03Z jaachan $
+ * @version    $Id: Version.php 294 2009-09-02 17:02:24Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -33,11 +33,11 @@
  * @category   JAdVA
  * @package    Jadva
  * @subpackage Jadva_Version
- * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
+ * @copyright  Copyright (c) 2009 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
  */
 class Jadva_Version
 {
-	const VERSION = '0.2.3';
+	const VERSION = '0.2.4';
 }
 //----------------------------------------------------------------------------------------------------------------------
