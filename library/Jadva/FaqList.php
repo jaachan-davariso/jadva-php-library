@@ -24,7 +24,7 @@
  * @subpackage Jadva_FaqList
  * @copyright  Copyright (c) 2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: FaqList.php 350 2010-06-19 09:55:01Z jaachan $
+ * @version    $Id: FaqList.php 379 2011-10-01 09:20:43Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_FaqList_Group */
@@ -199,58 +199,44 @@ class Jadva_FaqList
 	 */
 	public function toHtml($targetDirectory, $sourceDirectory = NULL, $styleSheet = NULL)
 	{
-		/** @see Jadva_File_Directory */
-		require_once 'Jadva/File/Directory.php';
+		$this->render('MultiPageHtml', $targetDirectory, $sourceDirectory, $styleSheet);
+	}
+	//------------------------------------------------
+	/**
+	 * Renders the FaqList with the given renderer
+	 *
+	 * @param  Jadva_FaqList_Renderer_Abstract|string  $renderer
+	 *         The (name of the) renderer.
+	 * @param  Jadva_File_Directory|string  $targetDirectory
+	 *         (OPTIONAL) The directory to store the files in. Require when invoking a renderer by name
+	 * @param  Jadva_File_Directory|string  $sourceDirectory
+	 *         (OPTIONAL) The directory to copy files from, if any
+	 * @param  string  $styleSheet
+	 *         (OPTIONAL) The name of the stylesheet file, if any
+	 *
+	 * @return  Jadva_FaqList  Provides a fluent interface
+	 */
+	public function render($renderer, $targetDirectory = NULL, $sourceDirectory = NULL, $styleSheet = NULL)
+	{
+		if( !($renderer instanceof Jadva_FaqList_Renderer_Abstract) ) {
+			$className = 'Jadva_FaqList_Renderer_' . $renderer;
 
-		$directory = Jadva_File_Directory::getInstanceFor($targetDirectory);
-		$directory->ensureExistance();
-		$dp = $directory->getPath();
+			require_once str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-		if( NULL !== $sourceDirectory ) {
-			$directory = Jadva_File_Directory::verifyExistance($sourceDirectory);
-			$sp = $directory->getPath();
+			$renderer = new $className($this, $targetDirectory);
 		}
 
-		$iconList = array();
-		$fileList = array();
+		if( $targetDirectory ) {
+			$renderer->setOutputDirectory($targetDirectory);
+		}
 
-		$this->_readFiles($this->_homePageText, $fileList);
-		file_put_contents($dp . 'index.html', $this->_generateIndex());
-
-		foreach($this->getGroups() as $group) {
-			if( !$group->hasQuestions() ) {
-				continue;
+		if( $sourceDirectory ) {
+			$renderer->setSourceDirectory($sourceDirectory);
+			if( $styleSheet ) {
+				$renderer->setStyleSheet($styleSheet);
 			}
-
-			file_put_contents($dp . $group->id() . '.html', $this->_generateFaqPage($group, $iconList, $fileList));
 		}
-		file_put_contents($dp . 'toc.html', $this->_generateToc());
-
-		//Copy additional files
-		if( !empty($styleSheet) ) {
-			$styleSheet = realpath($sp . $styleSheet);
-			if( FALSE === $styleSheet ) {
-				$this->_warning('Could not find given stylesheet');
-			}
-		}
-
-		if( empty($styleSheet) ) {
-			$styleSheet = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'FaqList' . DIRECTORY_SEPARATOR . 'style.css';
-		}
-		copy($styleSheet, $dp . 'style.css');
-
-
-		if( 0 < count($iconList) ) {
-			$iconDirectory = Jadva_File_Directory::getInstanceFor($dp . 'icons/');
-			$iconDirectory->ensureExistance();
-			$idp = $iconDirectory->getPath();
-
-			$this->_copyIcons($iconList, $idp);
-		}
-
-		if( 0 < count($fileList) ) {
-			$this->_copyFiles($fileList, $sp, $dp);
-		}
+		$renderer->render();
 
 		return $this;
 	}
@@ -263,6 +249,23 @@ class Jadva_FaqList
 	public function getErrors()
 	{
 		return $this->_errorList;
+	}
+	//------------------------------------------------
+	/**
+	 * Adds a warning to the list
+	 *
+	 * @param  string  $message  The message
+	 * @parma  mixed   ...       The message params
+	 *
+	 * @return  Jadva_FaqList  Provides a fluent interface
+	 */
+	public function addWarning($message)
+	{
+		$args = func_get_args();
+
+		call_user_func_array(array($this, '_warning'), $args);
+
+		return $this;
 	}
 	//------------------------------------------------
 	/**
@@ -531,389 +534,6 @@ class Jadva_FaqList
 		}
 
 		return implode(" ", $return);
-	}
-	//------------------------------------------------
-	/**
-	 * Generates the HTML for the index.html file
-	 *
-	 * @return  string  The HTML
-	 */
-	protected function _generateIndex()
-	{
-		return $this->_generateHtmlHeader($this->getName())
-			. $this->_generateMenu(NULL, 'home')
-			. '<div id="main_content"><h2>' . $this->getName()
-			. '</h2>'
-			. ($this->hasHomePageText() ? $this->getHomePageText() : '<p>Select a group in the menu</p>')
-			. '</div></body></html>';
-	}
-	//------------------------------------------------
-	/**
-	 * Generates the HTML for the table of contents file
-	 *
-	 * @return  string  The HTML
-	 */
-	protected function _generateToc()
-	{
-		return $this->_generateHtmlHeader($this->getName())
-			. $this->_generateMenu(NULL, 'toc')
-			. '<div id="main_content"><h2>Table of contents</h2>'
-			. $this->_generateQuestionMenu()
-			. '</div></body></html>';
-	}
-	//------------------------------------------------
-	/**
-	 * Generates the HTML for a FAQ page
-	 *
-	 * @param  Jadva_FaqList_Group   $group     The group who's page to generate
-	 * @param  array                &$iconList  The icon list to store the found icons in
-	 * @param  array                &$fileList  The array to store the file list in
-	 *
-	 * @return  string  The HTML
-	 */
-	protected function _generateFaqPage(Jadva_FaqList_Group $group, array &$iconList, array &$fileList)
-	{
-		return $this->_generateHtmlHeader($this->getName(), $group)
-			. $this->_generateMenu($group)
-			. '<div id="main_content">'
-			. '<h2>' . htmlspecialchars($group->name) . '</h2>'
-			. $this->_generateQuestionMenu($group)
-			. $this->_generateQuestionList($group, $iconList, $fileList)
-			. '</div></body></html>';
-	}
-	//------------------------------------------------
-	/**
-	 * Generates the HTML for the menu of questions
-	 *
-	 * @param  Jadva_FaqList_Group   $group     The group who's page to generate, NULL for table of contents
-	 *
-	 * @return  string  The HTML
-	 */
-	protected function _generateQuestionMenu(Jadva_FaqList_Group $group = NULL)
-	{
-		if( NULL === $group ) {
-			$questionList = array();
-			$questionToGroup = array();
-			foreach($this->getGroups() as $itGroup) {
-				foreach($itGroup->getQuestions() as $q) {
-					$questionList[$q->question] = $q;
-					$questionToGroup[$q->id()] = $itGroup;
-				}
-			}
-			ksort($questionList);
-		} else {
-			$questionList = $group->getQuestions();
-			if( 0 == count($questionList) ) {
-				return '';
-			}
-		}
-
-		$list = array();
-		foreach($questionList as $question) {
-			$name = 'qln_' . $question->id();
-
-			$href = '';
-			if( NULL === $group ) {
-				$href = $questionToGroup[$question->id()]->id() . '.html';
-			}
-			$href .= '#q_' . $question->id();
-
-			$list[] = '<li><a name="' . $name . '" href="' . $href . '">' . 
-				htmlspecialchars($question->question)
-				. '</a></li>';
-		}
-
-		return '<ol class="question_index">' . implode($list) . '</ol>';
-	}
-	//------------------------------------------------
-	/**
-	 * Generates the HTML for the question list on a FAQ page
-	 *
-	 * @param  Jadva_FaqList_Group   $group     The group who's page to generate
-	 * @param  array                &$iconList  The icon list to store the found icons in
-	 * @param  array                &$fileList  The array to store the file list in
-	 *
-	 * @return  string  The HTML
-	 */
-	protected function _generateQuestionList(Jadva_FaqList_Group $group, array &$iconList, array &$fileList)
-	{
-		$questionList = $group->getQuestions();
-		if( 0 == count($questionList) ) {
-			return 'There are no questions in this group';
-		}
-
-		$list = array();
-		foreach($questionList as $question) {
-			$html = '<dt><a name="q_' . $question->id() . '">';
-			$html .= htmlspecialchars($question->question);
-			$html .= '</a></dt>';
-
-			$answer = $question->answer;
-
-			$matchesList = array(); $replaceList = array(); $replaceMatchList = array();
-			$matchCount = preg_match_all('/<qlink[^>]*>/', $answer, $matchesList);
-			foreach($matchesList[0] as $match) {
-				if( empty($match) ) {
-					continue;
-				}
-
-				if( FALSE === strpos($match, 'href="') ) {
-					$this->_warning('Invalid qlink: ' . $match);
-					continue;
-				}
-
-				list($pre, $rest) = explode('href="', $match);
-				list($name, $post) = explode('"', $rest, 2);
-
-				$questionPrefix = NULL;
-				if( !$group->hasQuestion($name) ) {
-					foreach($this->getGroups() as $otherGroup) {
-						if( $otherGroup->hasQuestion($name) ) {
-							$questionPrefix = $otherGroup->id() . '.html';
-							break;
-						}
-					}
-				}
-
-				$replaceList[]      = '/<qlink([^>*]href=")' . $name . '"/';
-				$replaceMatchList[] = '<a\1' . $questionPrefix . '#q_' . $name . '"';
-			}
-
-			if( count($replaceList) ) {
-				$replaceList      = array_unique($replaceList);
-				$replaceMatchList = array_unique($replaceMatchList);
-				$answer = preg_replace($replaceList, $replaceMatchList, $answer);
-			}
-
-
-			$answer = str_replace('</qlink', '</a', $answer);
-
-			$answer = str_replace('<url>', '<span class="in-text-url">', $answer);
-			$answer = str_replace('</url>', '</span>', $answer);
-
-			$matchesList = array();
-			$matchCount = preg_match_all('/<icon[^>]*>/', $answer, $matchesList);
-			foreach($matchesList[0] as $match) {
-				if( empty($match) ) {
-					continue;
-				}
-
-				if( FALSE === strpos($match, 'name="') ) {
-					$this->_warning('Invalid icon: ' . $match);
-					continue;
-				}
-
-				list($pre, $rest) = explode('name="', $match);
-				list($name, $post) = explode('"', $rest, 2);
-
-				$iconList[$name] = $name;
-			}
-
-			$answer = str_replace('<icon name="', '<img src="./icons/', $answer);
-
-			$this->_readFiles($answer, $fileList);
-
-			$html .= '<dd>' . $answer . '<div class="to_top"><a href="#top">Back to top</a></div></dd>';
-
-			$list[] = $html;
-		}
-
-		return '<dl class="question_list">' . implode($list) . '</dl>';
-	}
-	//------------------------------------------------
-	/**
-	 * Generates the HTML header for the pages
-	 *
-	 * @param  string               $title         The title for the page
-	 * @param  Jadva_FaqList_Group  $currentGroup  (OPTIONAL) The group who's page, if any
-	 *
-	 * @return  string  The HTML
-	 */
-	protected function _generateHtmlHeader($title, Jadva_FaqList_Group $currentGroup = NULL)
-	{
-		$html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">';
-		$html .= '<html xmlns="http://www.w3.org/1999/xhtml"><head>';
-		$html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />';
-		$html .= '<title>' . $title . '</title>';
-		$html .= '<meta name="generator" content="' . __CLASS__ . '" />';
-		$html .= '<link href="./style.css" media="screen" rel="stylesheet" type="text/css" />';
-
-		$html .= '<link href="./index.html" rel="top" title="Index" />';
-		if( $currentGroup ) {
-			$html .= '<link href="./index.html" rel="up" title="Index" />';
-		}
-		$html .= '<link href="./index.html" rel="index" title="Index" />';
-
-		if( NULL < count($this->_groupList) ) {
-			$html .= $this->_generateGroupHeadLink(reset($this->_groupList), 'first');
-
-			if( $currentGroup ) {
-				$keys = array_keys($this->_groupList);
-				$currentGroupIndex = array_search($currentGroup->id(), $keys);
-
-				if( 0 < $currentGroupIndex ) {
-					$html .= $this->_generateGroupHeadLink($this->_groupList[$keys[$currentGroupIndex - 1]], 'prev');
-				}
-
-				if( $currentGroupIndex < count($this->_groupList) - 1 ) {
-					$html .= $this->_generateGroupHeadLink($this->_groupList[$keys[$currentGroupIndex + 1]], 'next');
-				}
-			}
-
-			$html .= $this->_generateGroupHeadLink(end($this->_groupList), 'last');
-		}
-
-
-		$html .= '</head><body>';
-		$html .= '<h1><a name="top">' . htmlspecialchars($title) . '</a></h1>';
-
-		return $html;
-	}
-	//------------------------------------------------
-	/**
-	 * Generates a <link /> element for a given group
-	 *
-	 * @param  Jadva_FaqList_Group  $group  The group
-	 * @param  string               $rel    The relation to the current page
-	 *
-	 * @return  string  The HTML
-	 */
-	protected function _generateGroupHeadLink(Jadva_FaqList_Group $group, $rel)
-	{
-		return '<link href="./' . $group->id() . '.html" rel="' . $rel . '" title="' . $group->name . '" />';
-	}
-	//------------------------------------------------
-	/**
-	 * Generates the menu
-	 *
-	 * @param  Jadva_FaqList_Group  $currentGroup  The current group
-	 * @param  string               $pageName      (OPTIONAL) The name of the page, if it's a special page
-	 *
-	 * @return  string  The HTML
-	 */
-	protected function _generateMenu(Jadva_FaqList_Group $currentGroup = NULL, $pageName = NULL)
-	{
-		$list = array();
-
-		if( $this->hasHomePageText() ) {
-			$list[] = '<li class="home ' . ('home' === $pageName ? 'active' : '') . '"><a href="./index.html">Home</a></li>';
-		}
-
-		foreach($this->getGroups() as $groupId => $group) {
-			if( !$group->hasQuestions() ) {
-				continue;
-			}
-
-			$class = 'group';
-			if( $currentGroup && ($currentGroup->id() == $group->id()) ) {
-				$class .= ' active';
-			}
-
-			$list[] = '<li class="' . $class . '" group-id="' . $groupId . '"><a href="./' . $groupId . '.html">' . $group->name . '</a></li>';
-		}
-
-		$list[] = '<li class="toc ' . ('toc' === $pageName ? 'active' : '') . '"><a href="./toc.html">Table of contents</a></li>';
-
-		return '<ul class="group_menu">' . implode($list) . '</ul>';
-	}
-	//------------------------------------------------
-	/**
-	 * Copies the needed icons
-	 *
-	 * @param  array   $iconList        The list of icon names
-	 * @param  string  $iconTargetPath  The path to copy the icons from
-	 *
-	 * @return  void
-	 */
-	protected function _copyIcons(array $iconList, $iconTargetPath)
-	{
-		if( 0 == count($iconList) ) {
-			return;
-		}
-
-		if( NULL === self::$iconDirectory ) {
-			$this->_warning('No icon input directory specified, cannot copy icons');
-			return;
-		}
-
-		$directory = Jadva_File_Directory::getInstanceFor(self::$iconDirectory);
-
-		if( !$directory->exists() ) {
-			$this->_warning('Invalid icon input directory ' . $directory->getUrl());
-			return;
-		}
-
-		foreach($iconList as $icon) {
-			$iconFile = $directory->getFile($icon);
-
-			if( !$iconFile->exists() ) {
-				$this->_warning('Invalid icon file: ' . $iconFile->getUrl() . PHP_EOL);
-				continue;
-			}
-			copy($iconFile->getUrl(), $iconTargetPath . $icon);
-		}
-	}
-	//------------------------------------------------
-	/**
-	 * Reads the required files to copy
-	 *
-	 * @param  string   $html      The HTML to read from
-	 * @param  array   &$fileList  The array to store the file list in
-	 *
-	 * @return  void
-	 */
-	protected function _readFiles($html, array &$fileList)
-	{
-		// Images used
-		$matchesList = array();
-		$matchCount = preg_match_all('/<img[^>]*>/', $html, $matchesList);
-		foreach($matchesList[0] as $match) {
-			if( empty($match) ) {
-				continue;
-			}
-
-			if( FALSE === strpos($match, 'src="') ) {
-				continue;
-			}
-
-			list(, $match) = explode('src="', $match);
-			list($match) = explode('"', $match);
-
-			if( FALSE !== strpos($match, '://') ) {
-				continue;
-			}
-
-			$fileList[] = $match;
-		}
-	}
-	//------------------------------------------------
-	/**
-	 * Copies the given files
-	 *
-	 * @param  array   $fileList  The list of files to copy
-	 * @param  string  $sp        The source directory
-	 * @param  string  $tp        The target directory
-	 *
-	 * @return  void
-	 */
-	protected function _copyFiles(array $fileList, $sp, $tp)
-	{
-		$fileList = array_unique($fileList);
-		foreach($fileList as $file) {
-			$filePath = realpath($sp . $file);
-			if( FALSE === $filePath ) {
-				$this->_warning('Files "%1$s" does not exist', $sp . $file);
-				continue;
-			}
-
-			$targetPath = $tp . substr($filePath, strlen($sp));
-
-			$dir = dirname($targetPath);
-			$directory = Jadva_File_Directory::getInstanceFor($dir);
-			$directory->ensureExistance();
-
-			copy($filePath, $targetPath);
-		}
 	}
 	//------------------------------------------------
 }

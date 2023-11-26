@@ -24,7 +24,7 @@
  * @subpackage Jadva_Bin_Faq
  * @copyright  Copyright (c) 2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: jadva-xml2faq.php 349 2010-06-19 09:11:55Z jaachan $
+ * @version    $Id: jadva-xml2faq.php 379 2011-10-01 09:20:43Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 // Set up environment
@@ -58,6 +58,7 @@ function showHelp($errorMessage = NULL)
 	echo ' and OPTIONS are one or more of' . PHP_EOL;
 	echo ' --help     show this and exit' . PHP_EOL;
 	echo ' --library  the location of the JAdVA library' . PHP_EOL;
+	echo ' --renderer the renderer system (default MultiPageHtml)' . PHP_EOL;
 	echo ' --style    the name of the stylesheet' . PHP_EOL;
 	echo ' --verbose  be more verbose to what is happening' . PHP_EOL;
 	echo ' --quiet    show no output, save for errors and warnings' . PHP_EOL;
@@ -98,6 +99,7 @@ $OPTIONS->verboseLevel = 1;
 $OPTIONS->libraryLocation = NULL;
 $OPTIONS->iconDir = NULL;
 $OPTIONS->styleSheet = NULL;
+$OPTIONS->renderer = 'MultiPageHtml';
 
 for($itArg = 1; $itArg < $argc; $itArg++) {
 	$arg = $argv[$itArg];
@@ -142,6 +144,13 @@ for($itArg = 1; $itArg < $argc; $itArg++) {
 			showHelp('Missing parameter for option --icon-dir');
 		}
 		$OPTIONS->iconDir = $argv[$itArg];
+		break;
+	case '--renderer':
+		$itArg++;
+		if( $itArg == $argc ) {
+			showHelp('Missing parameter for option --renderer');
+		}
+		$OPTIONS->renderer = $argv[$itArg];
 		break;
 	default:
 		showHelp('Invalid parameter: ' . $arg);
@@ -255,7 +264,7 @@ if( 0 < count($errors) ) {
 }
 
 output(1, 'Saving HTML files to ' . $outputDir->getPath());
-$faq->toHtml($outputDir, $sourceDir, $OPTIONS->styleSheet);
+$faq->render($OPTIONS->renderer, $outputDir, $sourceDir, $OPTIONS->styleSheet);
 //----------------------------------------------------------------------------------------------------------------------
 // Inform user of completion
 $warnings = $faq->getWarnings();

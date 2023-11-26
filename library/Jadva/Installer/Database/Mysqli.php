@@ -24,7 +24,7 @@
  * @subpackage Jadva_Installer_Database
  * @copyright  Copyright (c) 2009-2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Mysqli.php 322 2010-01-25 11:46:13Z jaachan $
+ * @version    $Id: Mysqli.php 357 2010-09-24 11:50:34Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_Abstract */
@@ -198,7 +198,7 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 	/** Implements Jadva_Installer_Database_Abstract::_executeDatabaseScript */
 	protected function _executeDatabaseScript($script)
 	{
-		if( !is_array($script) ) {
+		if( is_string($script) ) {
 			$script = array($script);
 		}
 
@@ -637,6 +637,13 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 		//Add the last query
 		$queryList[] = $curText;
 
+		//Added one-line-comment if need be
+		switch($parserState) {
+		case self::PARSER_STATE_COMMENT_ONELINE:
+			$oneLineCommentsList[] = $curOneLineComment;
+			break;
+		}
+
 		//Remove empty queries
 		$list = array();
 		foreach($queryList as $queryOriginal) {
@@ -652,6 +659,8 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 			$list[] = $queryOriginal;
 		}
 		$queryList = $list;
+
+		$is_essential = true;
 
 		// Parse comments to find requirements
 		$requirementList = array();
@@ -669,12 +678,17 @@ class Jadva_Installer_Database_Mysqli extends Jadva_Installer_Database_Abstract
 						'scriptVersion' => intval($scriptVersion),
 					);
 				}
+			} elseif( substr($oneLineComment, 0, 13) === 'IS_ESSENTIAL:' ) {
+				$param = strtolower(trim(substr($oneLineComment, 13)));
+
+				$is_essential = ('0' !== $param) && ('false' !== $param);
 			}
 		}
 
 		return array(
 			'requirement_list' => $requirementList,
 			'query_list'       => $queryList,
+			'is_essential'     => $is_essential,
 		);
 	}
 	//------------------------------------------------

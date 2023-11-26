@@ -24,7 +24,7 @@
  * @subpackage Jadva_Installer_Database_ScriptLists
  * @copyright  Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: TableNode.php 43 2008-09-26 09:04:34Z jaachan $
+ * @version    $Id: TableNode.php 357 2010-09-24 11:50:34Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -38,6 +38,14 @@
  */
 class Jadva_Installer_Database_TableNode extends Jadva_Tc_Node
 {
+	//------------------------------------------------
+	/**
+	 * Contains the script name and version of the script that causes this one to be skipped, or FALSE when it
+	 * shouldn't be skipped
+	 *
+	 * @var  array|false
+	 */
+	public $skipReason = FALSE;
 	//------------------------------------------------
 	/**
 	 * Returns the database type this script is for
@@ -161,6 +169,30 @@ class Jadva_Installer_Database_TableNode extends Jadva_Tc_Node
 	}
 	//------------------------------------------------
 	/**
+	 * Returns whether this node is essential for a complete installation
+	 *
+	 * @return  boolean  TRUE when this node is essential for a complete installation, FALSE otherwise
+	 */
+	public function getIsEssential()
+	{
+		return $this->_isEssential;
+	}
+	//------------------------------------------------
+	/**
+	 * Sets whether this node is essential
+	 *
+	 * @param  boolean  $isEssential  Whether this node is essential
+	 *
+	 * @return  Jadva_Installer_Database_TableNode  Provides a fluent interface
+	 */
+	public function setIsEssential($isEssential)
+	{
+		$this->_isEssential = (boolean) $isEssential;
+
+		return $this;
+	}
+	//------------------------------------------------
+	/**
 	 * Contains the database type this script is for
 	 * @var  string
 	 */
@@ -183,6 +215,12 @@ class Jadva_Installer_Database_TableNode extends Jadva_Tc_Node
 	 * @var  array
 	 */
 	protected $_content       = NULL;
+	//------------------------------------------------
+	/**
+	 * Contains whether this node is essential
+	 * @var  boolean
+	 */
+	protected $_isEssential   = TRUE;
 	//------------------------------------------------
 }
 //----------------------------------------------------------------------------------------------------------------------

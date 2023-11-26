@@ -24,7 +24,7 @@
  * @subpackage Jadva_Installer_Database
  * @copyright  Copyright (c) 2009-2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 327 2010-01-25 12:02:40Z jaachan $
+ * @version    $Id: Abstract.php 357 2010-09-24 11:50:34Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_TableNode_List */
@@ -87,9 +87,41 @@ require_once 'Jadva/Installer/Database/TableNode/List.php';
  * @package    Jadva_Installer
  * @subpackage Jadva_Installer_Database
  */
-//----------------------------------------------------------------------------------------------------------------------
 abstract class Jadva_Installer_Database_Abstract
 {
+	//------------------------------------------------
+	/**
+	 * Called on the depth first search of the node graph to check for content
+	 *
+	 * @param  Jadva_Tc_Node  $node  The node to process
+	 *
+	 * @return  void
+	 */
+	public static function NodeGraphDfsCheckContent(Jadva_Tc_Node $node)
+	{
+		if( NULL === $node->content ) {
+			$node->skipReason = array($node->scriptName, $node->scriptVersion);
+		}
+
+		foreach($node->getOutgoingEdges() as $edge) {
+			$needed = $edge->getNodeTo();
+
+			if( $needed->skipReason ) {
+				if( $node->isEssential ) {
+					/** @see Jadva_Installer_Database_Exception */
+					require_once 'Jadva/Installer/Database/Exception.php';
+					throw new Jadva_Installer_Database_Exception(sprintf(
+						'%1$s.%2$s requires content for %3$s.%4$s, but none was given',
+						$node->scriptName, $node->scriptVersion,
+						$needed->skipReason[0], $needed->skipReason[1]
+					));
+				}
+
+				$node->skipReason = $needed->skipReason;
+				break;
+			}
+		}
+	}
 	//------------------------------------------------
 	/**
 	 * Default constructor
@@ -106,6 +138,16 @@ abstract class Jadva_Installer_Database_Abstract
 				$this->$methodName($optionValue);
 			}
 		}
+	}
+	//------------------------------------------------
+	/**
+	 * Returns the output formatter used, if set
+	 *
+	 * @return  Jadva_Installer_OutputFormatter_Interface|NULL  The output formatter instance, or NULL if not set
+	 */
+	public function getOutputFormatter()
+	{
+		return $this->_outputFormatter;
 	}
 	//------------------------------------------------
 	/**
@@ -256,7 +298,7 @@ abstract class Jadva_Installer_Database_Abstract
 
 			$this->_outputFormatter->outputInfo('Retrieving the list of files');
 			try {
-				$list = $this->_nodeLists[$this->_dbType]->getNodesAsTopologicalSort();
+				$list = $this->_nodeLists[$this->_dbType]->getNodesAsTopologicalSort(FALSE);
 			} catch(Jadva_Tc_Graph_Exception $e) {
 				/** @see Jadva_Installer_Database_Exception */
 				require_once 'Jadva/Installer/Database/Exception.php';
@@ -264,13 +306,15 @@ abstract class Jadva_Installer_Database_Abstract
 			}
 
 			$this->_outputFormatter->outputInfo('Checking for content');
-			foreach($list as $node) {
-				if( NULL === $node->content ) {
-					/** @see Jadva_Installer_Database_Exception */
-					require_once 'Jadva/Installer/Database/Exception.php';
-					throw new Jadva_Installer_Database_Exception('Missing content for file "' . $node->filename . '"');
-				}
-			}
+
+			//Find all items that must be skipped, and find any content depency failures
+			$this->_nodeLists[$this->_dbType]->dfs(array(
+				'preNodeVisit' => array(__CLASS__, 'NodeGraphDfsCheckContent'),
+			));
+
+			//Filter skipped items
+			$list = array_filter($list, create_function('$a', 'return !$a->skipReason;'));
+
 			$this->_outputFormatter->outputSuccess('File list updated and sorted');
 
 			$this->_outputFormatter->outputInfo('Connecting to the database');
@@ -615,6 +659,7 @@ abstract class Jadva_Installer_Database_Abstract
 	 *         "query two",
 	 * //...
 	 *     ),
+	 *     'is_essential' => true,
 	 * );
 	 * </code>
 	 *
@@ -640,6 +685,10 @@ abstract class Jadva_Installer_Database_Abstract
 		$scriptContents = str_replace("\r\n", "\n", $scriptContents);
 		$parsed         = $this->_parseDatabaseScript($scriptContents);
 
+		if( !isset($parsed['is_essential']) ) {
+			$parsed['is_essential'] = TRUE;
+		}
+
 		foreach($parsed['requirement_list'] as $requirement) {
 			$scriptName    = trim($requirement['scriptName']);
 			$scriptVersion = intval(trim($requirement['scriptVersion']));
@@ -649,6 +698,7 @@ abstract class Jadva_Installer_Database_Abstract
 		}
 
 		$curNode->content = $parsed['query_list'];
+		$curNode->isEssential = (boolean) $parsed['is_essential'];
 	}
 	//------------------------------------------------
 }

@@ -147,11 +147,13 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 	}
 	//------------------------------------------------
 	/**
-	 * Returns clones of the nodes in this graph, sorted topological
+	 * Returns (clones of) the nodes in this graph, sorted topological
+	 *
+	 * @param  boolean  $clone  (OPTIONAL) Whether to create clones; by default this is on to memory leaks
 	 *
 	 * @return  array  The nodes
 	 */
-	public function getNodesAsTopologicalSort()
+	public function getNodesAsTopologicalSort($clone = TRUE)
 	{
 		$this->_dfs();
 
@@ -162,12 +164,29 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 
 		$return = array();
 		foreach($this->_nodeList as $node) {
-			$return[ $node->getIdentity() ] = clone $node;
+			$return[ $node->getIdentity() ] = $clone ? clone $node : $node;
 		}
 
 		uasort($return, create_function('$a, $b', 'return $b->finishingTime < $a->finishingTime;'));
 
 		return $return;
+	}
+	//------------------------------------------------
+	/**
+	 * Does a Depth First Search with the given callbacks
+	 *
+	 * The array should contain only valid callbacks (see call_user_func). The preNodeVisit is called before a node
+	 * is visited, the postNodeVisit is called after it is visited.
+	 *
+	 * @param  array  $callbacks  The functions to call when visiting
+	 *
+	 * @return  void
+	 */
+	public function dfs(array $callbacks)
+	{
+		$this->_dfsFinished = FALSE;
+
+		$this->_dfs($callbacks);
 	}
 	//------------------------------------------------
 	/**
@@ -249,7 +268,7 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 		foreach($this->_nodeList as $node) {
 			//But only if they're undiscovered
 			if( Jadva_Tc_Node::COLOUR_WHITE === $node->colour ) {
-				$this->_dfsNodeVisit($node);
+				$this->_dfsNodeVisit($node, $callbacks);
 			}
 		}
 
@@ -284,13 +303,21 @@ class Jadva_Tc_Graph extends Jadva_Tc_Object
 			//If the node is white (undiscovered), visit it
 			if( Jadva_Tc_Node::COLOUR_WHITE === $nodeV->colour ) {
 				$nodeV->predecessor = $nodeU;
-				$this->_dfsNodeVisit($nodeV);
+				$this->_dfsNodeVisit($nodeV, $callbacks);
 			}
+		}
+
+		if( array_key_exists('preNodeVisit', $callbacks) ) {
+			call_user_func($callbacks['preNodeVisit'], $nodeU);
 		}
 
 		//Set the colour to black (finished), increase the time and set the finishing time
 		$nodeU->colour        = Jadva_Tc_Node::COLOUR_BLACK;
 		$nodeU->finishingTime = ++$this->_dfsTime;
+
+		if( array_key_exists('postNodeVisit', $callbacks) ) {
+			call_user_func($callbacks['postNodeVisit'], $nodeU);
+		}
 	}
 	//------------------------------------------------
 	/**

@@ -1,4 +1,4 @@
-Copyright (c) <year>, Ja`Achan da`Variso
+Copyright (c) 2011, Ja`Achan da`Variso
 All rights reserved.
 
 Software under this license is bound to the following conditions:

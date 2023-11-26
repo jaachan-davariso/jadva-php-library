@@ -1,0 +1,62 @@
+/**
+ * Style for the generated FAQs
+ *
+ * @copyright 2010, Ja`Achan da`Variso
+ */
+
+body {
+	background-color: white;
+	color: black;
+}
+
+ul.group_menu {
+	width: 15%;
+	float: left;
+}
+
+ul.group_menu li a {
+	color: #000;
+}
+
+ul.group_menu li.active a {
+	text-decoration: none;
+}
+
+ul.group_menu li.home {
+	margin-bottom: 1em;
+}
+
+ul.group_menu li.toc {
+	margin-top: 1em;
+}
+
+#main_content {
+	width: 60%;
+	float: left;
+}
+
+div.to_top {
+	padding-top: 1em;
+}
+
+dl.question_list dt {
+	margin: 0.5em 0 1em 0;
+}
+
+dl.question_list dd {
+	margin: 0 0 1.5em 1em;
+}
+
+code {
+	display: block;
+	font-family: monospace;
+	white-space: pre;
+	border: 1px solid black;
+	background-color: #DDD;
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+dl.question_list dd span.in-text-url {
+	font-style: italic;
+}

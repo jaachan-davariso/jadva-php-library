@@ -1,5 +1,12 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.8
+ New features:
+  - [FaqList] A extendable sytem for rendering FaqLists has been added
+  - [Installer][DB][MySQLi] You can now mark a script as being optional by
+    adding IS_ESSENTIAL: 0 or IS_ESSENTIAL: false to the header. This will skip
+    that file if the required scripts aren't available.
+
 0.2.7:
  New features:
   - [FaqList] You can now use a custom stylesheet file.
