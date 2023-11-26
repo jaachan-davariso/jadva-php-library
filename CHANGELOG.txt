@@ -1,0 +1,12 @@
+This is the changelog for the JAdVA PHP components library:
+
+0.2.0
+ ! The table name for the database installer is now all lowercase
+ - Added functionality for managing files
+
+0.1.1
+ - Fixed a bug where the installer would crash if MySQL threw a warning
+ - When a query has failed, the query is now outputted in <pre>-format for 
+    better readability
+0.1.0
+ - Initial release

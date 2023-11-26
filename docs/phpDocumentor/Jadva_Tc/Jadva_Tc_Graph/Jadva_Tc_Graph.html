@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Jadva_Tc_Graph</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+						<script src="../../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../../media/images/plus.png";
+				imgMinus.src = "../../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Jadva_Tc_Graph</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-descendents">Descendents</a>
+			|											<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-consts">Constants</a>
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This class represenst a graph object</p>
+	<ul class="tags">
+				<li><span class="field">copyright:</span> Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)</li>
+				<li><span class="field">license:</span> <a href="http://www.JaAchan.com/software/LICENSE.txt">http://www.JaAchan.com/software/LICENSE.txt</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Tc---Graph.php.html">/Tc/Graph.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a48">48</a></span>)
+		</p>
+		
+				
+		<pre><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html">Jadva_Tc_Object</a>
+   |
+   --Jadva_Tc_Graph</pre>
+	
+			</div>
+</div>
+
+	<a name="sec-descendents"></a>
+	<div class="info-box">
+		<div class="info-box-title">Direct descendents</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Descendents</span>
+			|												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+								|															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-consts">Constants</a>
+							
+					</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../../Jadva_Installer/Jadva_Installer_Database_ScriptLists/Jadva_Installer_Database_TableNode_List.html">Jadva_Installer_Database_TableNode_List</a></td>
+					<td>
+											This class represents a list of Database Script/Version nodes for a single database type
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../../Jadva_Tc/Jadva_Tc_Test/Jadva_Tc_Test_Graph.html">Jadva_Tc_Test_Graph</a></td>
+					<td>
+											A graph, used in testing the components
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-consts">Constants</a>
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																																								<div class="var-title">
+					<span class="var-type">boolean</span>
+					<a href="#$_dfsFinished" title="details" class="var-name">$_dfsFinished</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">boolean</span>
+					<a href="#$_dfsTime" title="details" class="var-name">$_dfsTime</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$_edgeClass" title="details" class="var-name">$_edgeClass</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$_edgeList" title="details" class="var-name">$_edgeList</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$_graphContainsCycle" title="details" class="var-name">$_graphContainsCycle</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$_nodeClass" title="details" class="var-name">$_nodeClass</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$_nodeList" title="details" class="var-name">$_nodeList</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+															<a href="#sec-consts">Constants</a>
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																						
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Edge.html">Jadva_Tc_Edge</a></span>
+										<a href="#addEdge" title="details" class="method-name">addEdge</a>
+											(<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>&nbsp;<span class="var-name">$nodeOne</span>, <span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>&nbsp;<span class="var-name">$nodeTwo</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$options</span> = <span class="var-default">array()</span>])
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>
+										<a href="#addNode" title="details" class="method-name">addNode</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$options</span> = <span class="var-default">array()</span>])
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#containsCycle" title="details" class="method-name">containsCycle</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#getNodesAsTopologicalSort" title="details" class="method-name">getNodesAsTopologicalSort</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#removeEdge" title="details" class="method-name">removeEdge</a>
+											(<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Edge.html">Jadva_Tc_Edge</a></span>&nbsp;<span class="var-name">$edge</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_dfs" title="details" class="method-name">_dfs</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$callbacks</span> = <span class="var-default">array()</span>])
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_dfsNodeVisit" title="details" class="method-name">_dfsNodeVisit</a>
+											(<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>&nbsp;<span class="var-name">$nodeU</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$callbacks</span> = <span class="var-default">array()</span>])
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_innerDelete" title="details" class="method-name">_innerDelete</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-consts">Constants</a>
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$_dfsFinished" id="$_dfsFinished"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>
+			<span class="var-name">$_dfsFinished</span>
+						(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a199">199</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains whether a DFS was finished for the current nodes/edges</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_dfsTime" id="$_dfsTime"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>
+			<span class="var-name">$_dfsTime</span>
+						(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a206">206</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the clock for the DFS function</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_edgeClass" id="$_edgeClass"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$_edgeClass</span>
+			 = <span class="var-default"> 'Jadva_Tc_Edge'</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a218">218</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the class used for creating the added edges</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../../Jadva_Tc/Jadva_Tc_Test/Jadva_Tc_Test_Graph.html#var$_edgeClass">Jadva_Tc_Test_Graph::$_edgeClass</a>
+								: Contains the class used for creating the added edges
+							</li>
+				</ul>
+		
+
+</div>
+<a name="var$_edgeList" id="$_edgeList"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_edgeList</span>
+						(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a185">185</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains all the edge in this graph</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_graphContainsCycle" id="$_graphContainsCycle"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_graphContainsCycle</span>
+						(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a192">192</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">When $this-&gt;_dfsFinished, this variable contains TRUE if this graph contains cycles, FALSE otherwise</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_nodeClass" id="$_nodeClass"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$_nodeClass</span>
+			 = <span class="var-default"> 'Jadva_Tc_Node'</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a212">212</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the class used for creating the added nodes</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../../Jadva_Installer/Jadva_Installer_Database_ScriptLists/Jadva_Installer_Database_TableNode_List.html#var$_nodeClass">Jadva_Installer_Database_TableNode_List::$_nodeClass</a>
+								: Contains the class used for creating the added nodes
+							</li>
+					<li>
+				<a href="../../Jadva_Tc/Jadva_Tc_Test/Jadva_Tc_Test_Graph.html#var$_nodeClass">Jadva_Tc_Test_Graph::$_nodeClass</a>
+								: Contains the class used for creating the added nodes
+							</li>
+				</ul>
+		
+
+</div>
+<a name="var$_nodeList" id="$_nodeList"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_nodeList</span>
+						(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a178">178</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains all the nodes in this graph</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html">Jadva_Tc_Object</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#var$_aliveState">Jadva_Tc_Object::$_aliveState</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#var$_identity">Jadva_Tc_Object::$_identity</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-consts">Constants</a>
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a56">56</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default constructor</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			__construct
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#method__construct">Jadva_Tc_Object::__construct()</a></dt>
+						<dd>Default constructor.</dd>
+					</dl>
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../../Jadva_Installer/Jadva_Installer_Database_ScriptLists/Jadva_Installer_Database_TableNode_List.html#method__construct">Jadva_Installer_Database_TableNode_List::__construct()</a>
+								: Default constructor. Initialises the graph and sets the database type
+							</li>
+				</ul>
+	</div>
+<a name="methodaddEdge" id="addEdge"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addEdge</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a111">111</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds an edge to the graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The new edge that wast just added</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Edge.html">Jadva_Tc_Edge</a></span>
+		<span class="method-name">
+			addEdge
+		</span>
+					(<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>&nbsp;<span class="var-name">$nodeOne</span>, <span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>&nbsp;<span class="var-name">$nodeTwo</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$options</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>
+				<span class="var-name">$nodeOne</span><span class="var-description">: The node that the new edge starts from</span>			</li>
+					<li>
+				<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>
+				<span class="var-name">$nodeTwo</span><span class="var-description">: The node that the new edge ends in</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: The options (ignored in this graph, can be used in descendants)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodaddNode" id="addNode"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">addNode</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a94">94</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds a node to the graph</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The new node that wast just added</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>
+		<span class="method-name">
+			addNode
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$options</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: The options (ignored in this graph, can be used in descendants)</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../../Jadva_Installer/Jadva_Installer_Database_ScriptLists/Jadva_Installer_Database_TableNode_List.html#methodaddNode">Jadva_Installer_Database_TableNode_List::addNode()</a>
+								: Adds a node to the graph
+							</li>
+				</ul>
+	</div>
+<a name="methodcontainsCycle" id="containsCycle"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">containsCycle</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a142">142</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns TRUE if this graph contains cycles, FALSE otherwise</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if this graph contains cycles, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			containsCycle
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetNodesAsTopologicalSort" id="getNodesAsTopologicalSort"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getNodesAsTopologicalSort</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a154">154</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns clones of the nodes in this graph, sorted topological</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The nodes</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getNodesAsTopologicalSort
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodremoveEdge" id="removeEdge"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">removeEdge</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a126">126</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes an edge from the graph</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removeEdge
+		</span>
+					(<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Edge.html">Jadva_Tc_Edge</a></span>&nbsp;<span class="var-name">$edge</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Edge.html">Jadva_Tc_Edge</a></span>
+				<span class="var-name">$edge</span><span class="var-description">: The edge to remove</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_dfs" id="_dfs"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_dfs</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a229">229</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Does a Depth First Search on the current graph</p>
+	<ul class="tags">
+				<li><span class="field">todo:</span> Add support for $callbacks</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_dfs
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$callbacks</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$callbacks</span><span class="var-description">: Not implemented yet. Should handle callbacks for events in the DFS</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_dfsNodeVisit" id="_dfsNodeVisit"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_dfsNodeVisit</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a269">269</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Visits a node in a DFS</p>
+	<ul class="tags">
+				<li><span class="field">todo:</span> Add support for $callbacks</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_dfsNodeVisit
+		</span>
+					(<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>&nbsp;<span class="var-name">$nodeU</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$callbacks</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../Jadva_Tc/Jadva_Tc_Graph/Jadva_Tc_Node.html">Jadva_Tc_Node</a></span>
+				<span class="var-name">$nodeU</span><span class="var-description">: The node to visit</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$callbacks</span><span class="var-description">: Not implemented yet. Should handle callbacks for events in the DFS</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_innerDelete" id="_innerDelete"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_innerDelete</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Tc_Jadva_Tc_Graph_TcGraph.php.html#a301">301</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Cleans up the references to the child objects</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_innerDelete
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#method_innerDelete">Jadva_Tc_Object::_innerDelete()</a></dt>
+						<dd>Gets called when the object is called to delete</dd>
+					</dl>
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html">Jadva_Tc_Object</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#method__construct">Jadva_Tc_Object::__construct()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#methoddelete">Jadva_Tc_Object::delete()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#methodgetIdentity">Jadva_Tc_Object::getIdentity()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#method_bailIfDead">Jadva_Tc_Object::_bailIfDead()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#method_innerDelete">Jadva_Tc_Object::_innerDelete()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#method__destruct">Jadva_Tc_Object::__destruct()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#method__get">Jadva_Tc_Object::__get()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#method__set">Jadva_Tc_Object::__set()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendants</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+										<h4>Inherited Constants</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html">Jadva_Tc_Object</a></span></p>
+					<blockquote>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#constSTATE_ALIVE">Jadva_Tc_Object::STATE_ALIVE</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#constSTATE_DEAD">Jadva_Tc_Object::STATE_DEAD</a></span><br>
+							</span>
+													<img src="../../media/images/Variable.png" />
+							<span class="const-title">
+								<span class="const-name"><a href="../../Jadva_Tc/Jadva_Tc_Object/Jadva_Tc_Object.html#constSTATE_DIEING">Jadva_Tc_Object::STATE_DIEING</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 21 Mar 2009 13:01:03 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+	</p>
+	</div></body>
+</html>

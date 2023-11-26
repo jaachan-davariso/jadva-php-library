@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Jadva_File_Filter_Extension</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+						<script src="../../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../../media/images/plus.png";
+				imgMinus.src = "../../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Jadva_File_Filter_Extension</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Class that filters a list so it only returns files with a given extension</p>
+	<ul class="tags">
+				<li><span class="field">copyright:</span> Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)</li>
+				<li><span class="field">license:</span> <a href="http://www.JaAchan.com/software/LICENSE.txt">http://www.JaAchan.com/software/LICENSE.txt</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_File---Filter---Extension.php.html">/File/Filter/Extension.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a42">42</a></span>)
+		</p>
+		
+				
+		<pre><a href="../../Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Abstract.html">Jadva_File_Filter_Abstract</a>
+   |
+   --Jadva_File_Filter_Extension</pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#TYPE_ALLOW" title="details" class="const-name">TYPE_ALLOW</a> = 					<span class="var-type"> 'allow'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#TYPE_DENY" title="details" class="const-name">TYPE_DENY</a> = 					<span class="var-type"> 'deny'</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																<div class="var-title">
+					<span class="var-type">boolean</span>
+					<a href="#$_allow" title="details" class="var-name">$_allow</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$_extensionList" title="details" class="var-name">$_extensionList</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Extension.html">Jadva_File_Filter_Extension</a></span>
+										<a href="#addExtension" title="details" class="method-name">addExtension</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_extension</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#filter" title="details" class="method-name">filter</a>
+											(<span class="var-type"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html">Jadva_File_Abstract</a></span>&nbsp;<span class="var-name">$file</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result"><a href="../../Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Extension.html">Jadva_File_Filter_Extension</a></span>
+										<a href="#setExtensions" title="details" class="method-name">setExtensions</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$extensions</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setFilterType" title="details" class="method-name">setFilterType</a>
+											(<span class="var-type">string|boolean</span>&nbsp;<span class="var-name">$in_filterType</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$_allow" id="$_allow"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">boolean</span>
+			<span class="var-name">$_allow</span>
+			 = <span class="var-default"> TRUE</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a137">137</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains whether to allow or deny files with the given extensions</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_extensionList" id="$_extensionList"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_extensionList</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a130">130</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the list of extensions</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodaddExtension" id="addExtension"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addExtension</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a59">59</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds an extension to the list</p>
+<p class="description"><p>Note that you should /not/ add the '.' to the extension.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Extension.html">Jadva_File_Filter_Extension</a></span>
+		<span class="method-name">
+			addExtension
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$in_extension</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$in_extension</span><span class="var-description">: The extension to add</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfilter" id="filter"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">filter</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a106">106</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_File_Filter_Interface::filter</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			filter
+		</span>
+					(<span class="var-type"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html">Jadva_File_Abstract</a></span>&nbsp;<span class="var-name">$file</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../../Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html">Jadva_File_Abstract</a></span>
+				<span class="var-name">$file</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetExtensions" id="setExtensions"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setExtensions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a74">74</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the list of extensions</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Provides a fluent interface</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../../Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Extension.html">Jadva_File_Filter_Extension</a></span>
+		<span class="method-name">
+			setExtensions
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$extensions</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$extensions</span><span class="var-description">: The extensions to set</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetFilterType" id="setFilterType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setFilterType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a92">92</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the filter type</p>
+<p class="description"><p>Set either using self::TYPE_ALLOW, self::TYPE_DENY, or by a boolean, TRUE allowing files and FALSE denying  them.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setFilterType
+		</span>
+					(<span class="var-type">string|boolean</span>&nbsp;<span class="var-name">$in_filterType</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string|boolean</span>
+				<span class="var-name">$in_filterType</span><span class="var-description">: The filter type</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Abstract.html">Jadva_File_Filter_Abstract</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Abstract.html#method__construct">Jadva_File_Filter_Abstract::__construct()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Abstract.html#methodsetOptions">Jadva_File_Filter_Abstract::setOptions()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constTYPE_ALLOW" id="TYPE_ALLOW"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">TYPE_ALLOW</span>
+			 = <span class="const-default"> 'allow'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a46">46</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Keep the files with the given extensions</p>
+	
+	
+</div>
+<a name="constTYPE_DENY" id="TYPE_DENY"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">TYPE_DENY</span>
+			 = <span class="const-default"> 'deny'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_File_Jadva_File_Filter_FileFilterExtension.php.html#a48">48</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Filter out the files with the given extensions</p>
+	
+	
+</div>
+						
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 21 Mar 2009 13:01:01 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+	</p>
+	</div></body>
+</html>

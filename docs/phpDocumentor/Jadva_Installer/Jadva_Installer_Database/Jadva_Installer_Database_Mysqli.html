@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Jadva_Installer_Database_Mysqli</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+						<script src="../../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../../media/images/plus.png";
+				imgMinus.src = "../../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Jadva_Installer_Database_Mysqli</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements the class Jadva_Installer_Database_Abstract using the MySQLi class</p>
+<p class="description"><p>For issues with the parsing of your script, see <a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Mysqli.html#method_parseDatabaseScript">_parseDatabaseScript</a>.</p></p>
+	<ul class="tags">
+				<li><span class="field">copyright:</span> Copyright (c) 2008 Ja`Achan da`Variso (http://www.JaAchan.com/)</li>
+				<li><span class="field">see:</span> <a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html">Jadva_Installer_Database_Abstract</a></li>
+				<li><span class="field">todo:</span> Fix check on connection</li>
+				<li><span class="field">license:</span> <a href="http://www.JaAchan.com/software/LICENSE.txt">http://www.JaAchan.com/software/LICENSE.txt</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Installer---Database---Mysqli.php.html">/Installer/Database/Mysqli.php</a> (line <span class="field"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a47">47</a></span>)
+		</p>
+		
+				
+		<pre><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html">Jadva_Installer_Database_Abstract</a>
+   |
+   --Jadva_Installer_Database_Mysqli</pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_COMMENT_MULTI" title="details" class="const-name">PARSER_STATE_COMMENT_MULTI</a> = 					<span class="var-type"> 'parserStateCommentMulti'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_COMMENT_MULTI_END" title="details" class="const-name">PARSER_STATE_COMMENT_MULTI_END</a> = 					<span class="var-type"> 'parserStateCommentMultiEnd'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_COMMENT_MULTI_START" title="details" class="const-name">PARSER_STATE_COMMENT_MULTI_START</a> = 					<span class="var-type"> 'parserStateCommentMultiStart'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_COMMENT_ONELINE" title="details" class="const-name">PARSER_STATE_COMMENT_ONELINE</a> = 					<span class="var-type"> 'parserStateCommentOnline'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_DASH" title="details" class="const-name">PARSER_STATE_DASH</a> = 					<span class="var-type"> 'parserStateDash'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_OUT" title="details" class="const-name">PARSER_STATE_OUT</a> = 					<span class="var-type"> 'parserStateOut'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_QUOTE_ONE" title="details" class="const-name">PARSER_STATE_QUOTE_ONE</a> = 					<span class="var-type"> 'parserStateQuoteOne'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_QUOTE_ONE_ESCAPED" title="details" class="const-name">PARSER_STATE_QUOTE_ONE_ESCAPED</a> = 					<span class="var-type"> 'parserStateQuoteOneEscaped'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_QUOTE_TWO" title="details" class="const-name">PARSER_STATE_QUOTE_TWO</a> = 					<span class="var-type"> 'parserStateQuoteTwo'</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../../media/images/Constant.png" alt=" " />
+					<a href="#PARSER_STATE_QUOTE_TWO_ESCAPED" title="details" class="const-name">PARSER_STATE_QUOTE_TWO_ESCAPED</a> = 					<span class="var-type"> 'parserStateQuoteTwoEscaped'</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																								<div class="var-title">
+					<span class="var-type">MySQLi</span>
+					<a href="#$_mysqliConnection" title="details" class="var-name">$_mysqliConnection</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																														
+				<div class="method-definition">
+											<span class="method-result">Jadva_Installer_Database_Mysqli</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$options</span> = <span class="var-default">array()</span>])
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_checkVersionTable" title="details" class="method-name">_checkVersionTable</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_connectToDatabase" title="details" class="method-name">_connectToDatabase</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_createRestorePoint" title="details" class="method-name">_createRestorePoint</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_databaseIsLocked" title="details" class="method-name">_databaseIsLocked</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_disconnectFromDatabase" title="details" class="method-name">_disconnectFromDatabase</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_executeDatabaseScript" title="details" class="method-name">_executeDatabaseScript</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$script</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">SimpleXMLElement</span>
+										<a href="#_executeQuery" title="details" class="method-name">_executeQuery</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_getVersions" title="details" class="method-name">_getVersions</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_lockDatabase" title="details" class="method-name">_lockDatabase</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_parseDatabaseScript" title="details" class="method-name">_parseDatabaseScript</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$scriptContents</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_restoreRestorePoint" title="details" class="method-name">_restoreRestorePoint</a>
+										()
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_storeVersions" title="details" class="method-name">_storeVersions</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$version_list</span>)
+									</div>
+														
+				<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#_unlockDatabase" title="details" class="method-name">_unlockDatabase</a>
+										()
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$_mysqliConnection" id="$_mysqliConnection"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">MySQLi</span>
+			<span class="var-name">$_mysqliConnection</span>
+			 = <span class="var-default"> NULL</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a69">69</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Contains the handle to the MySQLi connection</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+							<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html">Jadva_Installer_Database_Abstract</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_credentialsHost">Jadva_Installer_Database_Abstract::$_credentialsHost</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_credentialsPass">Jadva_Installer_Database_Abstract::$_credentialsPass</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_credentialsUser">Jadva_Installer_Database_Abstract::$_credentialsUser</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_databaseName">Jadva_Installer_Database_Abstract::$_databaseName</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_dbType">Jadva_Installer_Database_Abstract::$_dbType</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_directoryList">Jadva_Installer_Database_Abstract::$_directoryList</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_listTablesBefore">Jadva_Installer_Database_Abstract::$_listTablesBefore</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_nodeLists">Jadva_Installer_Database_Abstract::$_nodeLists</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_outputFormatter">Jadva_Installer_Database_Abstract::$_outputFormatter</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_restoreDirectory">Jadva_Installer_Database_Abstract::$_restoreDirectory</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#var$_restorePointLocation">Jadva_Installer_Database_Abstract::$_restorePointLocation</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a57">57</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Default constructor</p>
+<p class="description"><p>Allows for setting the options on construction time</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Jadva_Installer_Database_Mysqli</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$options</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$options</span><span class="var-description">: The options to set</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method__construct">Jadva_Installer_Database_Abstract::__construct()</a></dt>
+						<dd>Default constructor</dd>
+					</dl>
+			
+	</div>
+<a name="method_checkVersionTable" id="_checkVersionTable"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_checkVersionTable</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a112">112</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_checkVersionTable</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_checkVersionTable
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_checkVersionTable">Jadva_Installer_Database_Abstract::_checkVersionTable()</a></dt>
+						<dd>Checks whether the version table exists, creates it if it doesn't</dd>
+					</dl>
+			
+	</div>
+<a name="method_connectToDatabase" id="_connectToDatabase"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_connectToDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a72">72</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_connectToDatabase</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_connectToDatabase
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_connectToDatabase">Jadva_Installer_Database_Abstract::_connectToDatabase()</a></dt>
+						<dd>Connects to the database using the stored credentials</dd>
+					</dl>
+			
+	</div>
+<a name="method_createRestorePoint" id="_createRestorePoint"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_createRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a181">181</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_createRestorePoint</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_createRestorePoint
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_createRestorePoint">Jadva_Installer_Database_Abstract::_createRestorePoint()</a></dt>
+						<dd>Creates a restore point from which the database can be restored.</dd>
+					</dl>
+			
+	</div>
+<a name="method_databaseIsLocked" id="_databaseIsLocked"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_databaseIsLocked</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a89">89</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_databaseIsLocked</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_databaseIsLocked
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_databaseIsLocked">Jadva_Installer_Database_Abstract::_databaseIsLocked()</a></dt>
+						<dd>Checks whether the database is locked</dd>
+					</dl>
+			
+	</div>
+<a name="method_disconnectFromDatabase" id="_disconnectFromDatabase"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_disconnectFromDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a102">102</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_disconnectFromDatabase</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_disconnectFromDatabase
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_disconnectFromDatabase">Jadva_Installer_Database_Abstract::_disconnectFromDatabase()</a></dt>
+						<dd>Disconnects from the database</dd>
+					</dl>
+			
+	</div>
+<a name="method_executeDatabaseScript" id="_executeDatabaseScript"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_executeDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a145">145</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_executeDatabaseScript</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_executeDatabaseScript
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$script</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$script</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_executeDatabaseScript">Jadva_Installer_Database_Abstract::_executeDatabaseScript()</a></dt>
+						<dd>Executes a database script on the server</dd>
+					</dl>
+			
+	</div>
+<a name="method_executeQuery" id="_executeQuery"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_executeQuery</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a557">557</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Executes a query</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The results in XML</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">SimpleXMLElement</span>
+		<span class="method-name">
+			_executeQuery
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$query</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$query</span><span class="var-description">: The query to execute</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_getVersions" id="_getVersions"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_getVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a128">128</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_getVersions</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_getVersions
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_getVersions">Jadva_Installer_Database_Abstract::_getVersions()</a></dt>
+						<dd>Returns all the current versions of the installed scripts</dd>
+					</dl>
+			
+	</div>
+<a name="method_lockDatabase" id="_lockDatabase"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_lockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a83">83</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_lockDatabase</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_lockDatabase
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_lockDatabase">Jadva_Installer_Database_Abstract::_lockDatabase()</a></dt>
+						<dd>Locks the database, if possible. Issues a notice if locking is not possible.</dd>
+					</dl>
+			
+	</div>
+<a name="method_parseDatabaseScript" id="_parseDatabaseScript"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_parseDatabaseScript</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a333">333</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_parseDatabaseScript</p>
+<p class="description"><p>In general, we try to accept the same behaviour as the mysql command line tool does.</p><p>We need to feed the queries, one at a time. And we want to be able to deal with DELIMITER clauses. Hence, a  rather large parser was hidden away in here</p><p>When you use &quot;#&quot; or &quot;--&quot;, the mysql program acts odd. Hence, we assume people don't feed us that kind of  scripts either</p><p>Assumed is that the &quot;;&quot; is used as a delimiter at the beginning of EACH file</p><p>MySQL uses /*! as a special kind of extension. Therefore, we don't remove /* comments. As far as we can see,  this does not interfere with the &quot;one query at a time&quot;, since you cannot hide entire queries with this from  other DBMS systems.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_parseDatabaseScript
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$scriptContents</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$scriptContents</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_parseDatabaseScript">Jadva_Installer_Database_Abstract::_parseDatabaseScript()</a></dt>
+						<dd>Parses a database script and returns the requirements and queries in it</dd>
+					</dl>
+			
+	</div>
+<a name="method_restoreRestorePoint" id="_restoreRestorePoint"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_restoreRestorePoint</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a241">241</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_restoreRestorePoint</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_restoreRestorePoint
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_restoreRestorePoint">Jadva_Installer_Database_Abstract::_restoreRestorePoint()</a></dt>
+						<dd>Restores the restore point</dd>
+					</dl>
+			
+	</div>
+<a name="method_storeVersions" id="_storeVersions"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">_storeVersions</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a157">157</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_storeVersions</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_storeVersions
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$version_list</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$version_list</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_storeVersions">Jadva_Installer_Database_Abstract::_storeVersions()</a></dt>
+						<dd>Updates the versions table</dd>
+					</dl>
+			
+	</div>
+<a name="method_unlockDatabase" id="_unlockDatabase"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">_unlockDatabase</span> (line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a95">95</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Implements Jadva_Installer_Database_Abstract::_unlockDatabase</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_unlockDatabase
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_unlockDatabase">Jadva_Installer_Database_Abstract::_unlockDatabase()</a></dt>
+						<dd>Unlocks the database, if it was locked.</dd>
+					</dl>
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html">Jadva_Installer_Database_Abstract</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method__construct">Jadva_Installer_Database_Abstract::__construct()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#methodaddDirectory">Jadva_Installer_Database_Abstract::addDirectory()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#methodinstall">Jadva_Installer_Database_Abstract::install()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#methodsetCredentials">Jadva_Installer_Database_Abstract::setCredentials()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#methodsetDatabaseName">Jadva_Installer_Database_Abstract::setDatabaseName()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#methodsetOutputFormatter">Jadva_Installer_Database_Abstract::setOutputFormatter()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#methodsetRestoreDirectory">Jadva_Installer_Database_Abstract::setRestoreDirectory()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_checkDirectory">Jadva_Installer_Database_Abstract::_checkDirectory()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_checkVersionTable">Jadva_Installer_Database_Abstract::_checkVersionTable()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_connectToDatabase">Jadva_Installer_Database_Abstract::_connectToDatabase()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_createRestorePoint">Jadva_Installer_Database_Abstract::_createRestorePoint()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_databaseIsLocked">Jadva_Installer_Database_Abstract::_databaseIsLocked()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_disconnectFromDatabase">Jadva_Installer_Database_Abstract::_disconnectFromDatabase()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_executeDatabaseScript">Jadva_Installer_Database_Abstract::_executeDatabaseScript()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_getVersions">Jadva_Installer_Database_Abstract::_getVersions()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_loadFilesFromDirectory">Jadva_Installer_Database_Abstract::_loadFilesFromDirectory()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_lockDatabase">Jadva_Installer_Database_Abstract::_lockDatabase()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_parseDatabaseScript">Jadva_Installer_Database_Abstract::_parseDatabaseScript()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_restoreRestorePoint">Jadva_Installer_Database_Abstract::_restoreRestorePoint()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_setContent">Jadva_Installer_Database_Abstract::_setContent()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_storeVersions">Jadva_Installer_Database_Abstract::_storeVersions()</a></span><br>
+													<span class="method-name"><a href="../../Jadva_Installer/Jadva_Installer_Database/Jadva_Installer_Database_Abstract.html#method_unlockDatabase">Jadva_Installer_Database_Abstract::_unlockDatabase()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constPARSER_STATE_COMMENT_MULTI" id="PARSER_STATE_COMMENT_MULTI"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_COMMENT_MULTI</span>
+			 = <span class="const-default"> 'parserStateCommentMulti'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a307">307</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_COMMENT_MULTI_END" id="PARSER_STATE_COMMENT_MULTI_END"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_COMMENT_MULTI_END</span>
+			 = <span class="const-default"> 'parserStateCommentMultiEnd'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a308">308</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_COMMENT_MULTI_START" id="PARSER_STATE_COMMENT_MULTI_START"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_COMMENT_MULTI_START</span>
+			 = <span class="const-default"> 'parserStateCommentMultiStart'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a306">306</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_COMMENT_ONELINE" id="PARSER_STATE_COMMENT_ONELINE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_COMMENT_ONELINE</span>
+			 = <span class="const-default"> 'parserStateCommentOnline'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a305">305</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_DASH" id="PARSER_STATE_DASH"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_DASH</span>
+			 = <span class="const-default"> 'parserStateDash'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a304">304</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_OUT" id="PARSER_STATE_OUT"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_OUT</span>
+			 = <span class="const-default"> 'parserStateOut'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a301">301</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_QUOTE_ONE" id="PARSER_STATE_QUOTE_ONE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_QUOTE_ONE</span>
+			 = <span class="const-default"> 'parserStateQuoteOne'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a311">311</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_QUOTE_ONE_ESCAPED" id="PARSER_STATE_QUOTE_ONE_ESCAPED"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_QUOTE_ONE_ESCAPED</span>
+			 = <span class="const-default"> 'parserStateQuoteOneEscaped'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a312">312</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_QUOTE_TWO" id="PARSER_STATE_QUOTE_TWO"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_QUOTE_TWO</span>
+			 = <span class="const-default"> 'parserStateQuoteTwo'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a313">313</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARSER_STATE_QUOTE_TWO_ESCAPED" id="PARSER_STATE_QUOTE_TWO_ESCAPED"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARSER_STATE_QUOTE_TWO_ESCAPED</span>
+			 = <span class="const-default"> 'parserStateQuoteTwoEscaped'</span>
+			(line <span class="line-number"><a href="../../__filesource/fsource_Jadva_Installer_Jadva_Installer_Database_InstallerDatabaseMysqli.php.html#a314">314</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+						
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 21 Mar 2009 13:01:09 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.2</a>
+	</p>
+	</div></body>
+</html>

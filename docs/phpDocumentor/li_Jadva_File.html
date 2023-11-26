@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title></title>
+			<link rel="stylesheet" href="media/stylesheet.css" />
+						<script src="media/lib/classTree.js"></script>
+									<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+									<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "media/images/plus.png";
+				imgMinus.src = "media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+						<h3 class="package-title">Jadva_File</h3>
+<div class="tree">
+<script language="Javascript">
+if (document.getElementById) {
+			var tree = new WebFXTree('<span class="package">Jadva_File</span>');
+		tree.setBehavior('classic');
+	
+					var todos = new WebFXTreeItem('To-do List', 'todolist.html');
+			tree.add(todos);
+		
+		var class_trees = new WebFXTreeItem('Class trees', 'classtrees_Jadva_File.html');
+		tree.add(class_trees);
+
+		var elements = new WebFXTreeItem('Index of elements', 'elementindex_Jadva_File.html');
+		tree.add(elements);
+
+		var parent_node;
+
+						
+			
+		
+							var subpackagetree = new WebFXTreeItem('<span class="sub-package">Jadva_File</span>', '');
+		
+			
+					var subpackagetree_classe = new WebFXTreeItem('Class(es)', '');
+			
+							var classe = new WebFXTreeItem('Jadva_File', 'Jadva_File/Jadva_File/Jadva_File.html');
+				subpackagetree_classe.add(classe);
+						
+			subpackagetree.add(subpackagetree_classe);
+		
+				
+					var subpackagetree_file = new WebFXTreeItem('File(s)', '');
+			
+							var file = new WebFXTreeItem('File.php', 'Jadva_File/Jadva_File/_File.php.html');
+				subpackagetree_file.add(file);
+					
+			subpackagetree.add(subpackagetree_file);
+			
+	  tree.add(subpackagetree);
+							var subpackagetree = new WebFXTreeItem('<span class="sub-package">Jadva_File_Abstract</span>', '');
+		
+			
+					var subpackagetree_classe = new WebFXTreeItem('Class(es)', '');
+			
+							var classe = new WebFXTreeItem('Jadva_File_Abstract', 'Jadva_File/Jadva_File_Abstract/Jadva_File_Abstract.html');
+				subpackagetree_classe.add(classe);
+						
+			subpackagetree.add(subpackagetree_classe);
+		
+				
+					var subpackagetree_file = new WebFXTreeItem('File(s)', '');
+			
+							var file = new WebFXTreeItem('Abstract.php', 'Jadva_File/Jadva_File_Abstract/_File---Abstract.php.html');
+				subpackagetree_file.add(file);
+					
+			subpackagetree.add(subpackagetree_file);
+			
+	  tree.add(subpackagetree);
+							var subpackagetree = new WebFXTreeItem('<span class="sub-package">Jadva_File_Directory</span>', '');
+		
+			
+					var subpackagetree_classe = new WebFXTreeItem('Class(es)', '');
+			
+							var classe = new WebFXTreeItem('Jadva_File_Directory', 'Jadva_File/Jadva_File_Directory/Jadva_File_Directory.html');
+				subpackagetree_classe.add(classe);
+						
+			subpackagetree.add(subpackagetree_classe);
+		
+				
+					var subpackagetree_file = new WebFXTreeItem('File(s)', '');
+			
+							var file = new WebFXTreeItem('Directory.php', 'Jadva_File/Jadva_File_Directory/_File---Directory.php.html');
+				subpackagetree_file.add(file);
+					
+			subpackagetree.add(subpackagetree_file);
+			
+	  tree.add(subpackagetree);
+							var subpackagetree = new WebFXTreeItem('<span class="sub-package">Jadva_File_Directory_Iterator</span>', '');
+		
+			
+					var subpackagetree_classe = new WebFXTreeItem('Class(es)', '');
+			
+							var classe = new WebFXTreeItem('Jadva_File_Directory_Iterator', 'Jadva_File/Jadva_File_Directory_Iterator/Jadva_File_Directory_Iterator.html');
+				subpackagetree_classe.add(classe);
+						
+			subpackagetree.add(subpackagetree_classe);
+		
+				
+					var subpackagetree_file = new WebFXTreeItem('File(s)', '');
+			
+							var file = new WebFXTreeItem('Iterator.php', 'Jadva_File/Jadva_File_Directory_Iterator/_File---Directory---Iterator.php.html');
+				subpackagetree_file.add(file);
+					
+			subpackagetree.add(subpackagetree_file);
+			
+	  tree.add(subpackagetree);
+							var subpackagetree = new WebFXTreeItem('<span class="sub-package">Jadva_File_Exception</span>', '');
+		
+			
+					var subpackagetree_classe = new WebFXTreeItem('Class(es)', '');
+			
+							var classe = new WebFXTreeItem('Jadva_File_Directory_Exception', 'Jadva_File/Jadva_File_Exception/Jadva_File_Directory_Exception.html');
+				subpackagetree_classe.add(classe);
+							var classe = new WebFXTreeItem('Jadva_File_Directory_Iterator_Exception', 'Jadva_File/Jadva_File_Exception/Jadva_File_Directory_Iterator_Exception.html');
+				subpackagetree_classe.add(classe);
+							var classe = new WebFXTreeItem('Jadva_File_Exception', 'Jadva_File/Jadva_File_Exception/Jadva_File_Exception.html');
+				subpackagetree_classe.add(classe);
+						
+			subpackagetree.add(subpackagetree_classe);
+		
+				
+					var subpackagetree_file = new WebFXTreeItem('File(s)', '');
+			
+							var file = new WebFXTreeItem('Exception.php', 'Jadva_File/Jadva_File_Exception/_File---Exception.php.html');
+				subpackagetree_file.add(file);
+							var file = new WebFXTreeItem('Exception.php', 'Jadva_File/Jadva_File_Exception/_File---Directory---Iterator---Exception.php.html');
+				subpackagetree_file.add(file);
+							var file = new WebFXTreeItem('Exception.php', 'Jadva_File/Jadva_File_Exception/_File---Directory---Exception.php.html');
+				subpackagetree_file.add(file);
+					
+			subpackagetree.add(subpackagetree_file);
+			
+	  tree.add(subpackagetree);
+							var subpackagetree = new WebFXTreeItem('<span class="sub-package">Jadva_File_Filter</span>', '');
+		
+			
+					var subpackagetree_classe = new WebFXTreeItem('Class(es)', '');
+			
+							var classe = new WebFXTreeItem('Jadva_File_Filter_Abstract', 'Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Abstract.html');
+				subpackagetree_classe.add(classe);
+							var classe = new WebFXTreeItem('Jadva_File_Filter_Directories', 'Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Directories.html');
+				subpackagetree_classe.add(classe);
+							var classe = new WebFXTreeItem('Jadva_File_Filter_Extension', 'Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Extension.html');
+				subpackagetree_classe.add(classe);
+							var classe = new WebFXTreeItem('Jadva_File_Filter_Files', 'Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Files.html');
+				subpackagetree_classe.add(classe);
+							var classe = new WebFXTreeItem('Jadva_File_Filter_FileSize', 'Jadva_File/Jadva_File_Filter/Jadva_File_Filter_FileSize.html');
+				subpackagetree_classe.add(classe);
+							var classe = new WebFXTreeItem('Jadva_File_Filter_Images', 'Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Images.html');
+				subpackagetree_classe.add(classe);
+							var classe = new WebFXTreeItem('Jadva_File_Filter_Interface', 'Jadva_File/Jadva_File_Filter/Jadva_File_Filter_Interface.html');
+				subpackagetree_classe.add(classe);
+						
+			subpackagetree.add(subpackagetree_classe);
+		
+				
+					var subpackagetree_file = new WebFXTreeItem('File(s)', '');
+			
+							var file = new WebFXTreeItem('Abstract.php', 'Jadva_File/Jadva_File_Filter/_File---Filter---Abstract.php.html');
+				subpackagetree_file.add(file);
+							var file = new WebFXTreeItem('Directories.php', 'Jadva_File/Jadva_File_Filter/_File---Filter---Directories.php.html');
+				subpackagetree_file.add(file);
+							var file = new WebFXTreeItem('Extension.php', 'Jadva_File/Jadva_File_Filter/_File---Filter---Extension.php.html');
+				subpackagetree_file.add(file);
+							var file = new WebFXTreeItem('Files.php', 'Jadva_File/Jadva_File_Filter/_File---Filter---Files.php.html');
+				subpackagetree_file.add(file);
+							var file = new WebFXTreeItem('FileSize.php', 'Jadva_File/Jadva_File_Filter/_File---Filter---FileSize.php.html');
+				subpackagetree_file.add(file);
+							var file = new WebFXTreeItem('Images.php', 'Jadva_File/Jadva_File_Filter/_File---Filter---Images.php.html');
+				subpackagetree_file.add(file);
+							var file = new WebFXTreeItem('Interface.php', 'Jadva_File/Jadva_File_Filter/_File---Filter---Interface.php.html');
+				subpackagetree_file.add(file);
+					
+			subpackagetree.add(subpackagetree_file);
+			
+	  tree.add(subpackagetree);
+	
+document.write(tree);
+}
+</script>
+</div>
+<p class="notes">
+	Generated by 
+	<a href="http://www.phpdoc.org" target="_blank">phpDocumentor <span class="field">1.4.2</span></a>
+</p>
+</body>
+</html>
