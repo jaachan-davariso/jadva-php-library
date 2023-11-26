@@ -24,7 +24,7 @@
  * @subpackage Jadva_Version
  * @copyright  Copyright (c) 2008-2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Version.php 323 2010-01-25 11:46:39Z jaachan $
+ * @version    $Id: Version.php 328 2010-01-25 12:02:57Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -36,6 +36,6 @@
  */
 class Jadva_Version
 {
-	const VERSION = '0.2.6.1';
+	const VERSION = '0.2.6.2';
 }
 //----------------------------------------------------------------------------------------------------------------------

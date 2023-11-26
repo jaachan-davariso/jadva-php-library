@@ -1,4 +1,3 @@
-
 <?php
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -25,7 +24,7 @@
  * @subpackage Jadva_Installer_Database
  * @copyright  Copyright (c) 2009-2010 Ja`Achan da`Variso (http://www.JaAchan.com/)
  * @license    http://www.JaAchan.com/software/LICENSE.txt
- * @version    $Id: Abstract.php 315 2010-01-23 11:29:27Z jaachan $
+ * @version    $Id: Abstract.php 327 2010-01-25 12:02:40Z jaachan $
  */
 //----------------------------------------------------------------------------------------------------------------------
 /** @see Jadva_Installer_Database_TableNode_List */

@@ -1,5 +1,9 @@
 This is the changelog for the JAdVA PHP components library:
 
+0.2.6.2
+ Bug fix release; using the Jadva_Installer_Database_Abstract class would 
+ output a newline to the browser.
+
 0.2.6.1
  Bug fix release; database installer wouldn't restore when the installation
  went wrong.
